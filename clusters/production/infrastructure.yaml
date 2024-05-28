@@ -11,7 +11,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/base/metallb
+  path: ./infrastructure/production
   prune: true
   wait: true
 ---
