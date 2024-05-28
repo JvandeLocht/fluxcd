@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: sops-pre-commit
+        name: sops encrypt
+        entry: bash -c 'find . -type f \( -name "*secret*.yaml" -o -name "*secret*.yml" -o -name "*secret*.json" \) | while read -r file; do if sops -d "$file" &>/dev/null; then sops -e -i "$file"; fi; done'
+        language: system
+        files: \.(yaml|yml|json)$
+
