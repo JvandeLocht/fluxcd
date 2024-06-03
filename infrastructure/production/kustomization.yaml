@@ -4,4 +4,4 @@ resources:
   - cert-manager
   - metallb
   - longhorn
-  # - blocky
+  - blocky
