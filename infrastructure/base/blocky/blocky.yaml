@@ -11,7 +11,7 @@ metadata:
   namespace: blocky
 spec:
   type: "oci"
-  interval: 5min
+  interval: 5m0s
   url: oci://tccr.io/truecharts
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
