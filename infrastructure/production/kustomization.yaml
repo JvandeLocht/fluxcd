@@ -6,5 +6,6 @@ resources:
   - longhorn
   # - blocky
   - cloudnativePG
+  - unbound
   - kube-prometheus-stack
 
