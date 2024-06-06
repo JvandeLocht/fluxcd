@@ -1,9 +1,17 @@
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: first-pool
+  name: traefik
   namespace: metallb-system
 spec:
   addresses:
-  - 192.168.178.151-192.168.178.250
-
+  - 192.168.178.151
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: unbound
+  namespace: metallb-system
+spec:
+  addresses:
+  - 192.168.178.152
