@@ -29,12 +29,17 @@ spec:
         namespace: unbound
       interval: 12h
   values:
-    config:
-      allowedIpRanges:
-      - "0.0.0.0/0"
-      localRecords:
-      - name: "proxmox.lan.vandelocht.uk"
-        ip: "192.168.178.40"
+    containers:
+      unbound:
+        config:
+          allowedIpRanges:
+          - "0.0.0.0/0"
+          localRecords:
+          - name: "proxmox.lan.vandelocht.uk"
+            ip: "192.168.178.40"
+    service:
+      type: LoadBalancer
+      loadBalancerIP: 192.168.178.152
       #
       # forwardZones:
       # - name: "fake.net"
