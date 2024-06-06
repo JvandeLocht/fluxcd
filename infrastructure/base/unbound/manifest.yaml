@@ -39,7 +39,9 @@ spec:
             ip: "192.168.178.40"
     service:
       type: LoadBalancer
-      loadBalancerIP: 192.168.178.152
+      # loadBalancerIP: 192.168.178.152
+      annotations:
+        metallb.universe.tf/loadBalancerIPs: "192.168.178.152"
       #
       # forwardZones:
       # - name: "fake.net"
