@@ -3,4 +3,8 @@ kind: L2Advertisement
 metadata:
   name: l2metallb
   namespace: metallb-system
+spec:
+  ipAddressPools:
+  - traefik
+  - unbound
 
