@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - ../../base/metallb
 patches:
-  - path: metallb-patch.yaml
+  - path: patch.yaml
     target:
       kind: HelmRelease
