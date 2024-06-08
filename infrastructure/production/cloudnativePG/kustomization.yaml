@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - ../../base/cloudnativePG
 patches:
-  - path: cloudnativePG-patch.yaml
+  - path: patch.yaml
     target:
       kind: HelmRelease

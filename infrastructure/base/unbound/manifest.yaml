@@ -19,6 +19,7 @@ metadata:
   name: unbound
   namespace: unbound
 spec:
+  timeout: 15m
   interval: 30m
   chart:
     spec:

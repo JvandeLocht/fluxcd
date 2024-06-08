@@ -19,11 +19,11 @@ metadata:
   name: cert-manager
   namespace: cert-manager
 spec:
+  timeout: 15m
   interval: 30m
   chart:
     spec:
       chart: cert-manager
-      version: "1.x"
       sourceRef:
         kind: HelmRepository
         name: cert-manager

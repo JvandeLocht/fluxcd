@@ -21,6 +21,8 @@ metadata:
   name: infra-longhorn
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: infra-metallb
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -53,6 +55,8 @@ metadata:
   name: infra-unbound
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: infra-metallb
   interval: 1h
   retryInterval: 1m
   timeout: 5m
