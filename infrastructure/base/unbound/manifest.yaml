@@ -21,6 +21,14 @@ metadata:
 spec:
   timeout: 15m
   interval: 30m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
   chart:
     spec:
       chart: unbound
