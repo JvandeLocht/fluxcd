@@ -6,7 +6,10 @@ metadata:
 spec:
   addresses:
   - 192.168.178.151/32
-  autoAssign: false
+  serviceAllocation:
+    priority: 50
+    namespaces:
+      - traefik
 ---
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
@@ -16,4 +19,8 @@ metadata:
 spec:
   addresses:
   - 192.168.178.152/32
-  autoAssign: false
+  serviceAllocation:
+    priority: 50
+    namespaces:
+      - unbound
+
