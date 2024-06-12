@@ -46,6 +46,8 @@ spec:
           localRecords:
           - name: "proxmox.lan.vandelocht.uk"
             ip: "192.168.178.40"
+          - name: "traefik.lan.vandelocht.uk"
+            ip: "192.168.178.151"
     service:
       type: LoadBalancer
       #

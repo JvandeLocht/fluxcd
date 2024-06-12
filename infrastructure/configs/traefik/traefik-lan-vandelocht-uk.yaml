@@ -1,0 +1,15 @@
+---
+ o o q
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: traefik-lan-vandelocht-uk
+  namespace: traefik
+spec:
+  secretName: traefik-lan-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "traefik.lan.vandelocht.uk"
+  dnsNames:
+  - "traefik.lan.vandelocht.uk"
