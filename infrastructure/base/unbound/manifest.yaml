@@ -49,18 +49,8 @@ spec:
           - name: "traefik.lan.vandelocht.uk"
             ip: "192.168.178.151"
           - name: "longhorn.lan.vandelocht.uk"
-          forwardZones:
-          - name: "longhorn.lan.vandelocht.uk"
-            forwardHosts:
-            - "traefik.lan.vandelocht.uk"
+            ip: "192.168.178.151"
     service:
       type: LoadBalancer
-      #
-      # forwardZones:
-      # - name: "fake.net"
-      #   forwardHosts:
-      #   - "fake1.host.net"
-      #   forwardIps:
-      #   - "10.10.10.10"
 
 
