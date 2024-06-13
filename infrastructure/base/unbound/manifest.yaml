@@ -50,6 +50,8 @@ spec:
             ip: "192.168.178.151"
           - name: "longhorn.lan.vandelocht.uk"
             ip: "192.168.178.151"
+          - name: "grafana.lan.vandelocht.uk"
+            ip: "192.168.178.151"
     service:
       type: LoadBalancer
 
