@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudflare-ddns
-  # namespace: flux-system
+  namespace: cloudflare-ddns
 spec:
   template:
     spec:
       containers:
-        - env:
-          image: favonia/cloudflare-ddns:1.10.1
+        - image: favonia/cloudflare-ddns:1.10.1
+          name: cloudflare-ddns
