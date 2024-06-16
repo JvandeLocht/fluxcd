@@ -16,7 +16,7 @@ metadata:
   name: notifications
   namespace: flux-system
 spec:
-  summary: "cluster addons"
+  # summary: "cluster addons"
   eventMetadata:
     env: "production"
     cluster: "talos-proxmox-cluster"
