@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-metallb
+  name: metallb
   namespace: flux-system
 spec:
   interval: 1h
@@ -18,11 +18,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-longhorn
+  name: longhorn
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infra-metallb
+    - name: metallb
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -36,7 +36,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-cert-manager
+  name: cert-manager
   namespace: flux-system
 spec:
   interval: 1h
@@ -52,11 +52,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-unbound
+  name: unbound
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infra-metallb
+    - name: metallb
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -70,11 +70,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-traefik
+  name: traefik
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infra-metallb
+    - name: metallb
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -88,7 +88,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-kube-prometheus-stack
+  name: kube-prometheus-stack
   namespace: flux-system
 spec:
   interval: 1h
@@ -104,7 +104,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-cloudflare-ddns
+  name: cloudflare-ddns
   namespace: flux-system
 spec:
   interval: 1h
@@ -120,12 +120,12 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-configs
+  name: configs
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infra-metallb
-    - name: infra-cert-manager
+    - name: metallb
+    - name: cert-manager
   interval: 1h
   retryInterval: 1m
   timeout: 5m
