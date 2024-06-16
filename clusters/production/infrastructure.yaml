@@ -113,7 +113,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/base/cloudflare-ddns
+  path: ./infrastructure/production/cloudflare-ddns
   prune: true
   wait: true
 ---
