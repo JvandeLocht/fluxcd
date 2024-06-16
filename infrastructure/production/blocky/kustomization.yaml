@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - ../../base/blocky
 patches:
-  - path: blocky-patch.yaml
+  - path: patch.yaml
     target:
       kind: HelmRelease
