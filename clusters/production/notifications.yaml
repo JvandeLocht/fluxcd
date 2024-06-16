@@ -6,7 +6,7 @@ metadata:
 spec:
   type: matrix
   address: https://nope.chat
-  channel: "#flux:nope.chat"
+  channel: "!xyMMZTXeRxqVfPiDDY:nope.chat"
   secretRef:
     name: matrix-token
 ---
