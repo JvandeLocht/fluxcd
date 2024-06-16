@@ -1,0 +1,54 @@
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: cloudflare-ddns
+# ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.32.0 (HEAD)
+  labels:
+    io.kompose.service: cloudflare-ddns
+  name: cloudflare-ddns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: cloudflare-ddns
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.32.0 (HEAD)
+      labels:
+        io.kompose.network/tmp-default: "true"
+        io.kompose.service: cloudflare-ddns
+    spec:
+      containers:
+        - env:
+            - name: CF_API_TOKEN
+              value: YOUR-CLOUDFLARE-API-TOKEN
+            - name: DOMAINS
+              value: example.org,www.example.org,example.io
+            - name: PGID
+              value: "1000"
+            - name: PROXIED
+              value: "true"
+            - name: PUID
+              value: "1000"
+          image: favonia/cloudflare-ddns:latest
+          name: cloudflare-ddns
+          securityContext:
+            capabilities:
+              add:
+                - SETUID
+                - SETGID
+              drop:
+                - all
+            readOnlyRootFilesystem: true
+      restartPolicy: Always
+
+
