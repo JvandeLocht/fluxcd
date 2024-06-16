@@ -31,9 +31,12 @@ spec:
       containers:
         - env:
             - name: CF_API_TOKEN
-              value: YOUR-CLOUDFLARE-API-TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cloudflare-token-secret
+                  key: api_token
             - name: DOMAINS
-              value: example.org,www.example.org,example.io
+              value: vandelocht.uk
             - name: PGID
               value: "1000"
             - name: PROXIED
