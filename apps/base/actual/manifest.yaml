@@ -37,6 +37,8 @@ spec:
         name: actual
         namespace: actual
       interval: 12h
-  # values:
+  values:
+    images:
+      tag: "v24.7.0"
 
 
