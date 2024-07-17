@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: actual
+  namespace: actual
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`actual.lan.vandelocht.uk`)
+      kind: Rule
+      services:
+        - name: actual
+          port: 5006
+      middlewares:
+        - name: svc-actual-headers
+  tls:
+    secretName: actual-lan-vandelocht-uk-production-tls

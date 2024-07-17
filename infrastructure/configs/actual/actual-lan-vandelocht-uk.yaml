@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: actual-lan-vandelocht-uk
+  namespace: actual
+spec:
+  secretName: actual-lan-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "actual.lan.vandelocht.uk"
+  dnsNames:
+  - "actual.lan.vandelocht.uk"
