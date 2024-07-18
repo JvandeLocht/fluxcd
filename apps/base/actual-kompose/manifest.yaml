@@ -72,27 +72,6 @@ status:
   loadBalancer: {}
 ---
 apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.26.1 (HEAD)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: actual-server
-  name: actual_server
-  namespace: actual-server
-spec:
-  ports:
-    - name: "5006"
-      port: 5006
-      targetPort: 5006
-  selector:
-    io.kompose.service: actual-server
-status:
-  loadBalancer: {}
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
