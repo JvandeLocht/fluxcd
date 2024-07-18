@@ -3,7 +3,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: actual-lan-vandelocht-uk
-  namespace: actual
+  namespace: actual-server
 spec:
   secretName: actual-lan-vandelocht-uk-production-tls
   issuerRef:
