@@ -33,10 +33,10 @@ spec:
     spec:
       containers:
         - env:
-            - name: ACTUAL_PORT
+            - name: ACTUAL-PORT
               value: "5006"
           image: docker.io/actualbudget/actual-server:latest
-          name: actual_server
+          name: actual-server
           ports:
             - containerPort: 5006
           resources: {}
@@ -59,7 +59,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: actual-server
-  name: actual_server
+  name: actual-server
   namespace: actual-server
 spec:
   ports:
