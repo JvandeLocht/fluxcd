@@ -1,8 +1,8 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: actual
-  namespace: actual
+  name: actual-server
+  namespace: actual-server
   annotations: 
     kubernetes.io/ingress.class: traefik-external
 spec:
@@ -12,7 +12,7 @@ spec:
     - match: Host(`actual.lan.vandelocht.uk`)
       kind: Rule
       services:
-        - name: actual
+        - name: actual-server
           port: 5006
       middlewares:
         - name: svc-actual-headers

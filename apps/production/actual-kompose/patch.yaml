@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: actual
+  namespace: actual
+# spec:
+#   chart:
+#     spec:
+#       version: "2.x.x"
