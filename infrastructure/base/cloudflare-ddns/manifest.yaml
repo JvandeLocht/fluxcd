@@ -37,19 +37,14 @@ spec:
                   key: api_token
             - name: DOMAINS
               value: vandelocht.uk
-            - name: PGID
-              value: "1000"
             - name: PROXIED
               value: "true"
-            - name: PUID
-              value: "1000"
           # image: favonia/cloudflare-ddns:1.10.1
           name: cloudflare-ddns
           securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
             capabilities:
-              add:
-                - SETUID
-                - SETGID
               drop:
                 - all
             readOnlyRootFilesystem: true
