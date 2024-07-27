@@ -38,6 +38,14 @@ spec:
         namespace: gitea
       interval: 12h
   values:
+    redis-cluster:
+      enabled: false
+    redis:
+      enabled: true
+    postgresql:
+      enabled: true
+    postgresql-ha:
+      enabled: false
     # replicaCount: 1
 
     ## @section strategy
