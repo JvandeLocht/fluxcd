@@ -48,6 +48,7 @@ spec:
               drop:
                 - all
             readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
       restartPolicy: Always
 
 
