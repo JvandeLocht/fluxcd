@@ -1,0 +1,166 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gitea
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: gitea
+  namespace: gitea
+spec:
+  interval: 5m0s
+  url: https://dl.gitea.io/charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitea
+  namespace: gitea
+spec:
+  timeout: 15m
+  interval: 30m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: gitea
+      sourceRef:
+        kind: HelmRepository
+        name: gitea
+        namespace: gitea
+      interval: 12h
+  values:
+    replicaCount: 1
+
+    ## @section strategy
+    ## @param strategy.type strategy type
+    ## @param strategy.rollingUpdate.maxSurge maxSurge
+    ## @param strategy.rollingUpdate.maxUnavailable maxUnavailable
+    strategy:
+      type: "RollingUpdate"
+      rollingUpdate:
+        maxSurge: "100%"
+        maxUnavailable: 0
+
+
+    ## @section deployment
+    #
+    ## @param resources Kubernetes resources
+    resources:
+      # We usually recommend not to specify default resources and to leave this as a conscious
+      # choice for the user. This also increases chances charts run on environments with little
+      # resources, such as Minikube. If you do want to specify resources, uncomment the following
+      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+
+
+    ## @section Persistence
+    #
+    ## @param persistence.enabled Enable persistent storage
+    ## @param persistence.create Whether to create the persistentVolumeClaim for shared storage
+    ## @param persistence.mount Whether the persistentVolumeClaim should be mounted (even if not created)
+    ## @param persistence.claimName Use an existing claim to store repository information
+    ## @param persistence.size Size for persistence to store repo information
+    ## @param persistence.accessModes AccessMode for persistence
+    ## @param persistence.labels Labels for the persistence volume claim to be created
+    ## @param persistence.annotations.helm.sh/resource-policy Resource policy for the persistence volume claim
+    ## @param persistence.storageClass Name of the storage class to use
+    ## @param persistence.subPath Subdirectory of the volume to mount at
+    ## @param persistence.volumeName Name of persistent volume in PVC
+    persistence:
+      enabled: true
+      create: true
+      mount: true
+      # claimName: gitea-shared-storage
+      size: 10Gi
+      accessModes:
+        - ReadWriteOnce
+      labels: {}
+      storageClass:
+      subPath:
+      volumeName: "gitea-shared-storage"
+      annotations:
+        helm.sh/resource-policy: keep
+
+    # Configure commit/action signing prerequisites
+    ## @section Signing
+    #
+    ## @param signing.enabled Enable commit/action signing
+    ## @param signing.gpgHome GPG home directory
+    ## @param signing.privateKey Inline private gpg key for signed internal Git activity
+    ## @param signing.existingSecret Use an existing secret to store the value of `signing.privateKey`
+    signing:
+      enabled: false
+      # gpgHome: /data/git/.gnupg
+      # privateKey: ""
+      # privateKey: |-
+      #   -----BEGIN PGP PRIVATE KEY BLOCK-----
+      #   ...
+      #   -----END PGP PRIVATE KEY BLOCK-----
+      # existingSecret: ""
+
+    ## @section Gitea
+    #
+    gitea:
+      ## @param gitea.admin.username Username for the Gitea admin user
+      ## @param gitea.admin.existingSecret Use an existing secret to store admin user credentials
+      ## @param gitea.admin.password Password for the Gitea admin user
+      ## @param gitea.admin.email Email for the Gitea admin user
+      ## @param gitea.admin.passwordMode Mode for how to set/update the admin user password. Options are: initialOnlyNoReset, initialOnlyRequireReset, and keepUpdated
+      admin:
+        existingSecret: gitea-admin-secret
+
+      ## @param gitea.metrics.enabled Enable Gitea metrics
+      ## @param gitea.metrics.serviceMonitor.enabled Enable Gitea metrics service monitor
+      metrics:
+        enabled: false
+        serviceMonitor:
+          enabled: false
+          #  additionalLabels:
+          #    prometheus-release: prom1
+
+      ## @param gitea.ldap LDAP configuration
+      ldap:
+        []
+        # - name: "LDAP 1"
+        #  existingSecret:
+        #  securityProtocol:
+        #  host:
+        #  port:
+        #  userSearchBase:
+        #  userFilter:
+        #  adminFilter:
+        #  emailAttribute:
+        #  bindDn:
+        #  bindPassword:
+        #  usernameAttribute:
+        #  publicSSHKeyAttribute:
+
+      # Either specify inline `key` and `secret` or refer to them via `existingSecret`
+      ## @param gitea.oauth OAuth configuration
+      oauth:
+        []
+        # - name: 'OAuth 1'
+        #   provider:
+        #   key:
+        #   secret:
+        #   existingSecret:
+        #   autoDiscoverUrl:
+        #   useCustomUrls:
+        #   customAuthUrl:
+        #   customTokenUrl:
+        #   customProfileUrl:
+        #   customEmailUrl:
