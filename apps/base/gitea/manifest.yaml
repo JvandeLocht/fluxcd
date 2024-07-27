@@ -92,14 +92,9 @@ spec:
       enabled: true
       create: true
       mount: true
-      # claimName: gitea-shared-storage
       size: 10Gi
       accessModes:
         - ReadWriteOnce
-      labels: {}
-      storageClass:
-      subPath:
-      volumeName: "gitea-shared-storage"
       annotations:
         helm.sh/resource-policy: keep
 
