@@ -123,6 +123,12 @@ spec:
     ## @section Gitea
     #
     gitea:
+      config:
+        database:
+          DB_TYPE: postgres
+        indexer:
+          ISSUE_INDEXER_TYPE: bleve
+          REPO_INDEXER_ENABLED: true
       ## @param gitea.admin.username Username for the Gitea admin user
       ## @param gitea.admin.existingSecret Use an existing secret to store admin user credentials
       ## @param gitea.admin.password Password for the Gitea admin user
