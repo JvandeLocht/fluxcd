@@ -121,6 +121,7 @@ spec:
       config:
         service:
           DISABLE_REGISTRATION: true
+          SHOW_REGISTRATION_BUTTON: false
         database:
           DB_TYPE: postgres
         indexer:
