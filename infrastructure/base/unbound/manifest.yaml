@@ -54,6 +54,8 @@ spec:
             ip: "192.168.178.151"
           - name: "actual.lan.vandelocht.uk"
             ip: "192.168.178.151"
+          - name: "gitea.lan.vandelocht.uk"
+            ip: "192.168.178.151"
     service:
       type: LoadBalancer
 
