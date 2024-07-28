@@ -119,6 +119,8 @@ spec:
     #
     gitea:
       config:
+        service:
+          DISABLE_REGISTRATION: true
         database:
           DB_TYPE: postgres
         indexer:
