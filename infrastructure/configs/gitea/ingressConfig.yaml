@@ -10,7 +10,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`gitea.lan.vandelocht.uk`)
+    - match: Host(`gitea.vandelocht.uk`)
       kind: Rule
       services:
         - name: gitea-http
@@ -18,21 +18,21 @@ spec:
       middlewares:
         - name: svc-gitea-headers
   tls:
-    secretName: gitea-lan-vandelocht-uk-production-tls
+    secretName: gitea-vandelocht-uk-production-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: gitea-lan-vandelocht-uk
+  name: gitea-vandelocht-uk
   namespace: gitea
 spec:
-  secretName: gitea-lan-vandelocht-uk-production-tls
+  secretName: gitea-vandelocht-uk-production-tls
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "gitea.lan.vandelocht.uk"
+  commonName: "gitea.vandelocht.uk"
   dnsNames:
-  - "gitea.lan.vandelocht.uk"
+  - "gitea.vandelocht.uk"
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
