@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: hibiscus-server
+  namespace: hibiscus-server
+# spec:
+#   chart:
+#     spec:
+#       version: "2.x.x"

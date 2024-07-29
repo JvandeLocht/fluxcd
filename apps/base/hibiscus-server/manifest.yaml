@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hibiscus-server
+  name: hibiscus-server
+  namespace: hibiscus-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hibiscus-server
+  template:
+    metadata:
+      labels:
+        app: hibiscus-server
+    spec:
+      containers:
+        - env:
+            - name: DB_ADDR
+              value: mariadb
+            - name: DB_DRIVER
+              value: mysql
+            - name: DB_NAME
+              value: hibiscus
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hibiscus-mariadb-secret
+                  key: mariadb-password
+            - name: DB_USERNAME
+              value: hibiscus
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hibiscus-password-secret
+                  key: password
+          image: janvandelocht/hibiscus-server
+          name: hibiscus-server
+          ports:
+            - containerPort: 8080
+          # resources: {}
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hibiscus-server
+  name: hibiscus-server
+  namespace: hibiscus-server
+spec:
+  type: ClusterIP
+  ports:
+    - name: "8080"
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: hibiscus-server
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: mariadb
+  namespace: hibiscus-server
+spec:
+  interval: 5m0s
+  url: https://charts.bitnami.com/bitnami
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mariadb
+  namespace: hibiscus-server
+spec:
+  timeout: 15m
+  interval: 30m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      version: "19.0.3"
+      chart: mariadb
+      sourceRef:
+        kind: HelmRepository
+        name: mariadb
+        namespace: hibiscus-server
+      interval: 12h
+  values:
+    auth:
+      existingSecret: hibiscus-mariadb-secret
+      database: hibiscus
+      username: hibiscus
+    primary:
+      extraFlags: |
+        - --character-set-server=utf8mb4
+        - --collation-server=utf8mb4_unicode_ci
+
+
