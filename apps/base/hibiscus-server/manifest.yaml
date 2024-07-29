@@ -41,6 +41,7 @@ spec:
                 secretKeyRef:
                   name: hibiscus-password-secret
                   key: password
+            - USE_SSL: false
           image: docker.io/janvandelocht/hibiscus-server:v2.10.20
           name: hibiscus-server
           ports:
