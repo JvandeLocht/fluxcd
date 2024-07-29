@@ -15,8 +15,8 @@ spec:
       services:
         - name: gitea-http
           port: 3000
-      middlewares:
-        - name: svc-gitea-headers
+      # middlewares:
+      #   - name: svc-gitea-headers
   tls:
     secretName: gitea-vandelocht-uk-production-tls
 ---
