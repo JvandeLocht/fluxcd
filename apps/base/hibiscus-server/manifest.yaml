@@ -41,7 +41,7 @@ spec:
                 secretKeyRef:
                   name: hibiscus-password-secret
                   key: password
-          image: janvandelocht/hibiscus-server
+          image: docker.io/janvandelocht/hibiscus-server:v2.10.20
           name: hibiscus-server
           ports:
             - containerPort: 8080
