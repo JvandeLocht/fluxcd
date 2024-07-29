@@ -104,9 +104,9 @@ spec:
       existingSecret: hibiscus-mariadb-secret
       database: hibiscus
       username: hibiscus
-    primary:
-      extraFlags: |
-        - --character-set-server=utf8mb4
-        - --collation-server=utf8mb4_unicode_ci
+    # primary:
+    #   extraFlags: |
+    #     - --character-set-server=utf8mb4
+    #     - --collation-server=utf8mb4_unicode_ci
 
 
