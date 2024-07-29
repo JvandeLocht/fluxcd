@@ -119,6 +119,8 @@ spec:
     #
     gitea:
       config:
+        server:
+          ROOT_URL: https://gitea.vandelocht.uk
         service:
           DISABLE_REGISTRATION: true
           SHOW_REGISTRATION_BUTTON: false
