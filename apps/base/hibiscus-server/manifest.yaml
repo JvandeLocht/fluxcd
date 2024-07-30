@@ -26,6 +26,8 @@ spec:
         - env:
             - name: DB_ADDR
               value: mysql
+            - name: DB_PORT
+              value: 3306
             - name: DB_DRIVER
               value: mysql
             - name: DB_NAME
