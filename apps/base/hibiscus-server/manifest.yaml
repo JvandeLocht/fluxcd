@@ -25,7 +25,7 @@ spec:
       containers:
         - env:
             - name: DB_ADDR
-              value: mariadb
+              value: mysql
             - name: DB_DRIVER
               value: mysql
             - name: DB_NAME
@@ -33,8 +33,8 @@ spec:
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: hibiscus-mariadb-secret
-                  key: mariadb-password
+                  name: hibiscus-mysql-secret
+                  key: mysql-password
             - name: DB_USERNAME
               value: hibiscus
             - name: PASSWORD
@@ -70,7 +70,7 @@ spec:
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: mariadb
+  name: mysql
   namespace: hibiscus-server
 spec:
   interval: 5m0s
@@ -80,7 +80,7 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: mariadb
+  name: mysql
   namespace: hibiscus-server
 spec:
   timeout: 15m
@@ -95,18 +95,23 @@ spec:
       retries: 3
   chart:
     spec:
-      version: "19.0.3"
-      chart: mariadb
+      version: "11.1.14"
+      chart: mysql
       sourceRef:
         kind: HelmRepository
-        name: mariadb
+        name: mysql
         namespace: hibiscus-server
       interval: 12h
   values:
     auth:
-      existingSecret: hibiscus-mariadb-secret
+      existingSecret: hibiscus-mysql-secret
       database: hibiscus
       username: hibiscus
+    # primary:
+      # configuration: |-
+      #   [mysqld]
+      #   character-set-server=utf8
+      #   collation-server=utf8_general_ci
     # primary:
     #   extraFlags: |
     #     - --character-set-server=utf8mb4
