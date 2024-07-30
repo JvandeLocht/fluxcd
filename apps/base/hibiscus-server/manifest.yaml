@@ -21,6 +21,7 @@ spec:
       labels:
         app: hibiscus-server
     spec:
+      hostname: hibiscus-server
       containers:
         - env:
             - name: DB_ADDR
