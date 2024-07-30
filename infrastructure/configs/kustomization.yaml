@@ -8,3 +8,4 @@ resources:
 - traefik
 - actual
 - gitea
+- hibiscus-server
