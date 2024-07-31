@@ -109,3 +109,9 @@ spec:
       existingSecret: hibiscus-mysql-secret
       database: hibiscus
       username: hibiscus
+    primary:
+      service:
+        type: LoadBalancer
+    secondary:
+      service:
+        type: LoadBalancer
