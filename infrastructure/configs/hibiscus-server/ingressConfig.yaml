@@ -15,9 +15,9 @@ spec:
       services:
         - name: hibiscus-server
           port: 8080
-      middlewares:
-        - name: hibiscus-server-basicauth
-          namespace: hibiscus-server
+      # middlewares:
+        # - name: hibiscus-server-basicauth
+        #   namespace: hibiscus-server
       #   - name: svc-hibiscus-headers
   tls:
     secretName: hibiscus-lan-vandelocht-uk-production-tls
