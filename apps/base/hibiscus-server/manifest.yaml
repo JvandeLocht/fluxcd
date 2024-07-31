@@ -112,6 +112,3 @@ spec:
     primary:
       service:
         type: LoadBalancer
-    secondary:
-      service:
-        type: LoadBalancer
