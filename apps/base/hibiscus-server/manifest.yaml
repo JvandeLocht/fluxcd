@@ -112,3 +112,6 @@ spec:
     primary:
       service:
         type: LoadBalancer
+    networkPolicy:
+      enabled: true 
+      allowExternal: true
