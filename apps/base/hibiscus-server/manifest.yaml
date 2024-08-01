@@ -142,5 +142,6 @@ spec:
         [manager]
         port=3306
         socket=/opt/bitnami/mysql/tmp/mysql.sock 
+        loadBalancerIP: "192.168.178.155"
     networkPolicy:
       enabled:
