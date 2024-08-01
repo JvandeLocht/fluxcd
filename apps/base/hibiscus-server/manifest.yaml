@@ -142,7 +142,5 @@ spec:
         [manager]
         port=3306
         socket=/opt/bitnami/mysql/tmp/mysql.sock 
-    primary:
-
     networkPolicy:
       enabled:
