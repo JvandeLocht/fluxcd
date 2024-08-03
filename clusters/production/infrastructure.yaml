@@ -24,7 +24,7 @@ spec:
   dependsOn:
     - name: metallb
   interval: 1h
-  retryInterval: 1m
+  retryInterval: 25m
   timeout: 30m
   sourceRef:
     kind: GitRepository
