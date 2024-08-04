@@ -55,6 +55,8 @@ metadata:
   name: hibiscus-server
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: longhorn
   interval: 1h
   retryInterval: 1m
   timeout: 5m
