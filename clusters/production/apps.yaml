@@ -48,7 +48,7 @@ spec:
     - name: longhorn
     - name: traefik-config
     - name: cert-manager-config
-    - name: metallb
+    - name: metallb-config
   interval: 1h
   retryInterval: 1m
   timeout: 5m
