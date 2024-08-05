@@ -3,7 +3,7 @@ with this repo.
 
 encrypt.sh
 This script checks if any unencrypted files are in the 
-secrets folder.
+repo.
 If it detects an unencrypted file it encrypts it with
 age and the puplic key, that is stored in this repo.
 Put this line in your pre-commit hook, to call this script before every commit:
