@@ -4,6 +4,10 @@ metadata:
   name: actual-server
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   dependsOn:
     - name: longhorn
     - name: traefik-config
@@ -24,6 +28,10 @@ metadata:
   name: gitea
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   dependsOn:
     - name: longhorn
     - name: traefik-config
@@ -44,6 +52,10 @@ metadata:
   name: hibiscus-server
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   dependsOn:
     - name: longhorn
     - name: traefik-config
