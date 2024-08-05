@@ -3,7 +3,7 @@ kind: HelmRelease
 metadata:
   name: actual
   namespace: actual
-spec:
-  chart:
-    spec:
-      version: "2.x.x"
+# spec:
+#   chart:
+#     spec:
+#       version: "2.x.x"

@@ -16,3 +16,17 @@ spec:
           port: 80
   tls:
     secretName: grafana-lan-vandelocht-uk-production-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: grafana-lan-vandelocht-uk
+  namespace: kube-prometheus-stack
+spec:
+  secretName: grafana-lan-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "grafana.lan.vandelocht.uk"
+  dnsNames:
+  - "grafana.lan.vandelocht.uk"

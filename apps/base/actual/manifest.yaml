@@ -2,43 +2,87 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: actual
+  name: actual-server
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: actual
-  namespace: actual
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: actual-server
+  name: actual-server
+  namespace: actual-server
 spec:
-  interval: 5m0s
-  url: https://beluga-cloud.github.io/charts
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: actual
-  namespace: actual
-spec:
-  timeout: 15m
-  interval: 30m
-  install:
-    crds: Create
-    remediation:
-      retries: 3
-  upgrade:
-    crds: CreateReplace
-    remediation:
-      retries: 3
-  chart:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: actual-server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.1 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: actual-server
     spec:
-      chart: actual
-      sourceRef:
-        kind: HelmRepository
-        name: actual
-        namespace: actual
-      interval: 12h
-  values:
-    images:
-      tag: "latest"
-
-
+      containers:
+        - env:
+            - name: ACTUAL-PORT
+              value: "5006"
+          image: docker.io/actualbudget/actual-server:latest
+          name: actual-server
+          ports:
+            - containerPort: 5006
+          resources: {}
+          volumeMounts:
+            - mountPath: /data
+              name: actual-server-claim0
+      restartPolicy: Always
+      volumes:
+        - name: actual-server-claim0
+          persistentVolumeClaim:
+            claimName: actual-server-claim0
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: actual-server
+  name: actual-server
+  namespace: actual-server
+spec:
+  ports:
+    - name: "5006"
+      port: 5006
+      targetPort: 5006
+  selector:
+    io.kompose.service: actual-server
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: actual-server-claim0
+  name: actual-server-claim0
+  namespace: actual-server
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+status: {}
