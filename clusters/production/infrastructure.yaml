@@ -27,7 +27,7 @@ spec:
       name: sops-age
   dependsOn:
     - name: traefik
-    - name: cert-manager
+    - name: cert-manager-config
   interval: 1h
   retryInterval: 25m
   timeout: 30m
@@ -55,6 +55,28 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./infrastructure/production/cert-manager
+  prune: true
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cert-manager-config
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: cert-manager
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./infrastructure/production/cert-manager/config
   prune: true
   wait: true
 ---
@@ -92,7 +114,7 @@ spec:
       name: sops-age
   dependsOn:
     - name: metallb
-    - name: cert-manager
+    - name: cert-manager-config
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -115,7 +137,7 @@ spec:
       name: sops-age
   dependsOn:
     - name: traefik
-    - name: cert-manager
+    - name: cert-manager-config
   interval: 1h
   retryInterval: 1m
   timeout: 5m
