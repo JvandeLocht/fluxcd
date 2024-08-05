@@ -1,34 +1,34 @@
-apiVersion: v1
-data:
-    password: ENC[AES256_GCM,data:/IIRdihkHDZfLcqWPAFBr//spoEsasvFM4EmVqt3slF4o1HShadta6AKP42EweB2biEJiNuk6Fr1W+MV,iv:7j/i0amdGGJUL9j5E3LeiKJwIncu6NahMejourtoR+8=,tag:iGbdncVpQ5v9ZH/mbnP4Tg==,type:str]
-    postgres-password: ENC[AES256_GCM,data:HIxYml8vlsZ70hVdL9Ra8a/IMqzTzoVnaJbipDEAYQeQrp7uHx/VdgmWpDI0Rv0VwW90L7GJBaUIriK6,iv:ZJiER9bDXbYxdFO5JR37/AbDco6r1mmzwMgCFtIKgPw=,tag:LWFKnEEI47THt3Y5GH2CGQ==,type:str]
-kind: Secret
-metadata:
-    creationTimestamp: null
-    name: gitea-postgresql
-    namespace: gitea
-    labels:
-        app.kubernetes.io/managed-by: Helm
-    annotations:
-        meta.helm.sh/release-name: gitea
-        meta.helm.sh/release-namespace: gitea
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDamRrRk1Sak9QSHdlTFNn
-            bVFnOXo4WFN2b3JXYWk1RDJMZUFaUTEyMEVRCnRHV0dwZWt2Wlg1bmZETGRLOGtQ
-            VFN1dU1NOWFBZEZMRDlGSEs1TGhrZmcKLS0tIFZWaWZTRmV4Wlk0NG93VC9URXhZ
-            Nk9vd0VpU0tZU2UrNGRnYmhLK0dZQmsKPGlTuUM2+hgOPE5fyuRFDkEuPNy1S2ci
-            3Z3Fqp43e+J5GYLBpHLK+ur13WDSlCTLbGFD14/lnqsWUSNUTq1xAw==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-05T21:14:56Z"
-    mac: ENC[AES256_GCM,data:DE8bTeAKPbuDjeUTi9qLzGibUkii1ncYDV5RLQwG/zoQ7u9zQGbdkTgcXK+J3iv+da31u/NX/x1CcBptdiY7TGgK8SDcJ0ya1sVk5IPx6PmOO2H7d86TVMdkITJBzFCux8ylE3G1L0dN3Ts5vFF0qD8/Dn8H2NjwipYDMRj8mZ8=,iv:5HQC9CwEIwuerc7/qHwuW7bAAsnDN43Cg3uIKJFsiHI=,tag:Xrxv2QL19yvqvfCVvCV0dQ==,type:str]
-    pgp: []
-    encrypted_regex: ^(data|stringData)$
-    version: 3.8.1
+# apiVersion: v1
+# data:
+#     password: ENC[AES256_GCM,data:/IIRdihkHDZfLcqWPAFBr//spoEsasvFM4EmVqt3slF4o1HShadta6AKP42EweB2biEJiNuk6Fr1W+MV,iv:7j/i0amdGGJUL9j5E3LeiKJwIncu6NahMejourtoR+8=,tag:iGbdncVpQ5v9ZH/mbnP4Tg==,type:str]
+#     postgres-password: ENC[AES256_GCM,data:HIxYml8vlsZ70hVdL9Ra8a/IMqzTzoVnaJbipDEAYQeQrp7uHx/VdgmWpDI0Rv0VwW90L7GJBaUIriK6,iv:ZJiER9bDXbYxdFO5JR37/AbDco6r1mmzwMgCFtIKgPw=,tag:LWFKnEEI47THt3Y5GH2CGQ==,type:str]
+# kind: Secret
+# metadata:
+#     creationTimestamp: null
+#     name: gitea-postgresql
+#     namespace: gitea
+#     labels:
+#         app.kubernetes.io/managed-by: Helm
+#     annotations:
+#         meta.helm.sh/release-name: gitea
+#         meta.helm.sh/release-namespace: gitea
+# sops:
+#     kms: []
+#     gcp_kms: []
+#     azure_kv: []
+#     hc_vault: []
+#     age:
+#         - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+#           enc: |
+#             -----BEGIN AGE ENCRYPTED FILE-----
+#             YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDamRrRk1Sak9QSHdlTFNn
+#             bVFnOXo4WFN2b3JXYWk1RDJMZUFaUTEyMEVRCnRHV0dwZWt2Wlg1bmZETGRLOGtQ
+#             VFN1dU1NOWFBZEZMRDlGSEs1TGhrZmcKLS0tIFZWaWZTRmV4Wlk0NG93VC9URXhZ
+#             Nk9vd0VpU0tZU2UrNGRnYmhLK0dZQmsKPGlTuUM2+hgOPE5fyuRFDkEuPNy1S2ci
+#             3Z3Fqp43e+J5GYLBpHLK+ur13WDSlCTLbGFD14/lnqsWUSNUTq1xAw==
+#             -----END AGE ENCRYPTED FILE-----
+#     lastmodified: "2024-08-05T21:14:56Z"
+#     mac: ENC[AES256_GCM,data:DE8bTeAKPbuDjeUTi9qLzGibUkii1ncYDV5RLQwG/zoQ7u9zQGbdkTgcXK+J3iv+da31u/NX/x1CcBptdiY7TGgK8SDcJ0ya1sVk5IPx6PmOO2H7d86TVMdkITJBzFCux8ylE3G1L0dN3Ts5vFF0qD8/Dn8H2NjwipYDMRj8mZ8=,iv:5HQC9CwEIwuerc7/qHwuW7bAAsnDN43Cg3uIKJFsiHI=,tag:Xrxv2QL19yvqvfCVvCV0dQ==,type:str]
+#     pgp: []
+#     encrypted_regex: ^(data|stringData)$
+#     version: 3.8.1
