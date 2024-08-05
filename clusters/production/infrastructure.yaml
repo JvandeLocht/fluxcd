@@ -137,7 +137,7 @@ spec:
       name: sops-age
   dependsOn:
     - name: metallb
-    - name: traefik-config
+    - name: traefik
     - name: cert-manager-config
   interval: 1h
   retryInterval: 1m
@@ -160,7 +160,7 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: traefik
+    - name: traefik-config
     - name: cert-manager-config
   interval: 1h
   retryInterval: 1m
