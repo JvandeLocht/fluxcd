@@ -1,0 +1,33 @@
+apiVersion: v1
+data:
+    redis-password: ENC[AES256_GCM,data:40jOK2M6C+fmPwNCVKgujjtnJ5Z5p9CQiu71JWC34cMjg5J3BS8t/9q0CoGA5KEtCywa20k2QdlnkxoQHEK0RA==,iv:cHPe1vt9IKlKk2F94zICKT+cYCE/UhDJsy7uWFhQ6Qw=,tag:GKWbxfOiw8DdwwAD4j0i6g==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: gitea-redis
+    namespace: gitea
+    labels:
+        app.kubernetes.io/managed-by: Helm
+    annotations:
+        meta.helm.sh/release-name: gitea
+        meta.helm.sh/release-namespace: gitea
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrMFIzMndlOTVVUVl2Vktx
+            b0V6ckJvd3ZpNGxpVXFDZmRrU1diRlpmY2xrCkIzbXNVYkV0dlJPRWhkZDUzMFll
+            OTNCMTBSaDczcVFvZElucGY3VmwrekUKLS0tIC9YdHk2TjZFc09SUHNzTHd6RzZr
+            ekZGYm9PSE5zNXQ4ZlJuZGZ1M1pmd2MKjbn+ZLPZT1AGFKGYNfxzP82EHZoufXrt
+            5FggOTBGs9yDj01KjB2f6C28nhOs/Ucf9mg3/FUAv8GYWmdItdL19Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-08-05T21:14:56Z"
+    mac: ENC[AES256_GCM,data:XqhzZsSHFm3VWELMhpPPG80BtjW7w0RZrx0aZV5hZEYZWbjWUOJsTVmB+b1P0rBnNSuVRnrUXDRqr1IjJ30xvl4HRe9A3+4+Vi6N/5U9ha0kDzM5iktFvMHLMsEvBGugznYAln2zwcLnYfTj8y8hOCko8+nOL7yKQ5qiYve98EE=,iv:uCgSFOy0gqPaCqO9yB3HFvky6ufipjN0F4RFt2f+N0g=,tag:5y/OR+I7VJ2erdD4I/YfdQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
