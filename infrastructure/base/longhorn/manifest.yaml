@@ -35,3 +35,7 @@ spec:
         name: longhorn
   interval: 10m0s
   targetNamespace: longhorn-system
+  values:
+    defaultSettings:
+      backupTargetCredentialSecret: longhorn-r2-backups
+      backupTarget: "s3://longhorn@auto/backup"

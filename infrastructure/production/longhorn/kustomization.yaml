@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base/longhorn
   - ingressConfig.yaml
+  - longhorn-r2-backups.yaml
 patches:
   - path: patch.yaml
     target:

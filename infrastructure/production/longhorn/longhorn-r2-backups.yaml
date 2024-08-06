@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: longhorn-r2-backups
+    namespace: longhorn-system
+type: Opaque
+stringData:
+    AWS_ACCESS_KEY_ID: ENC[AES256_GCM,data:v0QKOz+3azEux0Q/l1KeRPTJ40DQghCPBbu/6HWoNGM=,iv:wjybUbA9nwpN7xHCZ1lH+nd7loSWjPg2nHRtdHrldu0=,tag:E1EBdsquiV+jNp8LnQO9Zw==,type:str]
+    #ENC[AES256_GCM,data:2gu1BP4tCXWRvRnXyfN75Ek+rwQDxaS2hyMhjrKchGbudwR9oZIsM7X/rUi7DiLLN+CFFGG1Eo5yX+KdKT6urbK7YH55EesokSDbB/+xm15s2eO8DA1L,iv:eVb2Yv0Xw/+CPIf8yOd3COJWqkFcmqRWFND8n0FraqU=,tag:lyK1oyrkBv1XDaWrHRsEBw==,type:comment]
+    AWS_ENDPOINTS: ENC[AES256_GCM,data:zoH1jKeRzePz9uQLqpdqyHlSQ7L/5g6qI1vh7J77JzHsSO8c+/WxQaMYpbOLeMZ9RFbm+Ei/9NNF5Sn+x1+K6OxprV0=,iv:4g88xQhAOYZuK97zyVS1jYcN1IQoDCaTO+NU5dZh1DE=,tag:dIU64nLLpR/Yzj5NiGEUYQ==,type:str]
+    AWS_SECRET_ACCESS_KEY: ENC[AES256_GCM,data:7sgVxbzKt4UH+PdJm/hZJIrz4YAUimuoa3MxgqCUhSZ1hzjQs/GfVH5uWxnh3orP44Cp0EiRkgl7OR16+53Qzw==,iv:PAi8uFklR5qnoyBQdIxq0cCZOwHsul8wS/BC9lhcOR0=,tag:es8MyGW9gtyEw2RqZxTCNg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBZdS9tamVmNzlmMjhkWks4
+            TTZqaE9INUNiOE45ZjlXWE9UUy90TXhrK2lnCk9qajhjZE5VQUVHQTM3Q2p4RU52
+            dVFscllsVHEvSmtIYmtBd052bUwrRmcKLS0tIEh5WGdtbW1ablhOZkNkZ2ErODlE
+            SEU4YWZ2ejZ5TGFVdGVFdkYxcllkakEKWiSewdSaadShNst0SCT+5RK2Au4A6fvg
+            UxJEsHgnyqNLcMoyc3HIL9KFdQIQ2AKioV6Rs56sYykst7IHBF8v2A==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-08-06T11:58:36Z"
+    mac: ENC[AES256_GCM,data:0yrXlnSnzMZ5iqoy10ZR7/GwiBJ8Pm0TzqUeIZ4p4OV3tU1oPkHNhtlqBcSj2fDZTSXifSf2D0l9GdmNRX3tCoIPTm5FtsHw1fCmO64wnzHzZAe8n7UjTyarjAKYmmdJqKqSkLZzLF6IZ0IwwtolyYQX91UwYb38cSQLhdew72U=,iv:Q5cYcbdGXXabYRFGFmhowqf0w+zkHZtU859G/Bcj9fY=,tag:Mpi5jXberz7k7lNcvvo0Rg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
