@@ -7,4 +7,5 @@ spec:
   ipAddressPools:
   - traefik
   - unbound
+  - hibiscus-server-mysql
 
