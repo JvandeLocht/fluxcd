@@ -56,6 +56,8 @@ spec:
             ip: "192.168.178.151"
           - name: "hibiscus.lan.vandelocht.uk"
             ip: "192.168.178.151"
+          - name: "hibiscusql.lan.vandelocht.uk"
+            ip: "192.168.178.155"
     service:
       type: LoadBalancer
 
