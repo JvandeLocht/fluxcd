@@ -38,4 +38,4 @@ spec:
   values:
     defaultSettings:
       backupTargetCredentialSecret: longhorn-r2-backups
-      backupTarget: "s3://longhorn@auto/"
+      backupTarget: "s3://longhorn@EEUR/"
