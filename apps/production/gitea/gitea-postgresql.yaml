@@ -7,7 +7,6 @@ metadata:
     annotations:
         meta.helm.sh/release-name: gitea
         meta.helm.sh/release-namespace: gitea
-    creationTimestamp: "2024-08-06T05:39:16Z"
     labels:
         app.kubernetes.io/instance: gitea
         app.kubernetes.io/managed-by: Helm
@@ -18,7 +17,6 @@ metadata:
         helm.toolkit.fluxcd.io/namespace: gitea
     name: gitea-postgresql
     namespace: gitea
-    resourceVersion: "302950"
 type: Opaque
 sops:
     kms: []
