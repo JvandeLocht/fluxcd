@@ -19,7 +19,6 @@ metadata:
     name: gitea-postgresql
     namespace: gitea
     resourceVersion: "302950"
-    uid: 76323534-f301-4535-8f8e-fae342db5fd8
 type: Opaque
 sops:
     kms: []

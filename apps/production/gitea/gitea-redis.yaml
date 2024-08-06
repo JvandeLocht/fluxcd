@@ -18,7 +18,6 @@ metadata:
     name: gitea-redis
     namespace: gitea
     resourceVersion: "302946"
-    uid: 4f9f3679-ead3-4f0c-8b20-4d460eb97a2e
 type: Opaque
 sops:
     kms: []
