@@ -85,8 +85,8 @@ metadata:
   name: mysql
   namespace: hibiscus-server
 spec:
-  timeout: 15m
-  interval: 30m
+  timeout: 30m
+  interval: 60m
   install:
     crds: Create
     remediation:
