@@ -5,9 +5,7 @@ resources:
   - ingressConfig.yaml
   - gitea-admin-secret.yaml
   - gitea-postgresql.yaml
-  - gitea-redis.yaml
   - gitea-claim-secret.yaml
-  - gitea-redis-claim-secret.yaml
   - gitea-postgresql-claim-secret.yaml
 
 patches:
