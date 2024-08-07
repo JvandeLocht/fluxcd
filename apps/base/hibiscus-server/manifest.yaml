@@ -105,6 +105,8 @@ spec:
         namespace: hibiscus-server
       interval: 12h
   values:
+    global:
+      defaultStorageClass: "longhorn-crypto-per-volume"
     auth:
       existingSecret: hibiscus-mysql-secret
       database: hibiscus
