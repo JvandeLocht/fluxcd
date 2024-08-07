@@ -77,9 +77,10 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: actual-server-claim0
-  name: actual-server-claim0
+  name: actual-server-claim
   namespace: actual-server
 spec:
+  storageClassName: "longhorn-crypto-per-volume"
   accessModes:
     - ReadWriteOnce
   resources:
