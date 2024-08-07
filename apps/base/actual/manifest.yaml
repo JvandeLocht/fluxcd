@@ -42,12 +42,12 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /data
-              name: actual-server-claim0
+              name: actual-server-claim
       restartPolicy: Always
       volumes:
-        - name: actual-server-claim0
+        - name: actual-server-claim
           persistentVolumeClaim:
-            claimName: actual-server-claim0
+            claimName: actual-server-claim
 status: {}
 ---
 apiVersion: v1
