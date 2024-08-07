@@ -93,7 +93,7 @@ spec:
       enabled: true 
       existingClaim: gitea-claim
     service:
-      type: clusterIP
+      type: ClusterIP
     postgresql:
         enabled: true
         auth:
