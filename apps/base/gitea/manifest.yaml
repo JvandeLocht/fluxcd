@@ -4,32 +4,6 @@ kind: Namespace
 metadata:
   name: gitea
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: gitea-claim
-  namespace: gitea
-spec:
-  storageClassName: "longhorn-crypto-per-volume"
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: gitea-postgresql-claim
-  namespace: gitea
-spec:
-  storageClassName: "longhorn-crypto-per-volume"
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
----
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
@@ -64,6 +38,8 @@ spec:
         namespace: gitea
       interval: 12h
   values:
+    global:
+      defaultStorageClass: "longhorn-crypto-per-volume" 
     existingSecret: gitea-admin-secret
     existingSecretKey: password
     adminUsername: jan
@@ -89,9 +65,6 @@ spec:
     #     indexer:
     #       ISSUE_INDEXER_TYPE: bleve
     #       REPO_INDEXER_ENABLED: true
-    persistence:
-      enabled: true 
-      existingClaim: gitea-claim
     service:
       type: ClusterIP
     postgresql:
