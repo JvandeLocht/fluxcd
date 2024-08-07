@@ -5,6 +5,7 @@ resources:
   - ingressConfig.yaml
   - hibiscus-password-secret.yaml
   - hibiscus-mysql-secret.yaml
+  - hibiscus-mysql-claim.yaml
 # patches:
 #   - path: patch.yaml
 #     target:
