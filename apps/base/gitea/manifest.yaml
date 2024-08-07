@@ -72,11 +72,11 @@ spec:
       - name: ROOT_URL
         value: "https://gitea.vandelocht.uk"
       - name: DISABLE_REGISTRATION
-        value: true
+        value: "true"
       - name: SHOW_REGISTRATION_BUTTON
-        value: false
+        value: "false"
       - name: REQUIRE_SIGNIN_VIEW
-        value: true
+        value: "true"
     #   config:
     #     server:
     #       ROOT_URL: https://gitea.vandelocht.uk
