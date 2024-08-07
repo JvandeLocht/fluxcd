@@ -33,7 +33,7 @@ spec:
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: gitea
+  name: bitnami
   namespace: gitea
 spec:
   interval: 5m0s
