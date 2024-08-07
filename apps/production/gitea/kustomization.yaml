@@ -6,6 +6,9 @@ resources:
   - gitea-admin-secret.yaml
   - gitea-postgresql.yaml
   - gitea-redis.yaml
+  - gitea-claim.yaml
+  - gitea-redis-claim.yaml
+  - gitea-postgresql-claim.yaml
 
 patches:
   - path: patch.yaml

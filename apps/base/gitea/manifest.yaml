@@ -4,6 +4,51 @@ kind: Namespace
 metadata:
   name: gitea
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitea-claim
+  namespace: gitea
+spec:
+  storageClassName: "longhorn-crypto-per-volume"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  annotations:
+    helm.sh/resource-policy: keep
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitea-postgresql-claim
+  namespace: gitea
+spec:
+  storageClassName: "longhorn-crypto-per-volume"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  annotations:
+    helm.sh/resource-policy: keep
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitea-redis-claim
+  namespace: gitea
+spec:
+  storageClassName: "longhorn-crypto-per-volume"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  annotations:
+    helm.sh/resource-policy: keep
+---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
@@ -44,8 +89,12 @@ spec:
       enabled: true
     postgresql:
       enabled: true
+      persistence:
+        existingClaim: gitea-postgresql-claim
     postgresql-ha:
       enabled: false
+      persistence:
+        existingClaim: gitea-redis-claim
     # replicaCount: 1
 
     ## @section strategy
@@ -90,13 +139,14 @@ spec:
     ## @param persistence.volumeName Name of persistent volume in PVC
     persistence:
       enabled: true
-      create: true
-      mount: true
-      size: 10Gi
-      accessModes:
-        - ReadWriteOnce
-      annotations:
-        helm.sh/resource-policy: keep
+      claimName: gitea-claim
+      # create: true
+      # mount: true
+      # size: 10Gi
+      # accessModes:
+      #   - ReadWriteOnce
+      # annotations:
+      #   helm.sh/resource-policy: keep
 
     # Configure commit/action signing prerequisites
     ## @section Signing
