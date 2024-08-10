@@ -20,7 +20,7 @@ spec:
         #   namespace: hibiscus-server
       #   - name: svc-hibiscus-headers
   tls:
-    secretName: hibiscus-lan-vandelocht-uk-production-tls
+    secretName: hibiscus-lan-vandelocht-uk-staging-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -28,9 +28,9 @@ metadata:
   name: hibiscus-lan-vandelocht-uk
   namespace: hibiscus-server
 spec:
-  secretName: hibiscus-lan-vandelocht-uk-production-tls
+  secretName: hibiscus-lan-vandelocht-uk-staging-tls
   issuerRef:
-    name: letsencrypt-production
+    name: letsencrypt-staging
     kind: ClusterIssuer
   commonName: "hibiscus.lan.vandelocht.uk"
   dnsNames:
