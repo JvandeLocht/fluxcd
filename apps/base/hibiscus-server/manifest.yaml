@@ -82,15 +82,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  annotations:
-    pv.kubernetes.io/bind-completed: "yes"
-  creationTimestamp: "2024-08-10T19:56:47Z"
-  finalizers:
-  - kubernetes.io/pvc-protection
   name: hibiscus-mysql-pvc
   namespace: hibiscus-server
-  resourceVersion: "1940679"
-
 spec:
   accessModes:
   - ReadWriteOnce
@@ -100,9 +93,3 @@ spec:
   storageClassName: longhorn-crypto-per-volume
   volumeMode: Filesystem
   volumeName: hibiscus-mysql-pvc
-status:
-  accessModes:
-  - ReadWriteOnce
-  capacity:
-    storage: 8Gi
-  phase: Bound
