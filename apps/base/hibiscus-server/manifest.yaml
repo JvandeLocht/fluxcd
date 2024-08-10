@@ -115,7 +115,7 @@ spec:
       service:
         type: LoadBalancer
       persistence:
-        existingClaim: data-mysql-0
+        existingClaim: longhorn-pvc
       # configuration: |-
       #   [mysqld]
       #   authentication_policy='* ,,'
@@ -150,75 +150,31 @@ spec:
       enabled:
 ---
 apiVersion: v1
-items:
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    annotations:
-      volume.beta.kubernetes.io/storage-provisioner: driver.longhorn.io
-      volume.kubernetes.io/storage-provisioner: driver.longhorn.io
-    finalizers:
-    - kubernetes.io/pvc-protection
-    labels:
-      app.kubernetes.io/component: primary
-      app.kubernetes.io/instance: mysql
-      app.kubernetes.io/name: mysql
-    name: data-mysql-0
-    namespace: hibiscus-server
-  spec:
-    accessModes:
-    - ReadWriteOnce
-    resources:
-      requests:
-        storage: 8Gi
-    storageClassName: longhorn-crypto-per-volume
-    volumeMode: Filesystem
-    volumeName: pvc-hibiscus-mysql
-  status:
-    accessModes:
-    - ReadWriteOnce
-    capacity:
-      storage: 8Gi
-    phase: Bound
-kind: List
-metadata:
-  resourceVersion: ""
----
-apiVersion: v1
 kind: PersistentVolume
 metadata:
-  annotations:
-    pv.kubernetes.io/provisioned-by: driver.longhorn.io
-    volume.kubernetes.io/provisioner-deletion-secret-name: data-mysql-0
-    volume.kubernetes.io/provisioner-deletion-secret-namespace: hibiscus-server
-  finalizers:
-  - kubernetes.io/pv-protection
-  - external-attacher/driver-longhorn-io
-  name: pvc-hibiscus-mysql
+  name: longhorn-pv
 spec:
-  accessModes:
-  - ReadWriteOnce
   capacity:
-    storage: 8Gi
-  claimRef:
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    name: data-mysql-0
-    namespace: hibiscus-server
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: longhorn
   csi:
     driver: driver.longhorn.io
     fsType: ext4
-    nodePublishSecretRef:
-      name: data-mysql-0
-      namespace: hibiscus-server
-    nodeStageSecretRef:
-      name: data-mysql-0
-      namespace: hibiscus-server
-    volumeAttributes:
-      encrypted: "true"
-      numberOfReplicas: "3"
-      staleReplicaTimeout: "2880"
-    volumeHandle: pvc-hibiscus-mysql
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: longhorn-crypto-per-volume
-  volumeMode: Filesystem
+    volumeHandle: longhorn-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: longhorn-pvc
+  namespace: hibiscus-server
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 10Gi
+
