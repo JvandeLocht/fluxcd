@@ -115,7 +115,7 @@ spec:
       service:
         type: LoadBalancer
       persistence:
-        existingClaim: longhorn-pvc
+        existingClaim: hibiscus-mysql-pvc
       # configuration: |-
       #   [mysqld]
       #   authentication_policy='* ,,'
