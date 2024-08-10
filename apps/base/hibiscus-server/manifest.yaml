@@ -90,7 +90,7 @@ metadata:
   name: hibiscus-mysql-pvc
   namespace: hibiscus-server
   resourceVersion: "1940679"
-  uid: 56d15a66-c564-4830-84e3-05f41421146f
+
 spec:
   accessModes:
   - ReadWriteOnce
