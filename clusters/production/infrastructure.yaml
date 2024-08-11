@@ -21,6 +21,8 @@ metadata:
   name: metallb-config
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: metallb
   interval: 1h
   retryInterval: 1m
   timeout: 5m
