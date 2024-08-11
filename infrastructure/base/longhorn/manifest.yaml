@@ -25,7 +25,7 @@ metadata:
   name: longhorn
   namespace: longhorn-system
 spec:
-  timeout: 15m
+  timeout: 30m
   chart:
     spec:
       chart: longhorn
