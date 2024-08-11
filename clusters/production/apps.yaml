@@ -9,7 +9,7 @@
 #     secretRef:
 #       name: sops-age
 #   dependsOn:
-#     - name: longhorn
+    # - name: longhorn-config
 #     - name: traefik-config
 #     - name: cert-manager-config
 #   interval: 1h
@@ -33,7 +33,7 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: longhorn
+    - name: longhorn-config
     - name: traefik-config
     - name: cert-manager-config
   interval: 1h
@@ -57,7 +57,7 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: longhorn
+    - name: longhorn-config
     - name: traefik-config
     - name: cert-manager-config
     - name: metallb-config
