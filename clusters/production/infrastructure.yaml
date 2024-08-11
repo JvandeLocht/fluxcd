@@ -47,8 +47,8 @@ spec:
     - name: traefik-config
     - name: cert-manager-config
   interval: 1h
-  retryInterval: 25m
-  timeout: 30m
+  retryInterval: 1h
+  timeout: 2h
   sourceRef:
     kind: GitRepository
     name: flux-system
