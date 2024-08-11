@@ -5,6 +5,7 @@ resources:
   - ingressConfig.yaml
   - longhorn-r2-backups.yaml
   - longhorn-crypto-sc.yaml
+  - hibiscus-mysql-claim.yaml
 patches:
   - path: patch.yaml
     target:

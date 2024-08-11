@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: longhorn-crypto
+    namespace: longhorn-system
+stringData:
+    CRYPTO_KEY_VALUE: ENC[AES256_GCM,data:rh4hgK9G7XLx+xbMst5iB4FTfX/e9toT6SI4eYz2rqZnCk/AijSX6AQPV+7B,iv:bzLTLKJookd2IkSY3kUBWjx05DRpmJGtdbetaUws7k8=,tag:O0LJzJBTIOtaoJ90zHuilQ==,type:str]
+    CRYPTO_KEY_PROVIDER: ENC[AES256_GCM,data:84++AcPR,iv:n5JgDFuumn9yeXtPhWIEImcSWDlIEjkCZ9dwEv1c2kk=,tag:x9ouWxY+oCvdvl9A5oNWEw==,type:str]
+    CRYPTO_KEY_CIPHER: ENC[AES256_GCM,data:j0Rk5hpOXt/Jg92Iziin,iv:QNVfwYxtKRu/Mdy6vxFsrExSaIN7Tj2fLsoPkPiVdfA=,tag:Bx9FrcCgY9/kywarR4p7pA==,type:str]
+    CRYPTO_KEY_HASH: ENC[AES256_GCM,data:S+RBdnI5,iv:Opf75uYDiSdqLCPy0oRRu5UIz+CTJzXJ/lAqIhchNm0=,tag:v3ut8SfkPNGZT4R3O//l9w==,type:str]
+    CRYPTO_KEY_SIZE: ENC[AES256_GCM,data:06CA,iv:nUlZBABtBBvkCSbBZrF21Y9f+f41r5SPMt4QEpE9DTY=,tag:CecmyoIzmoZy8jBDwf+sww==,type:str]
+    CRYPTO_PBKDF: ENC[AES256_GCM,data:+soB6HTpsg==,iv:rYV0jes0q7tWQGdHtDgIZOLqQI6Mn5y26KqMOxHLdV8=,tag:E6Bf9ymkyMWp88m3DrEwBg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBFVTFnRnNQYnE3UnJ1R05T
+            MitKRk9GbGVSQ2trZ040NU1Wakc3REE4YXc4CnpTZzdycW5BM0ozcnQ2QWRTTUMr
+            cWRvWHhZVUh3aWRSUFEzMFFoRmJSUncKLS0tIDdZNFkxWThBVUs3WGo3ellPWE1Q
+            ZFJBa2VKSWlyOXh5RnlmamQ1SHoyLzgKjUnWt6xAKt0Sd90yVYkStIVrAhmsp42H
+            XdO4alrmdgSq6dTDZBLTosQh0LRaR9RqIa6hhZ2ms3X+G4OlxtiQog==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-08-07T21:03:06Z"
+    mac: ENC[AES256_GCM,data:2hR8Io0YrOXO16JZjabkNgD0oAhRuH8F0yvcpboZMF3eSDR7eOIxFGQcwVvpQm73IqtudQaw73Cx4J8ZLdAIzyqPRbaxd0Nf60252r3br56Zfg5G5KOqzxqLYdj4Vt6+WxNAC6wIpQzZCHBUMl1i66/tAPRJqNLH96fL3DyWie8=,iv:YVK44iC3CuRPFHQhklejXcTo915NtZ7UbCFbq0XtvF0=,tag:ddTfeW7GGr7WEBg4S2pCYA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
