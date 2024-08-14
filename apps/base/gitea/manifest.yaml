@@ -41,6 +41,7 @@ spec:
   chart:
     spec:
       chart: gitea
+      version: "2.3.x"
       sourceRef:
         kind: HelmRepository
         name: gitea

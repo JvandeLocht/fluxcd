@@ -8,7 +8,7 @@ resources:
   - gitea-claim-secret.yaml
   - gitea-postgresql-claim-secret.yaml
 
-patches:
-  - path: patch.yaml
-    target:
-      kind: HelmRelease
+# patches:
+#   - path: patch.yaml
+#     target:
+#       kind: HelmRelease
