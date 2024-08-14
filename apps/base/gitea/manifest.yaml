@@ -85,7 +85,7 @@ spec:
         - name: GITEA__DATABASE__PASSWD
           valueFrom:
             secretKeyRef:
-              name: postgres-secret
+              name: gitea-postgresql
               key: password
     service:
       type: ClusterIP
