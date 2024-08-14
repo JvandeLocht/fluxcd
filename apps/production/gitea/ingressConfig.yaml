@@ -18,7 +18,7 @@ spec:
       # middlewares:
       #   - name: svc-gitea-headers
   tls:
-    secretName: gitea-vandelocht-uk-staging-tls
+    secretName: gitea-vandelocht-uk-production-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -26,9 +26,9 @@ metadata:
   name: gitea-vandelocht-uk
   namespace: gitea
 spec:
-  secretName: gitea-vandelocht-uk-staging-tls
+  secretName: gitea-vandelocht-uk-production-tls
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt-production
     kind: ClusterIssuer
   commonName: "gitea.vandelocht.uk"
   dnsNames:
