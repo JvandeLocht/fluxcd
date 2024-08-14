@@ -1,12 +1,12 @@
 apiVersion: v1
-data:
-    password: ENC[AES256_GCM,data:Rxl7bbrFYKkEVQtAu1RbfkeZkU0c7gkq6DEceMl6/XEn0My+fXX0lIIrlkO3xwtkQ+01siDJVEzj0zvL,iv:UMPl5HcQNmj6IYzct++Y5njnoVOXRuCnnYds0hDiQos=,tag:FPE0HlmCsFx1sGYtlOzHzA==,type:str]
-    postgres-password: ENC[AES256_GCM,data:CIbjgFRI3gMTtp1Yw9fyrer9ajXI3EZVP5jZGxILa1397owx/Fqbdalj01/bVFmYZWJxT+JC6qsIXHwq,iv:tRQnF19ABKqpVmZo+bzsqAIGKtkcW2wNnovU14Vj9A0=,tag:kxWXdPV6gTBnvU7mQZ1fzw==,type:str]
 kind: Secret
 metadata:
     name: gitea-postgresql
     namespace: gitea
-type: Opaque
+stringData:
+    postgresPassword: ENC[AES256_GCM,data:xJpjTL7e5xfzZMhp+4yQoS5GudNHx8az9OX+noVnSHQ0PdT2KiMfWrrF8aCs,iv:Q2j7/y58sajzR1laN+q0iJFi2bCIVtHjnRtWo3c89tk=,tag:qkXYyIWr0N31z2Tly7eJaw==,type:str]
+    password: ENC[AES256_GCM,data:Zjt1jg0TRasaeUu8JDMD/51V14dL25/5X9PCDy684XYbVwHup3k1SU9E/w==,iv:+GyqWeUOkrpAHTe4Frcv7DWPII8XEiv+ckaZq3KwMj4=,tag:bBycse/gSfAiP41WcHSQlA==,type:str]
+    replicationPassword: ENC[AES256_GCM,data:Ft2E5d/LCma5R7GKgfHFDyt7DrvoQJO5khUfcizqwjHga9Sz,iv:v/ZBIwq7327xRcTzJd/1ultbM4+u/9YIUGkY63HHbMo=,tag:g8ZRw/0GxpAxhTP0Q2vyPg==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -16,14 +16,14 @@ sops:
         - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQc2NPSGhtMytwNlp5bExS
-            Y2V0bld6WXNqc1RkNU04cDRlNEU1Ym9qdWxBCktxb0lTZVplVU41eklDY3JCdnJp
-            OVgwL0RaMUgrOGtub1NxSU9mMkJVNlkKLS0tIGpHeXZiZEJ3c2hPNGpSR0dESmZa
-            LzZNWWFUT21ramJlM25HY2l2NElndDQKaBJgq99OGR7/zpJgUrWFgn9lV6xs6oOe
-            kEI/fL7b1CPFiWQyQmB8OTy7XZTIMfezLPEfVBcYvg9otc5YWDSOKA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVVUY2Q2U1Tk1QWEFLQlBs
+            ZVRYaE5YSFBudWxkeGtjNThoWFN5cmc0VTE4CllIdllQbUc3TVE2V1YydEhDM0ZF
+            MW9Va0lWSE8yaEV3NjFsdkFERjRyc1EKLS0tIFlUQlNISU5kTmJxQnZCaEduY1or
+            SExwRFNidlBsSWZrcXJYUW93UElsYzQK2mzpelm4eKjf5fUiyApJhrchvwW3tgjf
+            1mhsMZue0Bn2ClOocac8cH4U4MHDSxTVeGG1yhqE6Ipe04WLhhnp/w==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-06T08:57:15Z"
-    mac: ENC[AES256_GCM,data:ppmEgXuokwKbUnNLT8JwTyTHo6lhogXIooiEQa7oYIOg5fc9vgMZc+ucMVOWcBYlfj6YZgBs5GqPWgAjDADvNJDTDxp7boE5J8ETqIh0QI+9e818WDBI+m/06bnWoYXOtNjZ4FGYzn0x71kMMDrM1OttK91oDn5FVL1vp77oDLU=,iv:ZlpSMnAjYeRPzZWfW0kL2lt6I1tIlpdwzvhznIjNXoY=,tag:HG42MWmRmhDQTrTLntDv6g==,type:str]
+    lastmodified: "2024-08-14T11:14:26Z"
+    mac: ENC[AES256_GCM,data:rxvaIk1B1KKdC8qvIL+yL8PpPH010BFOwl7JeE9iCACJfN/Y63J4tK1p/+RgUSgLvbz9Bw3v3HVCYSi+HGnvRkY2UmXosDE8D3Zo4TUXNp98LPMusJYS+OTzW2CNM9JAoislKIpA5smrmz8SVuItugQVCLBZTecH4zTnI6Ajj90=,iv:92BdD37ehQGiztEmIm8Sqiq96ATe6iZF4RcAZ0aeh2g=,tag:uabkRMQaQOY9+gHFEG0jiQ==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.8.1

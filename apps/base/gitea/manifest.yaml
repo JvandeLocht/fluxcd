@@ -13,6 +13,15 @@ spec:
   interval: 5m0s
   url: https://charts.bitnami.com/bitnami
 ---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: gitea
+  namespace: gitea
+spec:
+  interval: 5m0s
+  url: https://dl.gitea.io/charts
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -34,43 +43,86 @@ spec:
       chart: gitea
       sourceRef:
         kind: HelmRepository
+        name: gitea
+        namespace: gitea
+      interval: 12h
+  values:
+    global:
+      storageClass: "longhorn-crypto-per-volume" 
+    redis-cluster:
+      enabled: false
+    redis:
+      enabled: false
+    postgresql:
+      enabled: false
+    postgresql-ha:
+      enabled: false
+    persistence:
+      enabled: true
+    gitea:
+      admin:
+        existingSecret: gitea-admin-secret
+        existingSecretKey: password
+        adminUsername: jan
+        adminEmail: jan@vandelocht.uk
+      config:
+        server:
+          ROOT_URL: https://gitea.vandelocht.uk
+        service:
+          DISABLE_REGISTRATION: true
+          SHOW_REGISTRATION_BUTTON: false
+          REQUIRE_SIGNIN_VIEW: true
+        database:
+          DB_TYPE: postgres
+          HOST: postgresql
+          NAME: gitea
+          USER: gitea
+        indexer:
+          ISSUE_INDEXER_TYPE: bleve
+          REPO_INDEXER_ENABLED: true
+      additionalConfigFromEnvs:
+        - name: GITEA__DATABASE__PASSWD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: password
+    service:
+      type: ClusterIP
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: postgresql
+  namespace: gitea
+spec:
+  timeout: 15m
+  interval: 30m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: postgresql
+      version: "15.5.21"
+      sourceRef:
+        kind: HelmRepository
         name: bitnami
         namespace: gitea
       interval: 12h
   values:
     global:
-      defaultStorageClass: "longhorn-crypto-per-volume" 
-    existingSecret: gitea-admin-secret
-    existingSecretKey: password
-    adminUsername: jan
-    adminEmail: jan@vandelocht.uk
-    extraEnvVars:
-      - name: ROOT_URL
-        value: "https://gitea.vandelocht.uk"
-      - name: DISABLE_REGISTRATION
-        value: "true"
-      - name: SHOW_REGISTRATION_BUTTON
-        value: "false"
-      - name: REQUIRE_SIGNIN_VIEW
-        value: "true"
-    #   config:
-    #     server:
-    #       ROOT_URL: https://gitea.vandelocht.uk
-    #     service:
-    #       DISABLE_REGISTRATION: true
-    #       SHOW_REGISTRATION_BUTTON: false
-    #       REQUIRE_SIGNIN_VIEW: true
-    #     database:
-    #       DB_TYPE: postgres
-    #     indexer:
-    #       ISSUE_INDEXER_TYPE: bleve
-    #       REPO_INDEXER_ENABLED: true
-    service:
-      type: ClusterIP
-    postgresql:
-        enabled: true
+      defaultStorageClass: longhorn-crypto-per-volume
+      postgresql:
         auth:
-          username: bn_gitea
-          database: bitnami_gitea
           existingSecret: gitea-postgresql
-          existingSecretPasswordKey: postgres-password
+          secretKeys:
+            adminPasswordKey: postgresPassword
+            userPasswordKey: password
+            replicationPasswordKey: replicationPassword
+          database: gitea
+          username: gitea
