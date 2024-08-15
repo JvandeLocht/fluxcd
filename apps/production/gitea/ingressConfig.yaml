@@ -13,8 +13,8 @@ spec:
     - match: Host(`gitea.vandelocht.uk`)
       kind: Rule
       services:
-        - name: gitea
-          port: 80
+        - name: gitea-http
+          port: 3000
       # middlewares:
       #   - name: svc-gitea-headers
   tls:
