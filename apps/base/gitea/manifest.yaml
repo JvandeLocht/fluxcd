@@ -63,9 +63,7 @@ spec:
     gitea:
       admin:
         existingSecret: gitea-admin-secret
-        existingSecretKey: password
-        adminUsername: jan
-        adminEmail: jan@vandelocht.uk
+        email: jan@vandelocht.uk
       config:
         server:
           ROOT_URL: https://gitea.vandelocht.uk
