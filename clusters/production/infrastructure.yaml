@@ -253,3 +253,37 @@ spec:
   path: ./infrastructure/production/velero
   prune: true
   wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: external-snapshotter-client
+  namespace: flux-system
+spec:
+  interval: 1h
+  path: ./client/config/crd
+  retryInterval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: external-snapshotter
+  targetNamespace: default
+  timeout: 5m
+  prune: true
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: external-snapshotter-snapshot-controller
+  namespace: flux-system
+spec:
+  interval: 1h
+  path: ./deploy/kubernetes/snapshot-controller
+  retryInterval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: external-snapshotter
+  targetNamespace: default
+  timeout: 5m
+  prune: true
+  wait: true
