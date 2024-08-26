@@ -97,6 +97,7 @@ kind: VolumeSnapshotClass
 apiVersion: snapshot.storage.k8s.io/v1
 metadata:
   name: longhorn-snapshot-vsc
+  namespace: velero
   labels:
     velero.io/csi-volumesnapshot-class: "true"
 driver: driver.longhorn.io
