@@ -77,6 +77,28 @@ spec:
         allowExternalNameServices: true
         publishedService:
           enabled: false
+      file:
+        # -- Create a file provider
+        enabled: true
+        # -- Allows Traefik to automatically watch for file changes
+        watch: true
+        # -- File content (YAML format, go template supported) (see https://doc.traefik.io/traefik/providers/file/)
+        content: |
+          # http routing section
+          http:
+            routers:
+              homeassistant:
+                rule: "Host(`james.vandelocht.uk`)"
+                service: homeassistant
+                entryPoints:
+                  - websecure
+                tls:
+                  secretName: james-vandelocht-uk-production-tls
+            services:
+              homeassistant:
+                loadBalancer:
+                  servers:
+                    - url: "http://192.168.178.44:8123"
 
     rbac:
       enabled: true
@@ -90,5 +112,19 @@ spec:
       #   loadBalancerIP: 192.168.178.151 # this should be an IP in the MetalLB range
       loadBalancerSourceRanges: []
       externalIPs: []
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: james-vandelocht-uk
+  namespace: traefik
+spec:
+  secretName: james-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "james.vandelocht.uk"
+  dnsNames:
+  - "james.vandelocht.uk"
 
 
