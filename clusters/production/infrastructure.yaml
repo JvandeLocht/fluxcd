@@ -272,7 +272,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/base/velero/config
+  path: ./infrastructure/production/velero/config
   prune: true
   wait: true
 ---
