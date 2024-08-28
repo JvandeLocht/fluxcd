@@ -21,7 +21,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: home-assistant-service
+  name: homeassistant-service
   namespace: homeassistant
 spec:
   ClusterIP: None
@@ -56,7 +56,7 @@ spec:
     - match: Host(`james.vandelocht.uk`)
       kind: Rule
       services:
-        - name: home-assistant-service
+        - name: homeassistant-service
           kind: Service
           namespace: homeassistant
           port: 8123
