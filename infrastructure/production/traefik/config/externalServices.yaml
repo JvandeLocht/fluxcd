@@ -1,9 +1,14 @@
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homeassistant
+---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: james-vandelocht-uk
-  namespace: traefik
+  namespace: homeassistant
 spec:
   secretName: james-vandelocht-uk-production-tls
   issuerRef:
@@ -17,7 +22,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: home-assistant-service
-  namespace: traefik
+  namespace: homeassistant
 spec:
   type: ClusterIP
   ClusterIP: None
@@ -31,7 +36,7 @@ kind: Endpoints
 apiVersion: v1
 metadata:
   name: home-assistant-service
-  namespace: traefik
+  namespace: homeassistant
 subsets:
   - addresses:
       - ip: 192.168.178.44
@@ -44,7 +49,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: home-assistant-ingress
-  namespace: traefik
+  namespace: homeassistant
 spec:
   entryPoints:
     - websecure
