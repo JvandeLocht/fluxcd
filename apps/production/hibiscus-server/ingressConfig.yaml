@@ -15,10 +15,6 @@ spec:
       services:
         - name: hibiscus-server
           port: 8080
-      # middlewares:
-        # - name: hibiscus-server-basicauth
-        #   namespace: hibiscus-server
-      #   - name: svc-hibiscus-headers
   tls:
     secretName: hibiscus-lan-vandelocht-uk-production-tls
 ---
@@ -35,29 +31,3 @@ spec:
   commonName: "hibiscus.lan.vandelocht.uk"
   dnsNames:
   - "hibiscus.lan.vandelocht.uk"
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: hibiscus-server-basicauth
-  namespace: hibiscus-server
-spec:
-  basicAuth:
-    secret: hibiscus-password-secret
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: svc-hibiscus-headers
-  namespace: hibiscus-server
-spec:
-  headers:
-    browserXssFilter: true
-    contentTypeNosniff: true
-    forceSTSHeader: true
-    stsIncludeSubdomains: true
-    stsPreload: true
-    stsSeconds: 15552000
-    customFrameOptionsValue: SAMEORIGIN
-    customRequestHeaders:
-      X-Forwarded-Proto: https
