@@ -20,9 +20,12 @@ metadata:
   namespace: traefik
 spec:
   type: ClusterIP
+  ClusterIP: None
   ports:
-    - port: 8123
+    - name: homeassistant
+      port: 8123
       targetPort: 8123
+      protocol: TCP
 ---
 kind: Endpoints
 apiVersion: v1
@@ -33,7 +36,9 @@ subsets:
   - addresses:
       - ip: 192.168.178.44
     ports:
-      - port: 8123
+      - name: homeassistant
+        port: 8123
+        protocol: TCP
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
