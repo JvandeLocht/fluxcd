@@ -24,18 +24,16 @@ metadata:
   name: home-assistant-service
   namespace: homeassistant
 spec:
-  type: ClusterIP
   ClusterIP: None
   ports:
     - name: homeassistant
       port: 8123
       targetPort: 8123
-      protocol: TCP
 ---
-kind: Endpoints
 apiVersion: v1
+kind: Endpoints
 metadata:
-  name: home-assistant-service
+  name: homeassistant-service
   namespace: homeassistant
 subsets:
   - addresses:
@@ -43,13 +41,14 @@ subsets:
     ports:
       - name: homeassistant
         port: 8123
-        protocol: TCP
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: home-assistant-ingress
   namespace: homeassistant
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
     - websecure
@@ -58,6 +57,8 @@ spec:
       kind: Rule
       services:
         - name: home-assistant-service
+          kind: Service
+          namespace: homeassistant
           port: 8123
   tls:
     secretName: james-vandelocht-uk-production-tls
