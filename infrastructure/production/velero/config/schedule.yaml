@@ -41,22 +41,22 @@ spec:
     - '*'
     # Array of resources to exclude from the scheduled backup. Resources may be shortcuts (for example 'po' for 'pods')
     # or fully-qualified. Optional.
-    excludedResources:
-    - persistentvolumes
-    - persistentvolumeclaims
-    - backuptargets.longhorn.io
-    - backupvolumes.longhorn.io
-    - backups.longhorn.io
-    - nodes.longhorn.io
-    - volumes.longhorn.io
-    - engines.longhorn.io
-    - replicas.longhorn.io
-    - backingimagedatasources.longhorn.io
-    - backingimagemanagers.longhorn.io
-    - backingimages.longhorn.io
-    - sharemanagers.longhorn.io
-    - instancemanagers.longhorn.io
-    - engineimages.longhorn.io
+    # excludedResources:
+    # - persistentvolumes
+    # - persistentvolumeclaims
+    # - backuptargets.longhorn.io
+    # - backupvolumes.longhorn.io
+    # - backups.longhorn.io
+    # - nodes.longhorn.io
+    # - volumes.longhorn.io
+    # - engines.longhorn.io
+    # - replicas.longhorn.io
+    # - backingimagedatasources.longhorn.io
+    # - backingimagemanagers.longhorn.io
+    # - backingimages.longhorn.io
+    # - sharemanagers.longhorn.io
+    # - instancemanagers.longhorn.io
+    # - engineimages.longhorn.io
     # orderedResources:
     #   pods: mysql/mysql-cluster-replica-0,mysql/mysql-cluster-replica-1,mysql/mysql-cluster-source-0
     #   persistentvolumes: pvc-87ae0832-18fd-4f40-a2a4-5ed4242680c4,pvc-63be1bb0-90f5-4629-a7db-b8ce61ee29b3
