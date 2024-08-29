@@ -1,0 +1,66 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nashorn-proxmox
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nashorn-vandelocht-uk
+  namespace: nashorn-proxmox
+spec:
+  secretName: nashorn-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "nashorn.vandelocht.uk"
+  dnsNames:
+  - "nashorn.vandelocht.uk"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nashorn-proxmox-service
+  namespace: nashorn-proxmox
+spec:
+  ClusterIP: None
+  ports:
+    - name: nashorn-proxmox
+      port: 8006
+      targetPort: 8006
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: nashorn-proxmox-service
+  namespace: nashorn-proxmox
+subsets:
+  - addresses:
+      - ip: 192.168.178.40
+    ports:
+      - name: nashorn-proxmox
+        port: 8006
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nashorn-proxmox-ingress
+  namespace: nashorn-proxmox
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`nashorn.vandelocht.uk`)
+      kind: Rule
+      services:
+        - name: nashorn-proxmox-service
+          kind: Service
+          namespace: nashorn-proxmox
+          port: 8006
+  tls:
+    secretName: nashorn-vandelocht-uk-production-tls
+
+
