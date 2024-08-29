@@ -7,16 +7,16 @@ metadata:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: nashorn-vandelocht-uk
+  name: nashorn-lan-vandelocht-uk
   namespace: nashorn-proxmox
 spec:
-  secretName: nashorn-vandelocht-uk-production-tls
+  secretName: nashorn-lan-vandelocht-uk-production-tls
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "nashorn.vandelocht.uk"
+  commonName: "nashorn.lan.vandelocht.uk"
   dnsNames:
-  - "nashorn.vandelocht.uk"
+  - "nashorn.lan.vandelocht.uk"
 ---
 apiVersion: v1
 kind: Service
@@ -53,7 +53,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`nashorn.vandelocht.uk`)
+    - match: Host(`nashorn.lan.vandelocht.uk`)
       kind: Rule
       services:
         - name: nashorn-proxmox-service
@@ -61,6 +61,6 @@ spec:
           namespace: nashorn-proxmox
           port: 8006
   tls:
-    secretName: nashorn-vandelocht-uk-production-tls
+    secretName: nashorn-lan-vandelocht-uk-production-tls
 
 

@@ -44,7 +44,7 @@ spec:
           allowedIpRanges:
           - "0.0.0.0/0"
           localRecords:
-          - name: "proxmox.lan.vandelocht.uk"
+          - name: "nashorn.lan.vandelocht.uk"
             ip: "192.168.178.40"
           - name: "traefik.lan.vandelocht.uk"
             ip: "192.168.178.151"
