@@ -55,6 +55,9 @@ spec:
   routes:
     - match: Host(`nashorn.lan.vandelocht.uk`)
       kind: Rule
+      middlewares:
+        - name: svc-nashorn-proxmox-headers
+          namespace: nashorn-proxmox
       services:
         - name: nashorn-proxmox-service
           kind: Service
@@ -62,5 +65,20 @@ spec:
           port: 8006
   tls:
     secretName: nashorn-lan-vandelocht-uk-production-tls
-
-
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: svc-nashorn-proxmox-headers
+  namespace: nashorn-proxmox
+spec:
+  headers:
+    browserXssFilter: true
+    contentTypeNosniff: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 15552000
+    customFrameOptionsValue: SAMEORIGIN
+    customRequestHeaders:
+      X-Forwarded-Proto: https
