@@ -15,8 +15,8 @@ spec:
       services:
         - name: gitea-http
           port: 3000
-      # middlewares:
-      #   - name: svc-gitea-headers
+      middlewares:
+        - name: svc-gitea-headers
   tls:
     secretName: gitea-vandelocht-uk-production-tls
 ---
@@ -41,12 +41,12 @@ metadata:
   namespace: gitea
 spec:
   headers:
-    browserXssFilter: true
-    contentTypeNosniff: true
-    forceSTSHeader: true
-    stsIncludeSubdomains: true
-    stsPreload: true
-    stsSeconds: 15552000
-    customFrameOptionsValue: SAMEORIGIN
+    # browserXssFilter: true
+    # contentTypeNosniff: true
+    # forceSTSHeader: true
+    # stsIncludeSubdomains: true
+    # stsPreload: true
+    # stsSeconds: 15552000
+    # customFrameOptionsValue: SAMEORIGIN
     customRequestHeaders:
       X-Forwarded-Proto: https
