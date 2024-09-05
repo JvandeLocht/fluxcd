@@ -44,7 +44,7 @@ spec:
     browserXssFilter: true
     contentTypeNosniff: true
     forceSTSHeader: true
-    # stsIncludeSubdomains: true
+    stsIncludeSubdomains: true
     # stsPreload: true
     # stsSeconds: 15552000
     customFrameOptionsValue: SAMEORIGIN
