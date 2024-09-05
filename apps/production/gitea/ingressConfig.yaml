@@ -41,7 +41,7 @@ metadata:
   namespace: gitea
 spec:
   headers:
-    # browserXssFilter: true
+    browserXssFilter: true
     # contentTypeNosniff: true
     # forceSTSHeader: true
     # stsIncludeSubdomains: true
