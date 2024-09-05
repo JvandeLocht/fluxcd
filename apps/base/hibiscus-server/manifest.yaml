@@ -114,7 +114,5 @@ spec:
     primary:
       service:
         type: LoadBalancer
-      # persistence:
-        # existingClaim: hibiscus-mysql-pvc
     networkPolicy:
       enabled:
