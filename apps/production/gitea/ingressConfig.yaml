@@ -42,7 +42,7 @@ metadata:
 spec:
   headers:
     browserXssFilter: true
-    # contentTypeNosniff: true
+    contentTypeNosniff: true
     # forceSTSHeader: true
     # stsIncludeSubdomains: true
     # stsPreload: true
