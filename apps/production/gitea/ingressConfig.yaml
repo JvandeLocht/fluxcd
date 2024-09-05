@@ -45,7 +45,7 @@ spec:
     contentTypeNosniff: true
     forceSTSHeader: true
     stsIncludeSubdomains: true
-    # stsPreload: true
+    stsPreload: true
     # stsSeconds: 15552000
     customFrameOptionsValue: SAMEORIGIN
     customRequestHeaders:
