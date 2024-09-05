@@ -50,8 +50,15 @@ spec:
           name: hibiscus-server
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - mountPath: /hibiscus-server
+              name: hibiscus-server-claim
           # resources: {}
       restartPolicy: Always
+      volumes:
+        - name: hibiscus-server-claim
+          persistentVolumeClaim:
+            claimName: hibiscus-server-claim
 ---
 apiVersion: v1
 kind: Service
@@ -68,6 +75,19 @@ spec:
       targetPort: 8080
   selector:
     app: hibiscus-server
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hibiscus-server-claim
+  namespace: hibiscus-server
+spec:
+  storageClassName: "longhorn-crypto-per-volume"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
