@@ -17,7 +17,7 @@ spec:
           port: 8080
       middlewares:
         - name: svc-code-server-headers
-        - name: code-server-dashboard-basicauth
+        # - name: code-server-dashboard-basicauth
   tls:
     secretName: code-vandelocht-uk-production-tls
 ---
