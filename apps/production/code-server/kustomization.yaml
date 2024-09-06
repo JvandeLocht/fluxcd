@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - ../../base/code-server
   - ingressConfig.yaml
-  - code-server-claim-secret.yaml
+  - code-server-secret.yaml
   - code-server-auth-secret.yaml
 
 # patches:
