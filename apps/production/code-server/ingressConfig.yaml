@@ -13,8 +13,8 @@ spec:
     - match: Host(`code.vandelocht.uk`)
       kind: Rule
       services:
-        - name: code-server-http
-          port: 3000
+        - name: http
+          port: 8080
       middlewares:
         - name: svc-code-server-headers
         - name: code-server-dashboard-basicauth
