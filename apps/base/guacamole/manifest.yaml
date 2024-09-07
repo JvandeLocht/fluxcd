@@ -87,7 +87,7 @@ spec:
           existingSecret: guacamole
           secretKeys:
             adminPasswordKey: postgresPassword
-            userPasswordKey: password
+            userPasswordKey: POSTGRES_PASSWORD
             replicationPasswordKey: replicationPassword
           database: guacamole
           username: guacamole
