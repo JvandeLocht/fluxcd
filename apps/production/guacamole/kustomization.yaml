@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base/guacamole
+  - ingressConfig.yaml
+  - guacamole-postgresql-claim-secret.yaml
+  - guacamole-secret.yaml
+
+# patches:
+#   - path: patch.yaml
+#     target:
+#       kind: HelmRelease
