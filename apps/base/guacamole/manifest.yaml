@@ -48,6 +48,9 @@ spec:
         namespace: guacamole
       interval: 12h
   values:
+    guacamole:
+      settings:
+        TOTP_ENABLED: "true"
     postgres:
       hostname: "postgresql"
       port: "5432"
