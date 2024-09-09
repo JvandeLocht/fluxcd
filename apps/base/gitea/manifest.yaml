@@ -65,8 +65,8 @@ spec:
         existingSecret: gitea-admin-secret
         email: jan@vandelocht.uk
       config:
-        log:
-          LEVEL: Debug
+        # log:
+        #   LEVEL: Debug
         server:
           ROOT_URL: https://gitea.vandelocht.uk
         service:
