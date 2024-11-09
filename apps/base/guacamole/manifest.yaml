@@ -63,7 +63,7 @@ metadata:
   name: postgresql
   namespace: guacamole
 spec:
-  timeout: 15m
+  timeout: 60m
   interval: 30m
   install:
     crds: Create
