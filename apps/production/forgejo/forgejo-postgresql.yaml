@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: forgejo-cnpg
+    namespace: forgejo
+stringData:
+    username: ENC[AES256_GCM,data:KspeI41MLw==,iv:xqkNL6rTHuZRVuENUl1nweo2NqHX7NrIm2KMXMW/Ry0=,tag:qHejpKf31kkR+HjX8rML2A==,type:str]
+    password: ENC[AES256_GCM,data:Xth8A6bCWiSCYOyNsNLVBYsoy8kMMxRfx5Dy7Xn0O9vvGeWSwexlfw==,iv:CSS58gF+2l4DEBMbcsWfEf6E7L/0U5U7092ID45s+yw=,tag:LBlUzSwzb/vUVj+cOACl1A==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUTzhTMHlIZGt2T0ZvZWdI
+            MDdoOUswbk1qNlZxNFhtWTlXdFVOV1pjTmhzCk5jQ0YxajBpUG9BMlBBaGFlSlNa
+            d3FKSUFvZUhscFRVVDVyUGk1cW5KWFEKLS0tIFVpNGljZXBaK2xmTUhvYWRjQmRh
+            ckVpMnBadDFZOWZ3N09hbEs5YlQ0QWcKOjOJwOrpxndsUFL9nn3WU9rKjgCDZBZY
+            89Bf56DWBlqSx9mo+Q8+dw1V0bVrXqvVl3AdZmJLXGKmzKwQnagIrQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-12-03T20:01:54Z"
+    mac: ENC[AES256_GCM,data:+UTFcGV4qy2nfJjObQMET+RSTLuS5uSk2F8ZQjv99jSgrQQXgMjJPJyCFPcxj/c5qu6mbWtd9bvaB/HBCbhyIQZm392PWHM40tdbo90Nl2Q0YIuQEjodAQ8tMHA44XWsnNKgpeurpKQbx26tqy9MYC1nqKHNWq8i5qKgCLNWKVM=,iv:SS+kMlDKps6kxReHM7lQ67UWQUAU24kLuF2O4LPTxeM=,tag:U6NIUAY6J0lTwwQVXB1elA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
