@@ -64,6 +64,7 @@ spec:
           DISABLE_REGISTRATION: true
           SHOW_REGISTRATION_BUTTON: false
           REQUIRE_SIGNIN_VIEW: true
+        repository:
           ENABLE_PUSH_CREATE_USER: true
         database:
           DB_TYPE: postgres
