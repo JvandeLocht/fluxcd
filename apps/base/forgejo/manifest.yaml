@@ -72,8 +72,8 @@ spec:
         indexer:
           ISSUE_INDEXER_TYPE: bleve
           REPO_INDEXER_ENABLED: true
-      additionaConfigFromEnvs:
-        - name: GITEA_DATABASE__PASSWD
+      additionalConfigFromEnvs:
+        - name: FORGEJO__DATABASE__PASSWD
           valueFrom:
             secretKeyRef:
               name: forgejo-cnpg
