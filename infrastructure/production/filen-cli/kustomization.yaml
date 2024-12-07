@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base/filen-cli
   - filen-cli-secret.yaml
+  - filen-cli-claim.yaml
 patches:
   - path: patch.yaml
     target:

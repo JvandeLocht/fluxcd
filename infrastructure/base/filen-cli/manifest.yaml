@@ -47,6 +47,15 @@ spec:
         args: ["--email $(EMAIL)", "--password $(PASSWORD)", "s3", "--s3-access-key-id $(S3-ACCESS-KEY-ID)", "--s3-secret-access-key $(S3-SECRET-ACCESS-KEY)"]
         ports:
         - containerPort: 80
+        volumeMounts:
+          - mountPath: /filen-cli
+            name: filen-cli-claim
+          # resources: {}
+      restartPolicy: Always
+      volumes:
+        - name: filen-cli-claim
+          persistentVolumeClaim:
+            claimName: filen-cli-claim
 ---
 apiVersion: v1
 kind: Service
@@ -60,4 +69,16 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: filen-cli-claim
+  namespace: filen-cli
+spec:
+  storageClassName: "longhorn-crypto-per-volume"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
