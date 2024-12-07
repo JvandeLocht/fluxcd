@@ -237,7 +237,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: external-snapshotter-GitRepo
+  name: external-snapshotter-gitrepo
   namespace: flux-system
 spec:
   decryption:
@@ -261,7 +261,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: external-snapshotter-GitRepo
+    - name: external-snapshotter-gitrepo
   interval: 1h
   path: ./client/config/crd
   retryInterval: 1m
@@ -280,7 +280,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: external-snapshotter-GitRepo
+    - name: external-snapshotter-gitrepo
   interval: 1h
   path: ./deploy/kubernetes/snapshot-controller
   retryInterval: 1m
