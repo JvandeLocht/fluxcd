@@ -55,8 +55,7 @@ metadata:
   namespace: filen-cli
 spec:
   selector:
-    matchLabels:
-      app: filen-cli
+    app: filen-cli
   ports:
   - protocol: TCP
     port: 80
