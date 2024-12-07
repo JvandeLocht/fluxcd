@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflare-ddns
+  namespace: cloudflare-ddns
+spec:
+  template:
+    spec:
+      containers:
+        - image: favonia/cloudflare-ddns:1.15.0
+          name: cloudflare-ddns
