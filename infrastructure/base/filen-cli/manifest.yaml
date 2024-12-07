@@ -44,8 +44,8 @@ spec:
               secretKeyRef:
                 name: filen-cli-secret
                 key: s3-secret-access-key
-        command: ["node"]
-        args: ["filen", "s3", "--s3-access-key-id $(S3-ACCESS-KEY-ID)", "--s3-secret-access-key $(S3-SECRET-ACCESS-KEY)"]
+        # command: ["node"]
+        # args: ["filen", "s3", "--s3-access-key-id $(S3-ACCESS-KEY-ID)", "--s3-secret-access-key $(S3-SECRET-ACCESS-KEY)"]
         ports:
         - containerPort: 80
         volumeMounts:
