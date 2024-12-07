@@ -23,7 +23,6 @@ spec:
     spec:
       containers:
       - name: filen-cli
-        image: filen/cli:v0.0.24
         env:
           - name: EMAIL
             valueFrom:

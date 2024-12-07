@@ -1,11 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cloudflare-ddns
-  namespace: cloudflare-ddns
+  name: filen-cli
+  namespace: filen-cli
 spec:
   template:
     spec:
       containers:
-        - image: favonia/cloudflare-ddns:1.15.0
-          name: cloudflare-ddns
+        - image: filen/cli:v0.0.24
+          name: filen-cli
+
