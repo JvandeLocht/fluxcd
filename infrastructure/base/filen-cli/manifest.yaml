@@ -48,7 +48,7 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-          - mountPath: /filen-cli
+          - mountPath: /root/.config/filen-cli/
             name: filen-cli-claim
           # resources: {}
       restartPolicy: Always
