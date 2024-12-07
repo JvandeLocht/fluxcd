@@ -262,7 +262,6 @@ metadata:
 spec:
   dependsOn:
     - name: external-snapshotter-gitrepo
-    - name: velero
   interval: 1h
   path: ./client/config/crd
   retryInterval: 1m
@@ -281,7 +280,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: external-snapshotter-gitrepo
+    - name: external-snapshotter-client
   interval: 1h
   path: ./deploy/kubernetes/snapshot-controller
   retryInterval: 1m
