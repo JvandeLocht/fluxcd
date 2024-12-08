@@ -14,6 +14,19 @@ spec:
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
+  name: filen-cli
+  namespace: metallb-system
+spec:
+  addresses:
+  - 192.168.178.152/32
+  serviceAllocation:
+    priority: 50
+    namespaces:
+      - filen-cli
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
   name: hibiscus-server-mysql
   namespace: metallb-system
 spec:
