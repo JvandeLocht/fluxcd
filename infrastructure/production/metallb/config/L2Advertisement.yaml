@@ -8,4 +8,5 @@ spec:
   - traefik
   - unbound
   - hibiscus-server-mysql
+  - filen-cli 
 
