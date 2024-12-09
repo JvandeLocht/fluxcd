@@ -70,9 +70,11 @@ spec:
     app: filen-cli
   ports:
   - protocol: TCP
+    name: s3
     port: 8080
     targetPort: 8080
   - protocol: TCP
+    name: webdav
     port: 9090
     targetPort: 9090
 ---
