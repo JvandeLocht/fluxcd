@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base/velero
   - velero-secret.yaml
+  - velero-filen-secret.yaml
 patches:
   - path: patch.yaml
     target:

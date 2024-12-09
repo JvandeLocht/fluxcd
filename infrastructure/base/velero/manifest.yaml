@@ -72,6 +72,19 @@ spec:
           name: velero-secret
           # name of key that contains the secret data to be used.
           key: cloud
+      - name: filen
+        provider: aws
+        bucket: velero
+        default: "false"
+        config:
+          s3Url: http://192.168.178.152:80
+          region: filen
+          s3ForcePathStyle: "true"
+        credential:
+          # name of the secret used by this backupStorageLocation.
+          name: velero-filen-secret
+          # name of key that contains the secret data to be used.
+          key: cloud
       volumeSnapshotLocation:
       - name: minio
         provider: aws
@@ -83,8 +96,16 @@ spec:
           name: velero-secret
           # name of key that contains the secret data to be used.
           key: cloud
-    credentials:
-      existingSecret: velero-secret
+      - name: filen
+        provider: aws
+        bucket: velero
+        config:
+          region: filen
+        credential:
+          # name of the secret used by this backupStorageLocation.
+          name: velero-filen-secret
+          # name of key that contains the secret data to be used.
+          key: cloud
     initContainers:
     - name: velero-plugin-for-aws
       image: velero/velero-plugin-for-aws:v1.10.0
