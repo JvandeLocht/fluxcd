@@ -45,7 +45,7 @@ spec:
                 name: filen-cli-secret
                 key: w-password
         command: ["/bin/sh"]
-        args: ["-c", "node filen s3 --s3-access-key-id $S3_ACCESS_KEY_ID --s3-secret-access-key $S3_SECRET_ACCESS_KEY --s3-port 8080 webdav --w-user $W_USER --w-password $W_PASSWORD --w-port 9090"]
+        args: ["-c", "node filen webdav --w-user $W_USER --w-password $W_PASSWORD --w-port 9090"]
         ports:
         - containerPort: 8080
         - containerPort: 9090
