@@ -100,5 +100,6 @@ spec:
         name: forgejo-cnpg
 
   storage:
-    size: 1Gi
+    storageClass: "longhorn-crypto-per-volume"
+    size: 2Gi
 
