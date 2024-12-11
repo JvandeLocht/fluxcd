@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: filen-cli-s3-claim
+    namespace: filen-cli
+stringData:
+    CRYPTO_KEY_VALUE: ENC[AES256_GCM,data:KkXKdzp+E8MJQDoxa57BB1TMo5TFNEbOL7RjkkxkZf2Oau8X6/tRk5AUkwI=,iv:3XoTWx2KUgPqjM1bPhBwY8PzDf78z4iSJNUDb6YADoE=,tag:vTG6CDzaA2PMdxVGjOYyew==,type:str]
+    CRYPTO_KEY_PROVIDER: ENC[AES256_GCM,data:+12Kj1Dj,iv:1dhhwRtoJQdxVpZvWXl9QYnNTa/xl0CW8QirsJPxeHk=,tag:7+TidnrfTdO3l/I5IJAf7A==,type:str]
+    CRYPTO_KEY_CIPHER: ENC[AES256_GCM,data:8NvnvKw6Yd7Sin4gyveM,iv:UrtSGGG5Luib2bWC+XIzbapQLePLONB2kK7wYEvUjfk=,tag:9TduK5jzAX9Gt0U5oiGcdg==,type:str]
+    CRYPTO_KEY_HASH: ENC[AES256_GCM,data:R0QgFa5U,iv:ZKv8q4W1q36EArDvKxQKDi84Spg0VC1kKddhVe9zYho=,tag:OQ19wnyBOHjCA0rbjzylUQ==,type:str]
+    CRYPTO_KEY_SIZE: ENC[AES256_GCM,data:Cn/q,iv:pvAvfbrIjS6KA3nUBqvbsI4g5TnyMJikzA0LxWNlHm8=,tag:BFm8580WxNT00xBeNxc60Q==,type:str]
+    CRYPTO_PBKDF: ENC[AES256_GCM,data:iC604rtPGw==,iv:C86dXtvmsPXEykMZkzcmgO2fMnXRJgdGRRAUCrqOjZ8=,tag:LnOp6/zPC65hXlqa25EoWw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBWZWRWR0FZSnFESG40ZzYw
+            alNVK1Jmb2grRURwZ1gxTlc4WVVVeU1wR3lNCitlaURYbitrWjEzcm90aGVqZldu
+            bTZkZHpvQ1B2MlJDQW5EbWxtOUxLRmMKLS0tIDY0VlpwZk9IdmxZZHVoZ0MyVCtT
+            Z1dzYTdCYWFLc1Rwb2lQbU1vSnpJNHMKM/6DzLsCBHJd0SCt/yxcd4RxJDkuKSwo
+            9Qdb+IUqIgvnojSZ4j0miyNmbujQ85sFjaOUSV19UXZBf6t0qpzwMg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-12-11T08:38:02Z"
+    mac: ENC[AES256_GCM,data:ug7873/TWv1DymSNoacM0jOu7+NY1PdLP/FD9Nouxsn6i+eaLXQ8E8l1V2vlwuKCy3H1hfsPWknCXhUJqtMt789cLKShSt59Rihy42CxJx90mShl1+IiaSRANBI7mKqxlnWUM22WNXtLmASn+KRKaubM7FmwKWVFO5xp29qHdV8=,iv:MqwD2pnXEysxbpSvbW6yDBrLiDHmkluFpIFiXuhqnh8=,tag:AROk5j/s4pqV0Y3hWBPdzA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1

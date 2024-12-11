@@ -22,18 +22,8 @@ spec:
         app: filen-cli
     spec:
       containers:
-      - name: filen-cli
+      - name: filen-cli-webdav
         env:
-          - name: S3_ACCESS_KEY_ID
-            valueFrom:
-              secretKeyRef:
-                name: filen-cli-secret
-                key: s3-access-key-id
-          - name: S3_SECRET_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: filen-cli-secret
-                key: s3-secret-access-key
           - name: W_USER
             valueFrom:
               secretKeyRef:
@@ -48,25 +38,65 @@ spec:
         args:
           - |
             node filen webdav --w-user $W_USER --w-password $W_PASSWORD --w-port 9090
-            node filen s3 --s3-access-key-id $S3_ACCESS_KEY_ID --s3-secret-access-key $S3_SECRET_ACCESS_KEY --s3-port 8080
         ports:
-        - containerPort: 8080
         - containerPort: 9090
         volumeMounts:
           - mountPath: /root/.config/filen-cli/
-            name: filen-cli-claim
-          # resources: {}
+            name: filen-cli-webdav-claim
+      - name: filen-cli-s3
+        env:
+          - name: S3_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: filen-cli-secret
+                key: s3-access-key-id
+          - name: S3_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: filen-cli-secret
+                key: s3-secret-access-key
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            node filen s3 --s3-access-key-id $S3_ACCESS_KEY_ID --s3-secret-access-key $S3_SECRET_ACCESS_KEY --s3-port 8080
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+          - mountPath: /root/.config/filen-cli/
+            name: filen-cli-s3-claim
       restartPolicy: Always
       volumes:
-        - name: filen-cli-claim
+        - name: filen-cli-webdav-claim
           persistentVolumeClaim:
-            claimName: filen-cli-claim
+            claimName: filen-cli-webdav-claim
+        - name: filen-cli-s3-claim
+          persistentVolumeClaim:
+            claimName: filen-cli-s3-claim
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: filen-cli
+  name: filen-cli-webdav
   namespace: filen-cli
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "filen-cli"
+spec:
+  type: LoadBalancer
+  selector:
+    app: filen-cli
+  ports:
+  - protocol: TCP
+    name: webdav
+    port: 9090
+    targetPort: 9090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: filen-cli-s3
+  namespace: filen-cli
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "filen-cli"
 spec:
   type: LoadBalancer
   selector:
@@ -76,15 +106,11 @@ spec:
     name: s3
     port: 8080
     targetPort: 8080
-  - protocol: TCP
-    name: webdav
-    port: 9090
-    targetPort: 9090
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: filen-cli-claim
+  name: filen-cli-webdav-claim
   namespace: filen-cli
 spec:
   storageClassName: "longhorn-crypto-per-volume"
@@ -92,4 +118,17 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: filen-cli-s3-claim
+  namespace: filen-cli
+spec:
+  storageClassName: "longhorn-crypto-per-volume"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

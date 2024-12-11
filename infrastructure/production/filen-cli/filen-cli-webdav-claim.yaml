@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: filen-cli-webdav-claim
+    namespace: filen-cli
+stringData:
+    CRYPTO_KEY_VALUE: ENC[AES256_GCM,data:IbqQTthtPM3x1iNMNwLK8VqAOUJA8lh+gn2LUANieeGqyug4s9jEDg+kJdw=,iv:8+26mPowrN3P9fAU/K3AJkwZil5DpFhbdJ/knhmNFyg=,tag:r3NHpF5Zos+r/gkp1B5WIQ==,type:str]
+    CRYPTO_KEY_PROVIDER: ENC[AES256_GCM,data:KSHl9h+N,iv:tFgnPCEL5zjgsJovrHGiYrRCH3g5r+Ly3gmb8uWaC7Y=,tag:hPRxsOMQfjL4YwVo3Mwngg==,type:str]
+    CRYPTO_KEY_CIPHER: ENC[AES256_GCM,data:ZhpMoL1b+Iuyz17KwFQk,iv:DtEMDQvm3jHswvnTmFJBrAoLPpEJbTfeNiL3GI4+C2w=,tag:MyX6JwHfUGcAbQdegqF9MQ==,type:str]
+    CRYPTO_KEY_HASH: ENC[AES256_GCM,data:45zP6lvc,iv:BZDfegoIn/644c7UaepEh05gj9IdrtD9F6393SN3GKY=,tag:QLLAcncHut6FX8eMYALqkg==,type:str]
+    CRYPTO_KEY_SIZE: ENC[AES256_GCM,data:cv7n,iv:E9CIoL25uvy0u8N76W3x4bEYRolP9adDR4bs/Kwuu7o=,tag:b7ErZLmTeI4S/BQ5635Pfg==,type:str]
+    CRYPTO_PBKDF: ENC[AES256_GCM,data:QP7ULQQ/3g==,iv:bBaPxomUjeUrky9clrUWmXClcCCU4hTkiJY6r8jtCf8=,tag:MJ62TduWRi1vWsuKq6kgoA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBWMFcrUlVXRjA4V0VmOStp
+            RVh1bnh3V0JOVzVYYUl2S05YbG5qbGtEUnlRCmZFOGZQTjhpTnZOUTBOUzFGQUti
+            NDEzdkVMdFVLbWNaZyswUEJUS2ttM28KLS0tIDRJeEhkTHZSeHhDOExIRjBPdnMx
+            RDdoS0w4bzVWaEN6VXdRTEJuTUg3ZDQKm6BPFA4BnLu6O1PBM8frYOKRtY+w+vS8
+            7M4uX0fnOjlv//hCr8371lEGnQSk8xY0Eb9fFmKeXv4prXt/y2aaiA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-12-11T08:38:02Z"
+    mac: ENC[AES256_GCM,data:pkU8TRMHiaLoYRBBcoiglrs4XdM5v4kaMvGpWO62EVnDMpRRgsqkByL8Dl5bAu9t+zYSXU2a3WmZAinrepB4DxNcz4IvuoLwRPpAUhaKdyi0M2jDERcNxBr2NOp1pNa1XSDuaWbRj+IUEyHg+tTUcviCTPEgRXi5W5GOIpf83Tw=,iv:KIilXhiOf3Z1igKE2OcsdV324iChHxt+/DPWfFRWNR8=,tag:vex6EIUu7+an/j/S4fzPCA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
