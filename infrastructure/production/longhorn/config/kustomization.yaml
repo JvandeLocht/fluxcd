@@ -5,3 +5,5 @@ resources:
   - longhorn-minio-backups.yaml
   - longhorn-crypto-sc.yaml
   - hibiscus-mysql-claim.yaml
+  - backup-schedule.yaml
+  - snapshot-schedule.yaml

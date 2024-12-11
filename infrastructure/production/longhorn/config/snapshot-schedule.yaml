@@ -1,0 +1,12 @@
+apiVersion: longhorn.io/v1beta1
+kind: RecurringJob
+metadata:
+  name: snapshot-all-volumes
+  namespace: longhorn-system
+spec:
+  task: "snapshot"
+  cron: "0 */6 * * *"
+  retain: 5
+  concurrency: 2
+  groups:
+    - default
