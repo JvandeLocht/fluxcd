@@ -2,5 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - longhorn-r2-backups.yaml
+  - longhorn-minio-backups.yaml
   - longhorn-crypto-sc.yaml
   - hibiscus-mysql-claim.yaml

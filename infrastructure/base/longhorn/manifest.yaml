@@ -45,5 +45,5 @@ spec:
   targetNamespace: longhorn-system
   values:
     defaultSettings:
-      backupTargetCredentialSecret: longhorn-r2-backups
-      backupTarget: "s3://longhorn@EEUR/"
+      backupTargetCredentialSecret: longhorn-minio-backups
+      backupTarget: "s3://longhorn@minio/"

@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: longhorn-r2-backups
+    namespace: longhorn-system
+type: Opaque
+stringData:
+    AWS_ACCESS_KEY_ID: ENC[AES256_GCM,data:Ud15,iv:EVCLKKhAToEpAn4c45y7e7WbepC5UbmT9EjT2JAm06M=,tag:CC/H3N4c3Q3wMT3Cj4JHrw==,type:str]
+    #ENC[AES256_GCM,data:dA9II+/Zg57cN5/lX5jGPeUn746J5UDulcOADWqGjZJfI0fF9Dd5C6//8gnZQ8QMp3aDG1nxx5briL0RgkHPipPftH80YQKYRrSTm33Llj8SmJrmJf1A,iv:tWnAFJA17kackEI0wN+aBpmk8QS31TKsQh4ZdnYhRQE=,tag:dBOXFevMAXqiIGKnL02AJA==,type:comment]
+    AWS_ENDPOINTS: ENC[AES256_GCM,data:vyAjC17XV9UtAhuwYeqX8uLpk6spSa4W+Es=,iv:2WlkakzHMCdzMEwAdxhFmgfYwVrDH9UGAdmrW8O2kgs=,tag:m6IDDBAuf1wA/674dkyLhg==,type:str]
+    S3_FORCE_PATH_STYLE: ENC[AES256_GCM,data:Nta1+Q==,iv:G97iKd+sORUH+SAntgfzoYHtqKzwcaj0shT6/3pyPyE=,tag:BzB4Rtn0okM6mhhGju0pTw==,type:bool]
+    AWS_SECRET_ACCESS_KEY: ENC[AES256_GCM,data:t1MPEl827zqrAops5kmg9/MQpCYs0Q18iiBrZCGhcti+rT1a7CQ+PAz/GRU=,iv:4JOebgYKOi9uPhSAqHv9KV0F9/hl08MKk19vZ263uYs=,tag:61Aoy0gy+l9/33AuO51jNw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2MEMwSXhJdWsyZEwvdTBx
+            WTJFKzY4TVhNMS9Ra0xkeVRpVlBQcXlVUGhrCkZWODBCcWVmSDVTd2hyeXZjMTFi
+            RVY2SnIrV3J5b2UwaVFhSUE3aUVXb0EKLS0tIExHL0E2Y1laMElGN01SbkJhWE92
+            R3FvYWNFWjl0K05jZU1BY3BtcENZL2MKCowFIs+E1Vziv074QCCjykrHnOCbuPeH
+            PcodlWYnw900Jfjs/GRFbKJnfoELb8UXAJHxhvn5B1AlF+lWX2Ebrg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-12-11T12:30:08Z"
+    mac: ENC[AES256_GCM,data:P5YSqn5WIA3R/Y9XFnJqTQyXrTF7bT68LgHM5HUe4wOI/34pj3heJOI54oHxFLKQtEA+QO6EvlIWBMGtSL5FDZyX0F9thre+a+Br+WDfe8Ru/UJs/n5bTOHE8hUrmO1n1VvyzQqhbZ1mi33Ec09IVJpTpih/xL6qG13qkFrO+ZM=,iv:4As2vQW7QTvIKIxWn7f48ju07vO6KcrGjuCIw6vka6U=,tag:UecsW4L+QYCuLu5DQFy8CQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.2
