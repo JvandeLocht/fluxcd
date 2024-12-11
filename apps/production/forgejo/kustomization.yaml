@@ -6,7 +6,9 @@ resources:
   - forgejo-admin-secret.yaml
   - forgejo-postgresql.yaml
   - forgejo-claim-secret.yaml
-  - forgejo-postgresql-claim-secret.yaml
+  - forgejo-postgresql-claim-secret1.yaml
+  - forgejo-postgresql-claim-secret2.yaml
+  - forgejo-postgresql-claim-secret3.yaml
 
 patches:
   - path: patch.yaml
