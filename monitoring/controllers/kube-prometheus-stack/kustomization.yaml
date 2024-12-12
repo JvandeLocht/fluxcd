@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
+  - ingressConfig.yaml
 configMapGenerator:
   - name: flux-kube-state-metrics-config
     files:
