@@ -4,9 +4,15 @@ metadata:
   name: kube-prometheus-stack
 spec:
   interval: 1h
-  chartRef:
-    kind: OCIRepository
-    name: kube-prometheus-stack
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: "66.x.x"
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: monitoring
+      interval: 12h
   install:
     crds: Create
   upgrade:
