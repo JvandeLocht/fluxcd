@@ -190,29 +190,29 @@ spec:
   path: ./infrastructure/production/traefik/config
   prune: true
   wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: kube-prometheus-stack
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: traefik-config
-    - name: cert-manager-config
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/production/kube-prometheus-stack
-  prune: true
-  wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: kube-prometheus-stack
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: traefik-config
+#     - name: cert-manager-config
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/production/kube-prometheus-stack
+#   prune: true
+#   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
