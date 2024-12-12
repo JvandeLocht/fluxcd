@@ -77,28 +77,6 @@ spec:
         allowExternalNameServices: true
         publishedService:
           enabled: false
-      # file:
-      #   # -- Create a file provider
-      #   enabled: true
-      #   # -- Allows Traefik to automatically watch for file changes
-      #   watch: true
-      #   # -- File content (YAML format, go template supported) (see https://doc.traefik.io/traefik/providers/file/)
-      #   content: |
-      #     # http routing section
-      #     http:
-      #       routers:
-      #         homeassistant:
-      #           rule: "Host(`james.vandelocht.uk`)"
-      #           service: homeassistant
-      #           entryPoints:
-      #             - websecure
-      #           tls:
-      #             secretName: james-vandelocht-uk-production-tls
-      #       services:
-      #         homeassistant:
-      #           loadBalancer:
-      #             servers:
-      #               - url: "http://192.168.178.44:8123"
 
     rbac:
       enabled: true
