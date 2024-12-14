@@ -45,6 +45,7 @@ spec:
     additionalArguments:
       - "--serversTransport.insecureSkipVerify=true"
       - "--log.level=INFO"
+      - "--entryPoints.metrics.address=:8082"
 
     deployment:
       enabled: true
