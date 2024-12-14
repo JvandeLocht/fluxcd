@@ -96,3 +96,10 @@ spec:
         addServicesLabels: true
         addRoutersLabels: true
 
+      service:
+        # -- Create a dedicated metrics service to use with ServiceMonitor
+        enabled: true
+
+      serviceMonitor:
+        enabled: true
+
