@@ -64,9 +64,10 @@ spec:
         tls:
           enabled: true
       metrics:
-        port: 8082
-        expose: true
-        exposedPort: 8082
+        port: 9100
+        expose:
+          default: true
+        exposedPort: 9100
         protocol: TCP
           
     ingressRoute:
