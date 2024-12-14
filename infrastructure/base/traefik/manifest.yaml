@@ -108,8 +108,8 @@ spec:
       serviceMonitor:
         enabled: true
         namespace: monitoring
-        additionalLabels:
-          release: kube-prometheus-stack
+        # additionalLabels:
+        #   release: kube-prometheus-stack
         metricRelabelings:
           - sourceLabels: [__name__]
             separator: ;
