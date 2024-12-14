@@ -63,6 +63,11 @@ spec:
       websecure:
         tls:
           enabled: true
+      metrics:
+        port: 8082
+        expose: true
+        exposedPort: 8082
+        protocol: TCP
           
     ingressRoute:
       dashboard:
