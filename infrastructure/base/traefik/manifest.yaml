@@ -104,7 +104,7 @@ spec:
         addRoutersLabels: true
       service:
         enabled: true
-      disableAPICheck: false
+      disableAPICheck: true
       serviceMonitor:
         enabled: true
         namespace: monitoring
