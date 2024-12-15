@@ -45,15 +45,15 @@ spec:
     additionalArguments:
       - "--serversTransport.insecureSkipVerify=true"
       - "--log.level=INFO"
-      - "--entryPoints.metrics.address=:8082"
+      # - "--entryPoints.metrics.address=:8082"
 
     deployment:
       enabled: true
       replicas: 3
-      annotations: {}
-      podAnnotations: {}
-      additionalContainers: []
-      initContainers: []
+      # annotations: {}
+      # podAnnotations: {}
+      # additionalContainers: []
+      # initContainers: []
 
     ports:
       web:
@@ -63,12 +63,12 @@ spec:
       websecure:
         tls:
           enabled: true
-      metrics:
-        port: 8082
-        expose:
-          default: true
-        exposedPort: 8082
-        protocol: TCP
+      # metrics:
+      #   port: 8082
+      #   expose:
+      #     default: true
+      #   exposedPort: 8082
+      #   protocol: TCP
           
     ingressRoute:
       dashboard:
@@ -102,42 +102,39 @@ spec:
         addEntryPointsLabels: true
         addServicesLabels: true
         addRoutersLabels: true
-      service:
-        enabled: true
-      disableAPICheck: true
-      serviceMonitor:
-        enabled: true
-        namespace: monitoring
-        additionalLabels:
-          release: kube-prometheus-stack
-        metricRelabelings:
-          - sourceLabels: [__name__]
-            separator: ;
-            regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
-            replacement: $1
-            action: drop
-        relabelings:
-          - sourceLabels: [__meta_kubernetes_pod_node_name]
-            separator: ;
-            regex: ^(.*)$
-            targetLabel: nodename
-            replacement: $1
-            action: replace
-        jobLabel: traefik
-        interval: 30s
-        honorLabels: true
-      prometheusRule:
-        enabled: true
-        rules:
-          - alert: TraefikDown
-            expr: up{job="traefik"} == 0
-            for: 5m
-            labels:
-              context: traefik
-              severity: warning
-            annotations:
-              summary: "Traefik Down"
-              description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
-
-
-
+        service:
+          enabled: true
+        disableAPICheck: true
+        serviceMonitor:
+          enabled: true
+          namespace: monitoring
+          additionalLabels:
+            release: kube-prometheus-stack
+          metricRelabelings:
+            - sourceLabels: [__name__]
+              separator: ;
+              regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
+              replacement: $1
+              action: drop
+          relabelings:
+            - sourceLabels: [__meta_kubernetes_pod_node_name]
+              separator: ;
+              regex: ^(.*)$
+              targetLabel: nodename
+              replacement: $1
+              action: replace
+          jobLabel: traefik
+          interval: 30s
+          honorLabels: true
+        prometheusRule:
+          enabled: true
+          rules:
+            - alert: TraefikDown
+              expr: up{job="traefik"} == 0
+              for: 5m
+              labels:
+                context: traefik
+                severity: warning
+              annotations:
+                summary: "Traefik Down"
+                description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
