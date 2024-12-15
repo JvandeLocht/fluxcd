@@ -91,10 +91,10 @@ spec:
     service:
       enabled: true
       type: LoadBalancer
-      annotations: {}
-      labels: {}
-      loadBalancerSourceRanges: []
-      externalIPs: []
+      # annotations: {}
+      # labels: {}
+      # loadBalancerSourceRanges: []
+      # externalIPs: []
 
     metrics:
       prometheus:
