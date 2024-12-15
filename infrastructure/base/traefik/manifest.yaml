@@ -107,9 +107,9 @@ spec:
       disableAPICheck: false
       serviceMonitor:
         enabled: true
-        namespace: monitoring
-        # additionalLabels:
-        #   release: kube-prometheus-stack
+        # namespace: monitoring
+        additionalLabels:
+          release: kube-prometheus-stack
         metricRelabelings:
           - sourceLabels: [__name__]
             separator: ;

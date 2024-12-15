@@ -14,24 +14,24 @@
 #   - port: metrics
 #     interval: 15s
 # ---
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    release: kube-prometheus-stack
-  name: traefik
-spec:
-  endpoints:
-
-  - path: /metrics
-    port: metrics
-    scheme: http
-    interval: 60s
-
-  jobLabel: traefik
-  namespaceSelector:
-    matchNames:
-    - traefik
-  selector:
-    matchLabels:
-      app: traefik
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   labels:
+#     release: kube-prometheus-stack
+#   name: traefik
+# spec:
+#   endpoints:
+#
+#   - path: /metrics
+#     port: metrics
+#     scheme: http
+#     interval: 60s
+#
+#   jobLabel: traefik
+#   namespaceSelector:
+#     matchNames:
+#     - traefik
+#   selector:
+#     matchLabels:
+#       app: traefik
