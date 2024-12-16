@@ -47,7 +47,7 @@ spec:
     grafana:
       defaultDashboardsEnabled: true
       admin:
-        existingSecret: "kube-prometheus-stack-grafana"
+        existingSecret: "grafana-secret"
         userKey: admin-user
         passwordKey: admin-password
 
