@@ -32,7 +32,16 @@ spec:
   values:
     installCRDs: true
     alertmanager:
-      enabled: false
+      enabled: true
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 1Gi
+              storageClassName: "longhorn-crypto-per-volume" # Optional
     prometheus:
       prometheusSpec:
         retention: 24h
@@ -58,6 +67,7 @@ spec:
         existingSecret: "grafana-secret"
         userKey: admin-user
         passwordKey: admin-password
+
 
 
 
