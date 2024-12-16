@@ -47,3 +47,7 @@ spec:
     grafana:
       defaultDashboardsEnabled: true
       adminPassword: flux
+      persistence:
+        enabled: true
+        storageClassName: "longhorn-crypto-per-volume"
+        size: 1Gi
