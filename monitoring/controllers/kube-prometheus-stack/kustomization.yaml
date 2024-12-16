@@ -6,6 +6,7 @@ resources:
   - repository.yaml
   - release.yaml
   - ingressConfig.yaml
+  - grafana-secret.yaml
 configMapGenerator:
   - name: flux-kube-state-metrics-config
     files:

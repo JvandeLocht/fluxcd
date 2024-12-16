@@ -46,7 +46,12 @@ spec:
             app.kubernetes.io/component: monitoring
     grafana:
       defaultDashboardsEnabled: true
-      adminPassword: flux
+      admin:
+        existingSecret: "kube-prometheus-stack-grafana"
+        userKey: admin-user
+        passwordKey: admin-password
+
+      # adminPassword: flux
       # persistence:
       #   enabled: true
       #   storageClassName: "longhorn-crypto-per-volume"
