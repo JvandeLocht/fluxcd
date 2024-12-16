@@ -49,7 +49,6 @@ spec:
           requests:
             cpu: 200m
             memory: 200Mi
-        # podMonitorNamespaceSelector: { }
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
@@ -71,8 +70,3 @@ spec:
         enabled: true
         storageClassName: "longhorn-crypto-per-volume"
         size: 1Gi
-
-
-
-
-      # adminPassword: flux
