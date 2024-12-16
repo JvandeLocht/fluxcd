@@ -97,6 +97,7 @@ spec:
       # externalIPs: []
 
     metrics:
+      addInternals: true
       prometheus:
         enabled: true
         addEntryPointsLabels: true
