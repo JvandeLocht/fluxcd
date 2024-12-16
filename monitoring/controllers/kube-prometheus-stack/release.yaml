@@ -44,12 +44,22 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/component: monitoring
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: "longhorn-crypto-per-volume"
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 1Gi
     grafana:
       defaultDashboardsEnabled: true
       admin:
         existingSecret: "grafana-secret"
         userKey: admin-user
         passwordKey: admin-password
+
+
 
       # adminPassword: flux
       # persistence:
