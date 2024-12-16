@@ -51,3 +51,5 @@ spec:
       serviceMonitor:
         # -- Setting that allows the creation of a Prometheus ServiceMonitor resource for Longhorn Manager components.
         enabled: true
+        additionalLabels:
+          release: kube-prometheus-stack
