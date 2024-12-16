@@ -47,3 +47,7 @@ spec:
     defaultSettings:
       backupTargetCredentialSecret: longhorn-minio-backups
       backupTarget: "s3://longhorn@minio/"
+    metrics:
+      serviceMonitor:
+        # -- Setting that allows the creation of a Prometheus ServiceMonitor resource for Longhorn Manager components.
+        enabled: true
