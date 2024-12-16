@@ -8,6 +8,7 @@ resources:
   - ingressConfig.yaml
   - grafana-secret.yaml
   - prometheus-claim-secret.yaml
+  - alertmanager-claim-secret.yaml
 configMapGenerator:
   - name: flux-kube-state-metrics-config
     files:
