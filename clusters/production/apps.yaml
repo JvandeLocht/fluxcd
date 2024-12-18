@@ -136,6 +136,7 @@ spec:
     - name: traefik-config
     - name: cert-manager-config
     - name: metallb-config
+    - name: cloudnative-pg
   interval: 1h
   retryInterval: 1m
   timeout: 60m
