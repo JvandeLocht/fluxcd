@@ -58,6 +58,15 @@ spec:
             ip: "192.168.178.151"
           - name: "hibiscusql.lan.vandelocht.uk"
             ip: "192.168.178.155"
+      healthz:
+        image:
+          repository: gcr.io/google-containers/exechealthz
+          tag: "1.2"
+          pullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 2m
+            memory: 10Mi
     service:
       type: LoadBalancer
 
