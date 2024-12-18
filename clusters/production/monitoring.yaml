@@ -10,8 +10,8 @@ spec:
     secretRef:
       name: sops-age
   interval: 1h
-  retryInterval: 2m
-  timeout: 10m
+  retryInterval: 1h
+  timeout: 2h
   prune: true
   wait: true
   sourceRef:
@@ -32,8 +32,8 @@ spec:
   dependsOn:
     - name: monitoring-controllers
   interval: 1h
-  retryInterval: 2m
-  timeout: 5m
+  retryInterval: 1h
+  timeout: 2h
   prune: true
   wait: true
   sourceRef:
