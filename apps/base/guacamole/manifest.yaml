@@ -57,40 +57,22 @@ spec:
       database: "guacamole"
       user: "guacamole"
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
 metadata:
-  name: postgresql
+  name: guacamole-postgres-cluster
   namespace: guacamole
 spec:
-  timeout: 60m
-  interval: 30m
-  install:
-    crds: Create
-    remediation:
-      retries: 3
-  upgrade:
-    crds: CreateReplace
-    remediation:
-      retries: 3
-  chart:
-    spec:
-      chart: postgresql
-      version: "15.5.x"
-      sourceRef:
-        kind: HelmRepository
-        name: bitnami
-        namespace: guacamole
-      interval: 12h
-  values:
-    global:
-      defaultStorageClass: longhorn-crypto-per-volume
-      postgresql:
-        auth:
-          existingSecret: guacamole
-          secretKeys:
-            adminPasswordKey: postgresPassword
-            userPasswordKey: POSTGRES_PASSWORD
-            replicationPasswordKey: replicationPassword
-          database: guacamole
-          username: guacamole
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.0
+
+  bootstrap:
+    initdb:
+      database: guacamole
+      owner: guacamole
+      secret:
+        name: guacamole-cnpg
+
+  storage:
+    # storageClass: "longhorn-crypto-per-volume"
+    size: 2Gi
