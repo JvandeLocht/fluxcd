@@ -52,7 +52,7 @@ spec:
       settings:
         TOTP_ENABLED: "true"
     postgres:
-      hostname: "guacamole-postgres-cluster-rw "
+      hostname: "guacamole-postgres-cluster-rw"
       port: "5432"
       database: "guacamole"
       user: "guacamole"
