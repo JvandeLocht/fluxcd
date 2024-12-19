@@ -60,8 +60,8 @@ spec:
             ip: "192.168.178.155"
       healthz:
         image:
-          repository: gcr.io/google-containers/exechealthz
-          tag: "1.2"
+          repository: registry.k8s.io/e2e-test-images/agnhost
+          tag: "2.40"
           pullPolicy: IfNotPresent
         resources:
           requests:
