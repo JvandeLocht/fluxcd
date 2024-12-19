@@ -113,7 +113,7 @@ metadata:
   name: filen-cli-webdav-claim
   namespace: filen-cli
 spec:
-  storageClassName: "longhorn-crypto-per-volume"
+  # storageClassName: "longhorn-crypto-per-volume"
   accessModes:
     - ReadWriteOnce
   resources:
@@ -126,7 +126,7 @@ metadata:
   name: filen-cli-s3-claim
   namespace: filen-cli
 spec:
-  storageClassName: "longhorn-crypto-per-volume"
+  # storageClassName: "longhorn-crypto-per-volume"
   accessModes:
     - ReadWriteOnce
   resources:
