@@ -106,29 +106,29 @@ spec:
     name: s3
     port: 8080
     targetPort: 8080
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: filen-cli-webdav-claim
-  namespace: filen-cli
-spec:
-  storageClassName: "longhorn-crypto-per-volume"
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: filen-cli-s3-claim
-  namespace: filen-cli
-spec:
-  storageClassName: "longhorn-crypto-per-volume"
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: filen-cli-webdav-claim
+#   namespace: filen-cli
+# spec:
+#   storageClassName: "longhorn-crypto-per-volume"
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 1Gi
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: filen-cli-s3-claim
+#   namespace: filen-cli
+# spec:
+#   storageClassName: "longhorn-crypto-per-volume"
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 1Gi
