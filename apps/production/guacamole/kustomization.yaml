@@ -4,6 +4,7 @@ resources:
   - ../../base/guacamole
   - ingressConfig.yaml
   - guacamole-postgresql-claim-secret.yaml
+  - guacamole-postgresql.yaml
   - guacamole-secret.yaml
 
 # patches:
