@@ -75,10 +75,10 @@ spec:
         existingSecret: "grafana-secret"
         userKey: admin-user
         passwordKey: admin-password
-      persistence:
-        enabled: true
-        # storageClassName: "longhorn-crypto-per-volume"
-        size: 1Gi
+      # persistence:
+      #   enabled: true
+      #   # storageClassName: "longhorn-crypto-per-volume"
+      #   size: 1Gi
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
