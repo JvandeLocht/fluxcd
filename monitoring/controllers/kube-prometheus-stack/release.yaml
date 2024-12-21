@@ -70,7 +70,7 @@ spec:
                 requests:
                   storage: 10Gi
     grafana:
-      defaultDashboardsEnabled: true
+      defaultDashboardsEnabled: false
       admin:
         existingSecret: "grafana-secret"
         userKey: admin-user
