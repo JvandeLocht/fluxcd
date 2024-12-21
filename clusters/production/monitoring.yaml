@@ -5,6 +5,8 @@ metadata:
   name: monitoring-controllers
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: longhorn-config
   decryption:
     provider: sops
     secretRef:
