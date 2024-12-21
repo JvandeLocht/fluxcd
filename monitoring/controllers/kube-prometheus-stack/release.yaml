@@ -97,7 +97,7 @@ spec:
       retries: 3
   chart:
     spec:
-      chart: kube-prometheus-stack
+      chart: prometheus-pushgateway
       version: "2.15.0"
       sourceRef:
         kind: HelmRepository
