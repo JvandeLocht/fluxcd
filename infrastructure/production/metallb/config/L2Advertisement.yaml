@@ -9,4 +9,5 @@ spec:
   - unbound
   - hibiscus-server-mysql
   - filen-cli 
+  - prometheus-push
 

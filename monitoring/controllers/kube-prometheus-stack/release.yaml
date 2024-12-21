@@ -79,3 +79,39 @@ spec:
         enabled: true
         # storageClassName: "longhorn-crypto-per-volume"
         size: 1Gi
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+spec:
+  timeout: 15m
+  interval: 30m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: "2.15.0"
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: monitoring
+      interval: 12h
+  values:
+    service:
+      type: LoadBalancer
+      port: 9091
+      targetPort: 9091
+      portName: http
+    serviceMonitor:
+      enabled: true
+    persistentVolume:
+      enabled: true
+      size: 2Gi

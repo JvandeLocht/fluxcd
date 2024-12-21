@@ -27,6 +27,19 @@ spec:
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
+  name: prometheus-push
+  namespace: metallb-system
+spec:
+  addresses:
+  - 192.168.178.153/32
+  serviceAllocation:
+    priority: 50
+    namespaces:
+      - monitoring
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
   name: hibiscus-server-mysql
   namespace: metallb-system
 spec:
