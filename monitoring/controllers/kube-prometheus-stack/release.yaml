@@ -83,7 +83,7 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: kube-prometheus-stack
+  name: prometheus-pushgateway
 spec:
   timeout: 15m
   interval: 30m
