@@ -14,6 +14,7 @@ configMapGenerator:
       - dashboards/traefik-official-standalone-dashboard-rev9.json
       - dashboards/longhorn.json
       - dashboards/velero.json
+      - dashboards/unbound.json
       - dashboards/kube-cluster-default.json
     options:
       labels:
