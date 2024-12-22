@@ -38,6 +38,12 @@ spec:
         namespace: unbound
       interval: 12h
   values:
+    metrics:
+      enabled: true
+    serviceMonitor:
+      enabled: true
+      annotations:
+        release: kube-prometheus-stack
     containers:
       unbound:
         config:
