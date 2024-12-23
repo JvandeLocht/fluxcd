@@ -42,3 +42,10 @@ spec:
         name: metallb
   interval: 10m0s
   targetNamespace: metallb-system
+  values:
+    prometheus:
+      serviceMonitor:
+        enabled: true
+        controller:
+          additionalLabels:
+            release: kube-prometheus-stack
