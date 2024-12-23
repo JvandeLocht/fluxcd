@@ -1,53 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "10.3.1"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "text",
-      "name": "Text",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -67,11 +18,9 @@
   "description": "Metallb dashboard https://metallb.universe.tf/  ",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": 20162,
   "graphTooltip": 0,
-  "id": null,
+  "id": 12,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
@@ -87,9 +36,9 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 1,
@@ -107,14 +56,14 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.4.0",
       "title": "Total pool",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 1,
@@ -132,14 +81,14 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.4.0",
       "title": "IPv4 pool",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 1,
@@ -157,7 +106,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.4.0",
       "title": "IPv6 pool",
       "type": "text"
     },
@@ -401,7 +350,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 37
       },
       "id": 108,
       "panels": [],
@@ -413,11 +362,111 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "pps",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 192,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "repeat": "l2",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "rate(metallb_layer2_responses_sent{instance=~\"$l2\"}[$__rate_interval])",
+          "instant": false,
+          "legendFormat": "{{ ip }}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "$l2",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 1,
         "w": 8,
         "x": 0,
-        "y": 10
+        "y": 38
       },
       "id": 158,
       "options": {
@@ -429,20 +478,20 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.4.0",
       "title": "Gratuitous sent",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 1,
         "w": 8,
         "x": 8,
-        "y": 10
+        "y": 38
       },
       "id": 159,
       "options": {
@@ -454,20 +503,20 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.4.0",
       "title": "Requests received",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 1,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 38
       },
       "id": 160,
       "options": {
@@ -479,7 +528,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.4.0",
       "title": "Responses sent",
       "type": "text"
     },
@@ -548,7 +597,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 11
+        "y": 39
       },
       "id": 133,
       "options": {
@@ -648,7 +697,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 11
+        "y": 39
       },
       "id": 191,
       "options": {
@@ -681,6 +730,19 @@
       ],
       "title": "$l2",
       "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "id": 33,
+      "panels": [],
+      "title": "Client metrics",
+      "type": "row"
     },
     {
       "datasource": {
@@ -724,7 +786,6 @@
               "mode": "off"
             }
           },
-          "decimals": 0,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -739,18 +800,18 @@
               }
             ]
           },
-          "unit": "pps",
+          "unit": "reqps",
           "unitScale": true
         },
         "overrides": []
       },
       "gridPos": {
         "h": 7,
-        "w": 8,
-        "x": 16,
-        "y": 11
+        "w": 10,
+        "x": 14,
+        "y": 8
       },
-      "id": 192,
+      "id": 1,
       "options": {
         "legend": {
           "calcs": [],
@@ -763,7 +824,7 @@
           "sort": "none"
         }
       },
-      "repeat": "l2",
+      "repeat": "metallb_client",
       "repeatDirection": "v",
       "targets": [
         {
@@ -772,33 +833,20 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "rate(metallb_layer2_responses_sent{instance=~\"$l2\"}[$__rate_interval])",
+          "expr": "increase(metallb_k8s_client_update_errors_total{instance=~\"$metallb_client\"}[$__rate_interval])",
           "instant": false,
-          "legendFormat": "{{ ip }}",
+          "legendFormat": "$metallb_client",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "$l2",
+      "title": "",
       "type": "timeseries"
     },
     {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 46
-      },
-      "id": 33,
-      "panels": [],
-      "title": "Client metrics",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 1,
@@ -816,14 +864,14 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.4.0",
       "title": "Config loaded",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 1,
@@ -841,14 +889,14 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.4.0",
       "title": "Config stale",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 1,
@@ -866,14 +914,14 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.4.0",
       "title": "Client update",
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 1,
@@ -891,7 +939,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.4.0",
       "title": "Client update errors",
       "type": "text"
     },
@@ -978,6 +1026,7 @@
           "refId": "A"
         }
       ],
+      "title": "",
       "type": "stat"
     },
     {
@@ -1063,6 +1112,7 @@
           "refId": "A"
         }
       ],
+      "title": "",
       "type": "stat"
     },
     {
@@ -1161,109 +1211,13 @@
           "refId": "A"
         }
       ],
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "reqps",
-          "unitScale": true
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 10,
-        "x": 14,
-        "y": 48
-      },
-      "id": 1,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "repeat": "metallb_client",
-      "repeatDirection": "v",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "increase(metallb_k8s_client_update_errors_total{instance=~\"$metallb_client\"}[$__rate_interval])",
-          "instant": false,
-          "legendFormat": "$metallb_client",
-          "range": true,
-          "refId": "A"
-        }
-      ],
+      "title": "",
       "type": "timeseries"
     }
   ],
+  "preload": false,
   "refresh": "",
-  "schemaVersion": 39,
+  "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": [
@@ -1274,7 +1228,6 @@
           "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(metallb_allocator_addresses_in_use_total,pool)",
-        "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "pool",
@@ -1286,8 +1239,6 @@
         },
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
         "type": "query"
       },
       {
@@ -1297,7 +1248,6 @@
           "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(metallb_layer2_gratuitous_sent,instance)",
-        "hide": 0,
         "includeAll": true,
         "label": "l2",
         "multi": true,
@@ -1310,8 +1260,6 @@
         },
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
         "type": "query"
       },
       {
@@ -1322,7 +1270,6 @@
         },
         "definition": "label_values(metallb_k8s_client_config_loaded_bool,instance)",
         "description": "",
-        "hide": 0,
         "includeAll": true,
         "label": "metallb client",
         "multi": true,
@@ -1335,9 +1282,21 @@
         },
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 5,
         "type": "query"
+      },
+      {
+        "current": {
+          "text": "Prometheus",
+          "value": "prometheus"
+        },
+        "label": "datasource",
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "type": "datasource"
       }
     ]
   },
@@ -1349,6 +1308,6 @@
   "timezone": "",
   "title": "Metallb",
   "uid": "fb5d0c21-344b-41e1-b342-d611f32b9fe4",
-  "version": 4,
+  "version": 1,
   "weekStart": ""
 }
