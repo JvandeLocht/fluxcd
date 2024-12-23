@@ -15,6 +15,7 @@ configMapGenerator:
       - dashboards/longhorn.json
       - dashboards/velero.json
       - dashboards/unbound.json
+      - dashboards/metallb.json
       - dashboards/kube-overview.json
       - dashboards/cert-manager.json
       - dashboards/kube-cluster-default.json
