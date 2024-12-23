@@ -7,6 +7,8 @@ spec:
   schedule: 0 */10 * * *
   skipImmediately: false
   template:
+    volumeSnapshotLocations:
+      - minio
     csiSnapshotTimeout: 30m
     hooks: {}
     includedNamespaces:
