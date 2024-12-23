@@ -38,4 +38,9 @@ spec:
         namespace: cloudnative-pg
       interval: 12h
   values:
+    monitoring:
+      podMonitorEnabled: true
+      grafanaDashboard:
+        create: true
+        namespace: monitoring
 
