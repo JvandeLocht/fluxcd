@@ -72,7 +72,7 @@ spec:
     grafana:
       grafana.ini:
         dashboards:
-          default_home_dashboard_path: /tmp/dashboards/kube-cluster-default.json
+          default_home_dashboard_path: /tmp/dashboards/kube-overview.json
       defaultDashboardsEnabled: false
       admin:
         existingSecret: "grafana-secret"
