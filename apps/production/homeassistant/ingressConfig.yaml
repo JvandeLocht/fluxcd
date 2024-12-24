@@ -13,7 +13,7 @@ spec:
     - match: Host(`homeassistant.vandelocht.uk`)
       kind: Rule
       services:
-        - name: home-assistant
+        - name: homeassistant-home-assistant
           port: 8080
       middlewares:
         - name: svc-homeassistant-headers
