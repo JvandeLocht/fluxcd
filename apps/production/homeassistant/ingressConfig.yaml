@@ -10,7 +10,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`homeassistant.vandelocht.uk`)
+    - match: Host(`home.vandelocht.uk`)
       kind: Rule
       services:
         - name: homeassistant-home-assistant
@@ -18,21 +18,21 @@ spec:
       middlewares:
         - name: svc-homeassistant-headers
   tls:
-    secretName: homeassistant-vandelocht-uk-production-tls
+    secretName: home-vandelocht-uk-production-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: homeassistant-vandelocht-uk
+  name: home-vandelocht-uk
   namespace: homeassistant
 spec:
-  secretName: homeassistant-vandelocht-uk-production-tls
+  secretName: home-vandelocht-uk-production-tls
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "homeassistant.vandelocht.uk"
+  commonName: "home.vandelocht.uk"
   dnsNames:
-  - "homeassistant.vandelocht.uk"
+  - "home.vandelocht.uk"
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
