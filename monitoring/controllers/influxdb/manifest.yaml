@@ -1,47 +1,49 @@
-# apiVersion: source.toolkit.fluxcd.io/v1beta2
-# kind: HelmRepository
-# metadata:
-#   name: influxdb
-#   namespace: monitoring
-# spec:
-#   interval: 5m0s
-#   url: https://helm.influxdata.com/
-# ---
-# apiVersion: helm.toolkit.fluxcd.io/v2beta1
-# kind: HelmRelease
-# metadata:
-#   name: influxdb
-#   namespace: monitoring
-# spec:
-#   timeout: 15m
-#   interval: 30m
-#   install:
-#     crds: Create
-#     remediation:
-#       retries: 3
-#   upgrade:
-#     crds: CreateReplace
-#     remediation:
-#       retries: 3
-#   chart:
-#     spec:
-#       chart: influxdb2
-#       version: "2.1.2"
-#       sourceRef:
-#         kind: HelmRepository
-#         name: influxdb
-#         namespace: monitoring
-#       interval: 12h
-#   values:
-#     service:
-#       enabled: true
-#       type: LoadBalancer
-#     adminUser:
-#       organization: "influxdata"
-#       bucket: "default"
-#       user: "admin"
-#       retention_policy: "0s"
-#       ## Leave empty to generate a random password and token.
-#       ## Or fill any of these values to use fixed values.
-#       password: ""
-#       token: ""
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: influxdb
+  namespace: monitoring
+spec:
+  interval: 5m0s
+  url: https://helm.influxdata.com/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: influxdb
+  namespace: monitoring
+spec:
+  timeout: 15m
+  interval: 30m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: influxdb2
+      version: "2.1.2"
+      sourceRef:
+        kind: HelmRepository
+        name: influxdb
+        namespace: monitoring
+      interval: 12h
+  values:
+    service:
+      enabled: true
+      type: LoadBalancer
+    adminUser:
+      organization: "influxdata"
+      bucket: "default"
+      user: "admin"
+      retention_policy: "0s"
+      ## Leave empty to generate a random password and token.
+      ## Or fill any of these values to use fixed values.
+      password: ""
+      token: ""
+    persistence:
+      size: 5Gi
