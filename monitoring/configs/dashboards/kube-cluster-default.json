@@ -2026,7 +2026,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Kubernetes / Compute Resources / Cluster",
+  "title": "Compute Resources Cluster",
   "uid": "efa86fd1d0c121a26444b636a3f509a8",
   "version": 1,
   "weekStart": ""
