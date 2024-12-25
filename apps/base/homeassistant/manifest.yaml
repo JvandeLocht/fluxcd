@@ -38,73 +38,73 @@ spec:
         namespace: homeassistant
       interval: 12h
   values:
-    # Environment variables
-    env:
-      - name: TZ
-        value: Europe/Berlin
-    # resources:
-    #   # We usually recommend not to specify default resources and to leave this as a conscious
-    #   # choice for the user. This also increases chances charts run on environments with little
-    #   # resources, such as Minikube. If you do want to specify resources, uncomment the following
-    #   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-    #   limits:
-    #     cpu: 100m
-    #     memory: 128Mi
-    #   requests:
-    #     cpu: 100m
-    #     memory: 128Mi
-      # Configuration for Home Assistant
-    configuration:
-      # Enable or disable the configuration setup for Home Assistant
-      enabled: true
-      # Force init will merge the current configuration file with the default configuration on every start
-      # This is useful when you want to ensure that the configuration file is always up to date
-      forceInit: true
-      # List of trusted proxies in the format of CIDR notation in a case of using a reverse proxy
-      # Here is the list of the most common private IP ranges, use your list of possible trusted proxies, usually, it's the IP of the reverse proxy
-      trusted_proxies:
-        - 10.0.0.0/8
-        - 172.16.0.0/12
-        - 192.168.0.0/16
-        - 127.0.0.0/8
-      # Template for the configuration.yaml file
-      # Used the `tpl` function to render the template, so you can use Go template functions
-      templateConfig: |-
-        # Loads default set of integrations. Do not remove.
-        default_config:
-
-        {{- if .Values.ingress.enabled }}
-        http:
-          use_x_forwarded_for: true
-          trusted_proxies:
-            {{- range .Values.configuration.trusted_proxies }}
-            - {{ . }}
-            {{- end }}
-        {{- end}}
-        # Load frontend themes from the themes folder
-        frontend:
-          themes: !include_dir_merge_named themes
-
-        automation: !include automations.yaml
-        script: !include scripts.yaml
-        scene: !include scenes.yaml
-    # Persistence values for the Home Assistant instance
-    persistence:
-      # Enable or disable persistence
-      enabled: true
-      # Access mode for the persistent volume claim
-      accessMode: ReadWriteOnce
-      # Size of the persistent volume claim
-      size: 1Gi
-    serviceMonitor:
-      # requires HA integration:  https://www.home-assistant.io/integrations/prometheus/
-      enabled: 
-      scrapeInterval: 30s
-      labels:
-        release: kube-prometheus-stack
-    # Addons configuration for additional services
-    addons:
-      # Code-server addon configuration
-      codeserver:
-        # Enable or disable the code-server addon
-        enabled: true
+    # # Environment variables
+    # env:
+    #   - name: TZ
+    #     value: Europe/Berlin
+    # # resources:
+    # #   # We usually recommend not to specify default resources and to leave this as a conscious
+    # #   # choice for the user. This also increases chances charts run on environments with little
+    # #   # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # #   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    # #   limits:
+    # #     cpu: 100m
+    # #     memory: 128Mi
+    # #   requests:
+    # #     cpu: 100m
+    # #     memory: 128Mi
+    #   # Configuration for Home Assistant
+    # configuration:
+    #   # Enable or disable the configuration setup for Home Assistant
+    #   enabled: true
+    #   # Force init will merge the current configuration file with the default configuration on every start
+    #   # This is useful when you want to ensure that the configuration file is always up to date
+    #   forceInit: true
+    #   # List of trusted proxies in the format of CIDR notation in a case of using a reverse proxy
+    #   # Here is the list of the most common private IP ranges, use your list of possible trusted proxies, usually, it's the IP of the reverse proxy
+    #   trusted_proxies:
+    #     - 10.0.0.0/8
+    #     - 172.16.0.0/12
+    #     - 192.168.0.0/16
+    #     - 127.0.0.0/8
+    #   # Template for the configuration.yaml file
+    #   # Used the `tpl` function to render the template, so you can use Go template functions
+    #   templateConfig: |-
+    #     # Loads default set of integrations. Do not remove.
+    #     default_config:
+    #
+    #     {{- if .Values.ingress.enabled }}
+    #     http:
+    #       use_x_forwarded_for: true
+    #       trusted_proxies:
+    #         {{- range .Values.configuration.trusted_proxies }}
+    #         - {{ . }}
+    #         {{- end }}
+    #     {{- end}}
+    #     # Load frontend themes from the themes folder
+    #     frontend:
+    #       themes: !include_dir_merge_named themes
+    #
+    #     automation: !include automations.yaml
+    #     script: !include scripts.yaml
+    #     scene: !include scenes.yaml
+    # # Persistence values for the Home Assistant instance
+    # persistence:
+    #   # Enable or disable persistence
+    #   enabled: true
+    #   # Access mode for the persistent volume claim
+    #   accessMode: ReadWriteOnce
+    #   # Size of the persistent volume claim
+    #   size: 1Gi
+    # serviceMonitor:
+    #   # requires HA integration:  https://www.home-assistant.io/integrations/prometheus/
+    #   enabled: 
+    #   scrapeInterval: 30s
+    #   labels:
+    #     release: kube-prometheus-stack
+    # # Addons configuration for additional services
+    # addons:
+    #   # Code-server addon configuration
+    #   codeserver:
+    #     # Enable or disable the code-server addon
+    #     enabled: true
