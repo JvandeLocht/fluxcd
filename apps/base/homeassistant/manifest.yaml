@@ -89,13 +89,13 @@ spec:
         script: !include scripts.yaml
         scene: !include scenes.yaml
     # Persistence values for the Home Assistant instance
-    # persistence:
-    #   # Enable or disable persistence
-    #   enabled: true
-    #   # Access mode for the persistent volume claim
-    #   accessMode: ReadWriteOnce
-    #   # Size of the persistent volume claim
-    #   size: 1Gi
+    persistence:
+      # Enable or disable persistence
+      enabled: true
+      # Access mode for the persistent volume claim
+      accessMode: ReadWriteOnce
+      # Size of the persistent volume claim
+      size: 1Gi
     # serviceMonitor:
     #   # requires HA integration:  https://www.home-assistant.io/integrations/prometheus/
     #   enabled: 
