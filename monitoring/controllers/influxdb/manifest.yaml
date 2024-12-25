@@ -1,0 +1,38 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: influxdb
+  namespace: monitoring
+spec:
+  interval: 5m0s
+  url: influxdata https://helm.influxdata.com/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: influxdb
+  namespace: monitoring
+spec:
+  timeout: 15m
+  interval: 30m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: influxdb
+      version: "4.12.5"
+      sourceRef:
+        kind: HelmRepository
+        name: influxdb
+        namespace: monitoring
+      interval: 12h
+  values:
+    service:
+      enabled: true
+      type: LoadBalancer
