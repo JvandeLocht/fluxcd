@@ -46,3 +46,6 @@ spec:
       accessMode: ReadWriteOnce
       # Size of the persistent volume claim
       size: 1Gi
+    additionalEnv:
+      - name: DOCKER_VERNEMQ_ACCEPT_EULA
+        value: "yes"
