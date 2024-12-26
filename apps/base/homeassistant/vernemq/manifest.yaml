@@ -1,18 +1,11 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: GitRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
 metadata:
   name: vernemq
   namespace: homeassistant
 spec:
-  interval: 5m
-  url: https://github.com/vernemq/docker-vernemq/tree/master/helm/vernemq
-  ref:
-    branch: master
-  # ignore: |
-  #   # exclude all
-  #   /*
-  #   # include charts directory
-  #   !/charts/
+  interval: 5m0s
+  url: https://vernemq.github.io/docker-vernemq
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -34,7 +27,7 @@ spec:
     spec:
       chart: vernemq
       sourceRef:
-        kind: GitRepository
+        kind: HelmRepository
         name: vernemq
         namespace: homeassistant
       interval: 12h
