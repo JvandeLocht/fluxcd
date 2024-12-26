@@ -171,3 +171,26 @@ spec:
   path: ./apps/production/homeassistant
   prune: true
   wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: vernemq
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: longhorn-config
+    - name: homeassistant
+  interval: 1h
+  retryInterval: 1m
+  timeout: 60m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./apps/production/homeassistant/vernemq
+  prune: true
+  wait: true

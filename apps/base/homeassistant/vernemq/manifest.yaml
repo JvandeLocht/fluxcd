@@ -1,0 +1,55 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: vernemq
+  namespace: homeassistant
+spec:
+  interval: 5m
+  url: https://github.com/vernemq/docker-vernemq/tree/master/helm/vernemq
+  ref:
+    branch: master
+  # ignore: |
+  #   # exclude all
+  #   /*
+  #   # include charts directory
+  #   !/charts/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vernemq
+  namespace: homeassistant
+spec:
+  timeout: 15m
+  interval: 30m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: vernemq
+      sourceRef:
+        kind: GitRepository
+        name: vernemq
+        namespace: homeassistant
+      interval: 12h
+  values:
+    resources:
+      limits:
+        cpu: 100m
+        memory: 270Mi
+      requests:
+        cpu: 100m
+        memory: 270Mi
+    persistentVolume:
+      # Enable or disable persistence
+      enabled: true
+      # Access mode for the persistent volume claim
+      accessMode: ReadWriteOnce
+      # Size of the persistent volume claim
+      size: 1Gi
