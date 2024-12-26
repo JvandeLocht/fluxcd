@@ -78,6 +78,20 @@ spec:
         existingSecret: "grafana-secret"
         userKey: admin-user
         passwordKey: admin-password
+      additionalDataSources:
+        - name: InfluxDB
+          type: influxdb
+          url: http://192.168.178.153:80
+          access: proxy
+          isDefault: false
+          jsonData:
+            version: Flux
+            organization: Homelab
+            defaultBucket: proxmox
+          secureJsonData:
+            token: ${INFLUXDB_TOKEN}
+
+      envFromSecret: influxdb-grafana-secret
       # persistence:
       #   enabled: true
       #   # storageClassName: "longhorn-crypto-per-volume"
