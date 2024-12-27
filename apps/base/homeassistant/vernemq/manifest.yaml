@@ -49,3 +49,13 @@ spec:
     additionalEnv:
       - name: DOCKER_VERNEMQ_ACCEPT_EULA
         value: "yes"
+      - name: DOCKER_VERNEMQ_USER_HOMEASSISTANT
+        valueFrom:
+          secretKeyRef:
+            name: mqtt-user-credentials
+            key: username
+      - name: DOCKER_VERNEMQ_USER_HOMEASSISTANT__PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mqtt-user-credentials
+            key: password
