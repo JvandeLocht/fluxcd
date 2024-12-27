@@ -4,6 +4,7 @@ resources:
   - manifest.yaml
 secretGenerator:
   - name: zigbee2mqtt-secret
+    namespace: homeassistant
     files:
       - values.yaml=values.enc.yaml
 configurations:
