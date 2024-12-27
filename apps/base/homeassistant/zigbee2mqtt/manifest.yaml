@@ -44,6 +44,9 @@ spec:
         limits:
           memory: 600Mi
           cpu: 200m
+    service:
+      type: ClusterIP
+      port: 8080
     zigbee2mqtt:
       mqtt:
         # -- Required: MQTT server URL (use mqtts:// for SSL/TLS connection)
