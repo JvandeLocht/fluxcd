@@ -1,0 +1,26 @@
+nameReference:
+    - kind: Secret
+      version: v1
+      fieldSpecs:
+        - path: spec/valuesFrom/name
+          kind: HelmRelease
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQWFFuMU9hc0J5OWcycmNm
+            L2xnMVBZUU93SVArSEs0TXhjMXVXclBQc3kwCmxRTGpydUpWVXJoMXQzN1kyWnA1
+            QzlZeUk5SUhTTi9TVFY0VXlIMkpjN0UKLS0tIGRpUjhHWlhWTmhSaVpDeU9wNVlK
+            bmFNL3NpOEU2c3lLV3BRazliUUQxWU0KoktoxNw7VEI9HjJHQ17yeZnud2JTEM2H
+            w+jPi8u7viWIPLOp6ZUurxGatmliq4Y1JOtPPrVIJdSSjZIyrdBf3g==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-12-27T21:53:02Z"
+    mac: ENC[AES256_GCM,data:n5Gtnn9d3/6JdPTHO31rkLOHsqeB6hKGyZJr+aTZ38bu4tSszRnd5BGuSS0bDslEhQYe1XjHAuiuYghVXpypU4X5VtyfpzQ3EzSgdX/M4WUWaFJhAFtAT0CG6CGzZIPpYZNRSJ8TGQB2NdMQZXEZhv63PAo5GTAcDBcU6f5hs88=,iv:0aZ1h8AtLJWc+tTd4e5vXFiaxcoAZGpL929tqAvpLtU=,tag:iJxY6SaY2/czlWbUyWgePA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
