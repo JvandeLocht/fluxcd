@@ -175,7 +175,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: vernemq
+  name: emqx
   namespace: flux-system
 spec:
   decryption:
@@ -191,7 +191,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./apps/production/homeassistant/vernemq
+  path: ./apps/production/homeassistant/emqx
   prune: true
   wait: true
 ---
@@ -207,7 +207,7 @@ spec:
       name: sops-age
   dependsOn:
     - name: longhorn-config
-    - name: vernemq
+    - name: emqx
   interval: 1h
   retryInterval: 1m
   timeout: 60m
