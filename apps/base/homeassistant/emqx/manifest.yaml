@@ -43,3 +43,9 @@ spec:
       enabled: true
       accessMode: ReadWriteOnce
       size: 1Gi
+    metrics:
+      enabled: true
+      type: prometheus
+    service:
+      labels:
+        release: kube-prometheus-stack
