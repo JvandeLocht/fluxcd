@@ -70,31 +70,6 @@
 #   path: ./apps/production/hibiscus-server
 #   prune: true
 #   wait: true
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1
-# kind: Kustomization
-# metadata:
-#   name: code-server
-#   namespace: flux-system
-# spec:
-#   decryption:
-#     provider: sops
-#     secretRef:
-#       name: sops-age
-#   dependsOn:
-#     - name: longhorn-config
-#     - name: traefik-config
-#     - name: cert-manager-config
-#     - name: metallb-config
-#   interval: 1h
-#   retryInterval: 1m
-#   timeout: 5m
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   path: ./apps/production/code-server
-#   prune: true
-#   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
