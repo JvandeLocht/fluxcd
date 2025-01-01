@@ -356,3 +356,25 @@ spec:
   path: ./infrastructure/production/filen-cli
   prune: true
   wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: authelia
+  namespace: flux-system
+spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  interval: 1h
+  dependsOn:
+    - name: traefik-config
+  retryInterval: 1h
+  timeout: 2h
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./infrastructure/production/authelia
+  prune: true
+  wait: true
