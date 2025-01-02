@@ -42,7 +42,7 @@ spec:
       session:
         cookies:
           - domain: "vandelocht.uk"
-          - subdomain: "auth"
+            subdomain: "auth"
       storage:
         local:
           enabled: true
