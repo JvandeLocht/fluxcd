@@ -38,6 +38,9 @@ spec:
         namespace: authelia
       interval: 12h
   values:
+    pod:
+      kind: Deployment
+      replicas: 1
     configMap:
       session:
         cookies:
