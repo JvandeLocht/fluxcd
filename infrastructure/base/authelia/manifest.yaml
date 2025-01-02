@@ -41,6 +41,14 @@ spec:
     pod:
       kind: Deployment
       replicas: 1
+      extraVolumeMounts:
+        - name: users-database-yml
+          mountPath: /config
+          readOnly: true
+      extraVolumes:
+        - name: users-database-yml
+          secret:
+            secretName: users-database-yml
     configMap:
       session:
         cookies:

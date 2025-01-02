@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: users-database-yml
+  namespace: authelia
+type: Opaque
+stringData:
+  users_database.yml: |
+    users:
+      username:
+        displayname: "jan"
+        password: "$argon2id$v=19$m=65536,t=3,p=4$BIAflDyUxZIBet17wyGQ+A$kLAHEGiyO143lMgLsfYjE0z8tR2ueH7WPD9bBkH0FZo"
+        email: jan@vandelocht.uk
+        groups:
+          - admins
+          - dev
+
