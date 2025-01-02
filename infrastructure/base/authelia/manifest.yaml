@@ -41,8 +41,8 @@ spec:
     configMap:
       session:
         cookies:
-          domain: "vandelocht.uk"
-          subdomain: "auth"
+          - domain: "vandelocht.uk"
+          - subdomain: "auth"
       storage:
         local:
           enabled: true
