@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - ../../base/authelia
   - users-database.yaml
-  - ingressConfig.yaml
+  - certConfig.yaml
   - smtp-secret.yaml
 patches:
   - path: patch.yaml

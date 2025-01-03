@@ -38,6 +38,10 @@ spec:
         namespace: authelia
       interval: 12h
   values:
+    ingress:
+      enabled: true
+      traefikCRD:
+        enabled: true
     pod:
       kind: Deployment
       replicas: 1
