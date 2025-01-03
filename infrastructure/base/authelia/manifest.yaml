@@ -43,7 +43,7 @@ spec:
       replicas: 1
       extraVolumeMounts:
         - name: users-database-yml
-          mountPath: /config
+          mountPath: /configUsers
           readOnly: true
       extraVolumes:
         - name: users-database-yml
@@ -63,3 +63,4 @@ spec:
       authentication_backend: 
         file:
           enabled: true
+          path: /configUsers/users_database.yml
