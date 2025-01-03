@@ -27,7 +27,7 @@ metadata:
     app.kubernetes.io/name: authelia
 spec:
   forwardAuth:
-    address: 'http://authelia.authelia.svc.cluster.local/api/authz/forward-auth'
+    address: 'https://auth.vandelocht.uk/api/authz/forward-auth'
     authResponseHeaders:
       - 'Remote-User'
       - 'Remote-Groups'
