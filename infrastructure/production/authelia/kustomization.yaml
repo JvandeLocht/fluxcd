@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../base/authelia
   - users-database.yml
+  - ingressConfig.yaml
 patches:
   - path: patch.yaml
     target:
