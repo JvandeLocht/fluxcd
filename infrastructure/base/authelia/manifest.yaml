@@ -45,6 +45,9 @@ spec:
         secret: 'auth-vandelocht-uk-production-tls'
       traefikCRD:
         enabled: true
+        entryPoints:
+          - websecure
+        disableTLSOptions: true
     pod:
       kind: Deployment
       replicas: 1
