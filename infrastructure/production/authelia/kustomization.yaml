@@ -4,6 +4,7 @@ resources:
   - ../../base/authelia
   - users-database.yaml
   - ingressConfig.yaml
+  - smtp-secret.yaml
 patches:
   - path: patch.yaml
     target:

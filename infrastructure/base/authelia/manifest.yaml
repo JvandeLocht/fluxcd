@@ -45,10 +45,16 @@ spec:
         - name: users-database-yml
           mountPath: /configUsers
           readOnly: true
+        - name: smtp-secret
+          mountPath: /smtp
+          readOnly: true
       extraVolumes:
         - name: users-database-yml
           secret:
             secretName: users-database-yml
+        - name: smtp-secret
+          secret:
+            secretName: smtp-secret
     configMap:
       session:
         cookies:
@@ -58,8 +64,12 @@ spec:
         local:
           enabled: true
       notifier: 
-        filesystem:
+        smtp:
           enabled: true
+          address: 'submission://smtp.purelymail.com:587'
+          username: jan@rethinkmail.com
+          password:
+            path: '/smtp/password.txt'
       authentication_backend: 
         file:
           enabled: true
