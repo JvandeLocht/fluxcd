@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: users-database-yml
+    namespace: authelia
+type: Opaque
+stringData:
+    users_database.yml: ENC[AES256_GCM,data:iMCEltWuZODH0EGiAFhATui8ABVDdDJM4JEqbLGyLcWU30DNiNAi/HRMJZ6K7Q6kF55Qpdb+7uG72vQ8njz3/5SgPVrItcitnYcOZVMM128slENz7ytNgi4dhPu2XFoVGscRUpoZplDt3SIDoApkfNLzFrgJbiNUV9ADZTuLCFquXVSHQk6VjzB9isEDKK2BBiIvMC76BuOtVLlfMyeQ4+KlBpZI4jqKA9u21X7PueargKCTcOZ0XLhC73PzTODNWmYO9cbsN0pLeS03EWhtVetr2IyHRky22SPizw5oQvc=,iv:7cTbz4EL0+lf6klnUhncxrpH4hPElEP61gd2ofUJiGE=,tag:UiDBMeDVsbzaIElr1Fr80Q==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBzYUZjNUw0aCtRZFVNMmwy
+            Rytpc0JzWkdHeXN1clVCZDhLMWhyMzRjSmc0CmNYY2puanQwZ01wYXhIems3dWhS
+            N3h0L05HVTdsRzJDVVZjbWQ4ZWxtelUKLS0tIFNTa3grbXY1bHVNempFSlRpQnMr
+            aGNXUHRPTTJFK1hjT1pxNXlUdjhDZDgKy0h6sZwFDBIUrqS34EjZhCjaZVenNJk/
+            FDHq0EGkXMG85gYqzizuuS3gOZjAxFF4ysJo2UhQc75DMQG+48n5RA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-01-03T10:56:24Z"
+    mac: ENC[AES256_GCM,data:sa1pYlv36tYLEe3eR0PFE1dGK5onHATu4oL3JeWlMGs/2pnb84O7qoQC9VmtX4pIGvGzL8kU3YFVIiviTLsphQnSV/06zD8PX3D9oemTlDbGxMbwgaLpItMhtMxtGWcplZiRp9BvlGaUHBUhBTIeX6YsWRwV2CqUEhAq8OXAbHY=,iv:ZPqycFAWd/4n/H91JxDbrmqY7vVFcVTlRIVH20gCs98=,tag:uErmadfpf3TCdXxz9c6Cmg==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
