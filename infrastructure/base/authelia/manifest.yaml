@@ -63,14 +63,11 @@ spec:
       storage:
         local:
           enabled: true
-      notifier: 
-        smtp:
-          enabled: true
-          address: 'submission://smtp.purelymail.com:587'
-          username: jan@rethinkmail.com
-          password:
-            path: '/smtp/password.txt'
       authentication_backend: 
         file:
           enabled: true
           path: /configUsers/users_database.yml
+  valuesFrom:
+    - kind: Secret
+      name: smtp-authelia-secret
+      valuesKey: values.yaml
