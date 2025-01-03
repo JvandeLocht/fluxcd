@@ -67,6 +67,10 @@ spec:
         file:
           enabled: true
           path: /configUsers/users_database.yml
+      access_control:
+        rules:
+          - domain: 'longhorn.lan.vandelocht.uk'
+            policy: 'one_factor'
   valuesFrom:
     - kind: Secret
       name: smtp-authelia-secret
