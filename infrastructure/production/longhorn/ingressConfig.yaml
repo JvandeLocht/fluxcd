@@ -16,8 +16,8 @@ spec:
           port: 80
       middlewares:
         - name: svc-longhorn-headers
-        - name: 'forwardauth-authelia' # name of your middleware, as defined in your middleware.yml
-          namespace: 'traefik'
+        - name: forwardauth-authelia
+          namespace: authelia
   tls:
     secretName: longhorn-lan-vandelocht-uk-production-tls
 ---
