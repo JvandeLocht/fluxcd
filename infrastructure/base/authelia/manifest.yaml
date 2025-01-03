@@ -40,6 +40,9 @@ spec:
   values:
     ingress:
       enabled: true
+      tls:
+        enabled: true
+        secret: 'auth-vandelocht-uk-production-tls'
       traefikCRD:
         enabled: true
     pod:
