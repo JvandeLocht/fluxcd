@@ -70,9 +70,6 @@ spec:
         cookies:
           - domain: "vandelocht.uk"
             subdomain: "auth"
-      storage:
-        local:
-          enabled: true
       authentication_backend: 
         file:
           enabled: true
@@ -85,3 +82,22 @@ spec:
     - kind: Secret
       name: smtp-authelia-secret
       valuesKey: values.yaml
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: authelia-postgres-cluster
+  namespace: authelia
+spec:
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.0
+
+  bootstrap:
+    initdb:
+      database: authelia
+      owner: authelia
+      secret:
+        name: authelia-cnpg
+
+  storage:
+    size: 1Gi

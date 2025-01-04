@@ -5,6 +5,7 @@ resources:
   - users-database.yaml
   - certConfig.yaml
   - smtp-secret.yaml
+  - authelia-postgresql.yaml
 patches:
   - path: patch.yaml
     target:

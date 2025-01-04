@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: authelia-cnpg
+    namespace: authelia
+stringData:
+    username: ENC[AES256_GCM,data:1KU2bgtQ1ls=,iv:p4iTKKHjwYeLgBTGGSaAazPAjvtKVlOhAuS7C6gGlCI=,tag:sl/R/7y9TIxWv4zYTDlBsw==,type:str]
+    password: ENC[AES256_GCM,data:MQSFqUp/A9quWM7/hhi32s3HXgAfSDrAoYJCjz3Dg8blbP3ykBz8xh0k,iv:EeMxf3bXpKTdjVSKGWfhpDKxKrZ+E74/3JM7klJ7Xmk=,tag:QNi+3bffMgoeiAYnKQisSg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA1bHE0dEFmZGtrSENDbjFo
+            K3RLeG5sME51TTdnTi9HYnBZQ01WRW9TVWdFCjNvK3dYYzh6VGxCd1FVLzZjdUkv
+            ZU5PUE1WZkVvQ1ltb0N6RzgwYlU0S2sKLS0tIDgvbGV0YWVlTTIrOVpoWmoxTSs2
+            RzcrYWhKNERzcGFqaE5NclkyY1RkUVEKjthCL+61/fTgvadXf1OolIcSjnxBxu1V
+            aMUWuTwb1DWaRQ3A5w6QGe+3Tpxx4QU6k+NT4WgJF19uagh46odVag==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-01-04T08:02:11Z"
+    mac: ENC[AES256_GCM,data:3z3wchLf2fM22Bf8tX8V78wB0rr6f16z1r4b3mgO7aAT76G3u6Yu9duTBbfAH0sLIF/OvW/4x9S6gQgr1c6cjHJB6o2yr+tEC89s4DTHqg5SUqe6qlBRX3sGg0JBFWZHeU5Ne5bGJm5TLb8sDYv6ZrY9L5GxBmLKfDOYW6D0iIY=,iv:m8ZdwuuIoQlMuQ8GplOkR3aZ2HraExwrgAuSahRN94Q=,tag:oicVSB3DuSsIkz49QDJx5w==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.2
