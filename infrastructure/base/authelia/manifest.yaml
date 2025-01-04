@@ -76,6 +76,8 @@ spec:
           path: /configUsers/users_database.yml
       access_control:
         rules:
+          - domain: 'auth.vandelocht.uk'
+            policy: 'two_factor'
           - domain: 'longhorn.lan.vandelocht.uk'
             policy: 'two_factor'
           - domain: 'traefik.lan.vandelocht.uk'
