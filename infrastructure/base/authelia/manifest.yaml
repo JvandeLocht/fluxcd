@@ -77,7 +77,7 @@ spec:
       access_control:
         rules:
           - domain: 'longhorn.lan.vandelocht.uk'
-            policy: 'one_factor'
+            policy: 'two_factor'
   valuesFrom:
     - kind: Secret
       name: values-authelia-secret
