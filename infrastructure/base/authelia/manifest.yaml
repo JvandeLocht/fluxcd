@@ -78,6 +78,8 @@ spec:
         rules:
           - domain: 'longhorn.lan.vandelocht.uk'
             policy: 'two_factor'
+          - domain: 'traefik.lan.vandelocht.uk'
+            policy: 'two_factor'
   valuesFrom:
     - kind: Secret
       name: values-authelia-secret
