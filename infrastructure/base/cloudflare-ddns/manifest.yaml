@@ -41,6 +41,13 @@ spec:
               value: "true"
           # image: favonia/cloudflare-ddns:1.10.1
           name: cloudflare-ddns
+          resources:
+            requests:
+              memory: 50Mi
+              cpu: 25m
+            limits:
+              memory: 80Mi
+              cpu: 50m
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
