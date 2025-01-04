@@ -38,6 +38,13 @@ spec:
         namespace: authelia
       interval: 12h
   values:
+    resources:
+      limits:
+        cpu: 100m
+        memory: 125Mi
+      requests:
+        cpu: 50m
+        memory: 50Mi
     ingress:
       enabled: true
       tls:
