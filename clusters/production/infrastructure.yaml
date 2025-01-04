@@ -367,11 +367,12 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-  interval: 1h
   dependsOn:
     - name: traefik-config
-  retryInterval: 1h
-  timeout: 2h
+    - name: cloudnative-pg
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
   sourceRef:
     kind: GitRepository
     name: flux-system
