@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - manifest.yaml
 secretGenerator:
-  - name: smtp-authelia-secret
+  - name: values-authelia-secret
     namespace: authelia
     files:
       - values.yaml=values.enc.yaml

@@ -80,7 +80,7 @@ spec:
             policy: 'one_factor'
   valuesFrom:
     - kind: Secret
-      name: smtp-authelia-secret
+      name: values-authelia-secret
       valuesKey: values.yaml
 ---
 apiVersion: postgresql.cnpg.io/v1
