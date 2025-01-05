@@ -4,7 +4,7 @@ kind: Namespace
 metadata:
   name: guacamole
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: bitnami
@@ -13,7 +13,7 @@ spec:
   interval: 5m0s
   url: https://charts.bitnami.com/bitnami
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: guacamole
