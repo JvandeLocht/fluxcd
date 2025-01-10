@@ -15,9 +15,6 @@
   },
   "packageRules": [
     {
-      "matchDatasources": [
-        "docker"
-      ],
       "matchPackageNames": [
         "renovate/renovate"
       ],
