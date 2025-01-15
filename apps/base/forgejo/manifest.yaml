@@ -40,19 +40,19 @@ spec:
         namespace: forgejo
       interval: 12h
   values:
-  #   resources:
-  # # We usually recommend not to specify default resources and to leave this as a conscious
-  # # choice for the user. This also increases chances charts run on environments with little
-  # # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  #     limits:
-  #       cpu: 100m
-  #       memory: 228Mi
-  #     requests:
-  #       cpu: 100m
-  #       memory: 128Mi
+    #   resources:
+    # # We usually recommend not to specify default resources and to leave this as a conscious
+    # # choice for the user. This also increases chances charts run on environments with little
+    # # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    #     limits:
+    #       cpu: 100m
+    #       memory: 228Mi
+    #     requests:
+    #       cpu: 100m
+    #       memory: 128Mi
     persistence:
-      # storageClass: "longhorn-crypto-per-volume" 
+      # storageClass: "longhorn-crypto-per-volume"
       enabled: true
     redis-cluster:
       enabled: false
@@ -112,5 +112,4 @@ spec:
 
   storage:
     # storageClass: "longhorn-crypto-per-volume"
-    size: 4Gi
-
+    size: 6Gi
