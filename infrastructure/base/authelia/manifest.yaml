@@ -49,7 +49,7 @@ spec:
       enabled: true
       tls:
         enabled: true
-        secret: 'auth-vandelocht-uk-production-tls'
+        secret: "auth-vandelocht-uk-production-tls"
       traefikCRD:
         enabled: true
         entryPoints:
@@ -77,18 +77,18 @@ spec:
         cookies:
           - domain: "vandelocht.uk"
             subdomain: "auth"
-      authentication_backend: 
+      authentication_backend:
         file:
           enabled: true
           path: /configUsers/users_database.yml
       access_control:
         rules:
-          - domain: 'auth.vandelocht.uk'
-            policy: 'two_factor'
-          - domain: 'longhorn.lan.vandelocht.uk'
-            policy: 'two_factor'
-          - domain: 'traefik.lan.vandelocht.uk'
-            policy: 'two_factor'
+          - domain: "auth.vandelocht.uk"
+            policy: "two_factor"
+          - domain: "longhorn.lan.vandelocht.uk"
+            policy: "two_factor"
+          - domain: "traefik.lan.vandelocht.uk"
+            policy: "two_factor"
   valuesFrom:
     - kind: Secret
       name: values-authelia-secret
@@ -111,4 +111,4 @@ spec:
         name: authelia-cnpg
 
   storage:
-    size: 3Gi
+    size: 4Gi
