@@ -75,4 +75,4 @@ spec:
 
   storage:
     # storageClass: "longhorn-crypto-per-volume"
-    size: 2Gi
+    size: 4Gi
