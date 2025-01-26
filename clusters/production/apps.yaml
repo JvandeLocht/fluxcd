@@ -9,7 +9,7 @@
 #     secretRef:
 #       name: sops-age
 #   dependsOn:
-    # - name: longhorn-config
+# - name: longhorn-config
 #     - name: traefik-config
 #     - name: cert-manager-config
 #   interval: 1h
@@ -46,125 +46,125 @@
 #   path: ./apps/production/hibiscus-server
 #   prune: true
 #   wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: guacamole
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: longhorn-config
-    - name: traefik-config
-    - name: cert-manager-config
-    - name: metallb-config
-    - name: cloudnative-pg
-  interval: 1h
-  retryInterval: 1m
-  timeout: 60m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./apps/production/guacamole
-  prune: true
-  wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: forgejo
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: longhorn-config
-    - name: traefik-config
-    - name: cert-manager-config
-    - name: metallb-config
-    - name: cloudnative-pg
-  interval: 1h
-  retryInterval: 1m
-  timeout: 60m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./apps/production/forgejo
-  prune: true
-  wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: homeassistant
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: longhorn-config
-    - name: traefik-config
-    - name: cert-manager-config
-  interval: 1h
-  retryInterval: 1m
-  timeout: 60m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./apps/production/homeassistant
-  prune: true
-  wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: emqx
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: longhorn-config
-    - name: homeassistant
-  interval: 1h
-  retryInterval: 1m
-  timeout: 60m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./apps/production/homeassistant/emqx
-  prune: true
-  wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: zigbee2mqtt
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: longhorn-config
-    - name: emqx
-  interval: 1h
-  retryInterval: 1m
-  timeout: 60m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./apps/production/homeassistant/zigbee2mqtt
-  prune: true
-  wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: guacamole
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: longhorn-config
+#     - name: traefik-config
+#     - name: cert-manager-config
+#     - name: metallb-config
+#     - name: cloudnative-pg
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 60m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./apps/production/guacamole
+#   prune: true
+#   wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: forgejo
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: longhorn-config
+#     - name: traefik-config
+#     - name: cert-manager-config
+#     - name: metallb-config
+#     - name: cloudnative-pg
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 60m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./apps/production/forgejo
+#   prune: true
+#   wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: homeassistant
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: longhorn-config
+#     - name: traefik-config
+#     - name: cert-manager-config
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 60m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./apps/production/homeassistant
+#   prune: true
+#   wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: emqx
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: longhorn-config
+#     - name: homeassistant
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 60m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./apps/production/homeassistant/emqx
+#   prune: true
+#   wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: zigbee2mqtt
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: longhorn-config
+#     - name: emqx
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 60m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./apps/production/homeassistant/zigbee2mqtt
+#   prune: true
+#   wait: true

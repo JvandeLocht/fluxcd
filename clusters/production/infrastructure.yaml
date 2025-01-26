@@ -32,53 +32,53 @@ spec:
   path: ./infrastructure/production/metallb/config
   prune: true
   wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: longhorn
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: traefik-config
-    - name: cert-manager-config
-  interval: 1h
-  retryInterval: 1h
-  timeout: 2h
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/production/longhorn
-  prune: true
-  wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: longhorn-config
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: traefik-config
-    - name: cert-manager-config
-    - name: longhorn
-  interval: 1h
-  retryInterval: 1h
-  timeout: 2h
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/production/longhorn/config
-  prune: true
-  wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: longhorn
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: traefik-config
+#     - name: cert-manager-config
+#   interval: 1h
+#   retryInterval: 1h
+#   timeout: 2h
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/production/longhorn
+#   prune: true
+#   wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: longhorn-config
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: traefik-config
+#     - name: cert-manager-config
+#     - name: longhorn
+#   interval: 1h
+#   retryInterval: 1h
+#   timeout: 2h
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/production/longhorn/config
+#   prune: true
+#   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -143,53 +143,53 @@ spec:
   path: ./infrastructure/production/unbound
   prune: true
   wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: traefik
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: metallb-config
-    - name: cert-manager-config
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/production/traefik
-  prune: true
-  wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: traefik-config
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: metallb-config
-    - name: traefik
-    - name: cert-manager-config
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/production/traefik/config
-  prune: true
-  wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: traefik
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: metallb-config
+#     - name: cert-manager-config
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/production/traefik
+#   prune: true
+#   wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: traefik-config
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: metallb-config
+#     - name: traefik
+#     - name: cert-manager-config
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/production/traefik/config
+#   prune: true
+#   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -313,69 +313,69 @@ spec:
   prune: true
   wait: true
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: cloudnative-pg
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: longhorn-config
-  interval: 1h
-  retryInterval: 1h
-  timeout: 2h
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/production/cloudnative-pg
-  prune: true
-  wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: filen-cli
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  interval: 1h
-  dependsOn:
-    - name: longhorn-config
-  retryInterval: 1h
-  timeout: 2h
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/production/filen-cli
-  prune: true
-  wait: true
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: authelia
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: traefik-config
-    - name: cloudnative-pg
-  interval: 1h
-  retryInterval: 1m
-  timeout: 5m
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./infrastructure/production/authelia
-  prune: true
-  wait: true
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: cloudnative-pg
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: longhorn-config
+#   interval: 1h
+#   retryInterval: 1h
+#   timeout: 2h
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/production/cloudnative-pg
+#   prune: true
+#   wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: filen-cli
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   interval: 1h
+#   dependsOn:
+#     - name: longhorn-config
+#   retryInterval: 1h
+#   timeout: 2h
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/production/filen-cli
+#   prune: true
+#   wait: true
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: authelia
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: traefik-config
+#     - name: cloudnative-pg
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 5m
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./infrastructure/production/authelia
+#   prune: true
+#   wait: true

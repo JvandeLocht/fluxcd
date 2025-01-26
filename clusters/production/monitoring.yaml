@@ -1,67 +1,67 @@
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: monitoring-controllerz
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: longhorn-config
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  interval: 1h
-  retryInterval: 1m
-  timeout: 30m
-  prune: true
-  wait: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./monitoring/controllers
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: monitoring-configs
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: monitoring-controllerz
-  interval: 1h
-  retryInterval: 1m
-  timeout: 30m
-  prune: true
-  wait: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./monitoring/configs
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: monitoring-ingress
-  namespace: flux-system
-spec:
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  dependsOn:
-    - name: monitoring-controllerz
-    - name: traefik-config
-  interval: 1h
-  retryInterval: 1h
-  timeout: 2h
-  prune: true
-  wait: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  path: ./monitoring/ingress
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: monitoring-controllerz
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#     - name: longhorn-config
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 30m
+#   prune: true
+#   wait: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./monitoring/controllers
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: monitoring-configs
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: monitoring-controllerz
+#   interval: 1h
+#   retryInterval: 1m
+#   timeout: 30m
+#   prune: true
+#   wait: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./monitoring/configs
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: monitoring-ingress
+#   namespace: flux-system
+# spec:
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
+#   dependsOn:
+#     - name: monitoring-controllerz
+#     - name: traefik-config
+#   interval: 1h
+#   retryInterval: 1h
+#   timeout: 2h
+#   prune: true
+#   wait: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   path: ./monitoring/ingress
