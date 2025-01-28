@@ -43,16 +43,16 @@ spec:
   interval: 10m0s
   targetNamespace: metallb-system
   values:
-    prometheus:
-      serviceMonitor:
-        enabled: true
-        controller:
-          additionalLabels:
-            release: kube-prometheus-stack
-      # the service account used by prometheus
-      # required when " .Values.prometheus.rbacPrometheus == true " and " .Values.prometheus.podMonitor.enabled=true or prometheus.serviceMonitor.enabled=true "
-      serviceAccount: kube-prometheus-stack-prometheus
-      namespace: monitoring
+    # prometheus:
+    #   serviceMonitor:
+    #     enabled: true
+    #     controller:
+    #       additionalLabels:
+    #         release: kube-prometheus-stack
+    #   # the service account used by prometheus
+    #   # required when " .Values.prometheus.rbacPrometheus == true " and " .Values.prometheus.podMonitor.enabled=true or prometheus.serviceMonitor.enabled=true "
+    #   serviceAccount: kube-prometheus-stack-prometheus
+    #   namespace: monitoring
     controller:
       resources:
         requests:
@@ -69,4 +69,3 @@ spec:
         limits:
           cpu: 100m
           memory: 150Mi
-
