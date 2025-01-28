@@ -44,22 +44,22 @@ spec:
       unbound:
         config:
           allowedIpRanges:
-          - "0.0.0.0/0"
+            - "0.0.0.0/0"
           localRecords:
-          - name: "nashorn.lan.vandelocht.uk"
-            ip: "192.168.178.40"
-          - name: "traefik.lan.vandelocht.uk"
-            ip: "192.168.178.151"
-          - name: "longhorn.lan.vandelocht.uk"
-            ip: "192.168.178.151"
-          - name: "grafana.lan.vandelocht.uk"
-            ip: "192.168.178.151"
-          - name: "actual.lan.vandelocht.uk"
-            ip: "192.168.178.151"
-          - name: "hibiscus.lan.vandelocht.uk"
-            ip: "192.168.178.151"
-          - name: "hibiscusql.lan.vandelocht.uk"
-            ip: "192.168.178.155"
+            - name: "nashorn.lan.vandelocht.uk"
+              ip: "192.168.178.40"
+            - name: "traefik.lan.vandelocht.uk"
+              ip: "192.168.178.151"
+            - name: "longhorn.lan.vandelocht.uk"
+              ip: "192.168.178.151"
+            - name: "grafana.lan.vandelocht.uk"
+              ip: "192.168.178.151"
+            - name: "actual.lan.vandelocht.uk"
+              ip: "192.168.178.151"
+            - name: "hibiscus.lan.vandelocht.uk"
+              ip: "192.168.178.151"
+            - name: "hibiscusql.lan.vandelocht.uk"
+              ip: "192.168.178.155"
       healthz:
         image:
           repository: bopjiang/google_containers_exechealthz
@@ -72,29 +72,29 @@ spec:
     service:
       type: LoadBalancer
 ---
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  annotations:
-    meta.helm.sh/release-name: unbound
-    meta.helm.sh/release-namespace: unbound
-  labels:
-    release: kube-prometheus-stack
-    app.kubernetes.io/instance: unbound
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/name: unbound
-    helm.toolkit.fluxcd.io/name: unbound
-    helm.toolkit.fluxcd.io/namespace: unbound
-  name: unbound
-  namespace: unbound
-spec:
-  endpoints:
-  - path: /metrics
-    targetPort: metrics
-  namespaceSelector:
-    matchNames:
-    - unbound
-  selector:
-    matchLabels:
-      app.kubernetes.io/instance: unbound
-      app.kubernetes.io/name: unbound
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   annotations:
+#     meta.helm.sh/release-name: unbound
+#     meta.helm.sh/release-namespace: unbound
+#   labels:
+#     release: kube-prometheus-stack
+#     app.kubernetes.io/instance: unbound
+#     app.kubernetes.io/managed-by: Helm
+#     app.kubernetes.io/name: unbound
+#     helm.toolkit.fluxcd.io/name: unbound
+#     helm.toolkit.fluxcd.io/namespace: unbound
+#   name: unbound
+#   namespace: unbound
+# spec:
+#   endpoints:
+#   - path: /metrics
+#     targetPort: metrics
+#   namespaceSelector:
+#     matchNames:
+#     - unbound
+#   selector:
+#     matchLabels:
+#       app.kubernetes.io/instance: unbound
+#       app.kubernetes.io/name: unbound
