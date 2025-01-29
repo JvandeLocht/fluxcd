@@ -45,8 +45,8 @@ spec:
       requests:
         cpu: 100m
         memory: 100Mi
-    # monitoring:
-    #   podMonitorEnabled: true
-    #   grafanaDashboard:
-    #     create: true
-    #     namespace: monitoring
+    monitoring:
+      podMonitorEnabled: true
+      grafanaDashboard:
+        create: true
+        namespace: monitoring
