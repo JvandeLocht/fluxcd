@@ -72,29 +72,29 @@ spec:
     service:
       type: LoadBalancer
 ---
-# apiVersion: monitoring.coreos.com/v1
-# kind: ServiceMonitor
-# metadata:
-#   annotations:
-#     meta.helm.sh/release-name: unbound
-#     meta.helm.sh/release-namespace: unbound
-#   labels:
-#     release: kube-prometheus-stack
-#     app.kubernetes.io/instance: unbound
-#     app.kubernetes.io/managed-by: Helm
-#     app.kubernetes.io/name: unbound
-#     helm.toolkit.fluxcd.io/name: unbound
-#     helm.toolkit.fluxcd.io/namespace: unbound
-#   name: unbound
-#   namespace: unbound
-# spec:
-#   endpoints:
-#   - path: /metrics
-#     targetPort: metrics
-#   namespaceSelector:
-#     matchNames:
-#     - unbound
-#   selector:
-#     matchLabels:
-#       app.kubernetes.io/instance: unbound
-#       app.kubernetes.io/name: unbound
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  annotations:
+    meta.helm.sh/release-name: unbound
+    meta.helm.sh/release-namespace: unbound
+  labels:
+    release: kube-prometheus-stack
+    app.kubernetes.io/instance: unbound
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: unbound
+    helm.toolkit.fluxcd.io/name: unbound
+    helm.toolkit.fluxcd.io/namespace: unbound
+  name: unbound
+  namespace: unbound
+spec:
+  endpoints:
+    - path: /metrics
+      targetPort: metrics
+  namespaceSelector:
+    matchNames:
+      - unbound
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: unbound
+      app.kubernetes.io/name: unbound
