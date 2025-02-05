@@ -60,6 +60,16 @@ spec:
               ip: "192.168.178.151"
             - name: "hibiscusql.lan.vandelocht.uk"
               ip: "192.168.178.155"
+            - name: "odin"
+              ip: "192.168.178.40"
+            - name: "gucken"
+              ip: "192.168.178.41"
+            - name: "thor"
+              ip: "192.168.178.42"
+            - name: "chimeraos"
+              ip: "192.168.178.30"
+            - name: "nixnas"
+              ip: "192.168.178.58"
       healthz:
         image:
           repository: bopjiang/google_containers_exechealthz
