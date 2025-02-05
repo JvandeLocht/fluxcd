@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - ceph-csi-rbd.yaml
   - cloudnative-pg.yaml
+  - filen-cli.yaml
   - velero.yaml
