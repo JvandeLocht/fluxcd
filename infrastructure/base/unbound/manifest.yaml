@@ -68,6 +68,8 @@ spec:
               ip: "192.168.178.30"
             - name: "nixnas"
               ip: "192.168.178.58"
+            - name: "openwrt"
+              ip: "192.168.178.56"
       healthz:
         image:
           repository: bopjiang/google_containers_exechealthz
