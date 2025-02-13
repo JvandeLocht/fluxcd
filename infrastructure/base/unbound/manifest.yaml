@@ -44,22 +44,32 @@ spec:
       unbound:
         config:
           allowedIpRanges:
-          - "0.0.0.0/0"
+            - "0.0.0.0/0"
           localRecords:
-          - name: "nashorn.lan.vandelocht.uk"
-            ip: "192.168.178.40"
-          - name: "traefik.lan.vandelocht.uk"
-            ip: "192.168.178.151"
-          - name: "longhorn.lan.vandelocht.uk"
-            ip: "192.168.178.151"
-          - name: "grafana.lan.vandelocht.uk"
-            ip: "192.168.178.151"
-          - name: "actual.lan.vandelocht.uk"
-            ip: "192.168.178.151"
-          - name: "hibiscus.lan.vandelocht.uk"
-            ip: "192.168.178.151"
-          - name: "hibiscusql.lan.vandelocht.uk"
-            ip: "192.168.178.155"
+            - name: "nashorn.lan.vandelocht.uk"
+              ip: "192.168.178.40"
+            - name: "traefik.lan.vandelocht.uk"
+              ip: "192.168.178.151"
+            - name: "grafana.lan.vandelocht.uk"
+              ip: "192.168.178.151"
+            - name: "actual.lan.vandelocht.uk"
+              ip: "192.168.178.151"
+            - name: "hibiscus.lan.vandelocht.uk"
+              ip: "192.168.178.151"
+            - name: "hibiscusql.lan.vandelocht.uk"
+              ip: "192.168.178.155"
+            - name: "odin"
+              ip: "192.168.178.40"
+            - name: "gucken"
+              ip: "192.168.178.41"
+            - name: "thor"
+              ip: "192.168.178.42"
+            - name: "chimeraos"
+              ip: "192.168.178.30"
+            - name: "nixnas"
+              ip: "192.168.178.58"
+            - name: "openwrt"
+              ip: "192.168.178.56"
       healthz:
         image:
           repository: bopjiang/google_containers_exechealthz
@@ -89,11 +99,11 @@ metadata:
   namespace: unbound
 spec:
   endpoints:
-  - path: /metrics
-    targetPort: metrics
+    - path: /metrics
+      targetPort: metrics
   namespaceSelector:
     matchNames:
-    - unbound
+      - unbound
   selector:
     matchLabels:
       app.kubernetes.io/instance: unbound

@@ -69,7 +69,7 @@ spec:
       #     default: true
       #   exposedPort: 8082
       #   protocol: TCP
-          
+
     ingressRoute:
       dashboard:
         enabled: false

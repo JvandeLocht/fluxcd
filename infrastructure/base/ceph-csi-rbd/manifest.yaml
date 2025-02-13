@@ -10,7 +10,7 @@ metadata:
     pod-security.kubernetes.io/warn: privileged
     pod-security.kubernetes.io/warn-version: latest
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: ceph-csi
@@ -19,7 +19,7 @@ spec:
   interval: 5m
   url: https://ceph.github.io/csi-charts
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: ceph-csi-rbd
@@ -61,6 +61,8 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: csi-rbd-sc
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
 provisioner: rbd.csi.ceph.com
 parameters:
   clusterID: "fdef4f57-7ea2-4931-ad44-b347bbcc8141"

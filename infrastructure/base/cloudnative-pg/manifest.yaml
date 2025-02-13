@@ -50,4 +50,3 @@ spec:
       grafanaDashboard:
         create: true
         namespace: monitoring
-
