@@ -70,6 +70,8 @@ spec:
               ip: "192.168.178.58"
             - name: "openwrt"
               ip: "192.168.178.56"
+            - name: "arm"
+              ip: "192.168.178.92"
       healthz:
         image:
           repository: bopjiang/google_containers_exechealthz
