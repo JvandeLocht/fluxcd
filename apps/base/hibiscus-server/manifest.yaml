@@ -117,7 +117,7 @@ spec:
       retries: 3
   chart:
     spec:
-      version: "12.3.1"
+      version: "12.3.2"
       chart: mysql
       sourceRef:
         kind: HelmRepository
