@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: smb-csi
+  namespace: smb-csi
+spec:
+  chart:
+    spec:
+      version: "1.17.0"
