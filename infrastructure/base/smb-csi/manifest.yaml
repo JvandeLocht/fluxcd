@@ -36,7 +36,7 @@ spec:
       retries: 3
   chart:
     spec:
-      chart: smb-csi
+      chart: csi-driver-smb
       sourceRef:
         kind: HelmRepository
         name: smb-csi
