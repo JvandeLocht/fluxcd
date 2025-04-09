@@ -61,7 +61,7 @@ mountOptions:
   - file_mode=0777
   - uid=996
   - gid=100
-  - noperm
-  - mfsymlinks
-  - cache=strict
-  - noserverinfo # recuired to prevent date corruption
+  # - noperm
+  # - mfsymlinks
+  # - cache=strict
+  # - noserverinfo # recuired to prevent date corruption
