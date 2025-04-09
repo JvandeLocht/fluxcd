@@ -48,7 +48,7 @@ metadata:
   name: csi-smb-sc
 provisioner: smb.csi.k8s.io
 parameters:
-  source: //nixnas/k8s
+  source: //192.168.178.58/k8s
   csi.storage.k8s.io/provisioner-secret-name: csi-smb-secret
   csi.storage.k8s.io/provisioner-secret-namespace: smb-csi
   csi.storage.k8s.io/node-stage-secret-name: csi-smb-secret
