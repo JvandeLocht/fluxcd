@@ -70,6 +70,8 @@ spec:
       owner: immich
       secret:
         name: immich-cnpg
+      postInitTemplateSQL:
+        - CREATE EXTENSION vector
 
   storage:
     size: 10Gi
