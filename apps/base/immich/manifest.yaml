@@ -73,6 +73,7 @@ spec:
         name: immich-cnpg
       postInitTemplateSQL:
         - CREATE EXTENSION vector
+        - CREATE EXTENSION earthdistance CASCADE
 
   storage:
     size: 10Gi
