@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`immich.vandelocht.uk`)
+    - match: Host(`img.vandelocht.uk`)
       kind: Rule
       services:
         - name: immich-server
@@ -17,21 +17,21 @@ spec:
       middlewares:
         - name: svc-immich-headers
   tls:
-    secretName: immich-vandelocht-uk-production-tls
+    secretName: img-vandelocht-uk-production-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: immich-vandelocht-uk
+  name: img-vandelocht-uk
   namespace: immich
 spec:
-  secretName: immich-vandelocht-uk-production-tls
+  secretName: img-vandelocht-uk-production-tls
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "immich.vandelocht.uk"
+  commonName: "img.vandelocht.uk"
   dnsNames:
-    - "immich.vandelocht.uk"
+    - "img.vandelocht.uk"
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
