@@ -12,7 +12,7 @@ spec:
     - match: Host(`immich.vandelocht.uk`)
       kind: Rule
       services:
-        - name: immich-http
+        - name: immich-server
           port: 2283
       middlewares:
         - name: svc-immich-headers
