@@ -53,6 +53,8 @@ parameters:
   csi.storage.k8s.io/provisioner-secret-namespace: smb-csi
   csi.storage.k8s.io/node-stage-secret-name: csi-smb-secret
   csi.storage.k8s.io/node-stage-secret-namespace: smb-csi
+  csi.storage.k8s.io/controller-expand-secret-name: csi-smb-secret
+  csi.storage.k8s.io/controller-expand-secret-namespace: smb-csi
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
