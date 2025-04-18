@@ -46,6 +46,8 @@ spec:
       - "--serversTransport.insecureSkipVerify=true"
       - "--log.level=INFO"
       # - "--entryPoints.metrics.address=:8082"
+      - "--entrypoints.websecure.transport.respondingTimeouts.readTimeout=3600s"
+      - "--entrypoints.websecure.transport.respondingTimeouts.idleTimeout=3600s"
 
     deployment:
       enabled: true
