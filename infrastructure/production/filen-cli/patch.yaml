@@ -7,8 +7,7 @@ spec:
   template:
     spec:
       containers:
-        - image: filen/cli:v0.0.31
+        - image: filen/cli:v0.0.33
           name: filen-cli-webdav
-        - image: filen/cli:v0.0.31
+        - image: filen/cli:v0.0.33
           name: filen-cli-s3
-
