@@ -47,6 +47,8 @@ spec:
         memory: 50Mi
     ingress:
       enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik-external
       tls:
         enabled: true
         secret: "auth-vandelocht-uk-production-tls"
