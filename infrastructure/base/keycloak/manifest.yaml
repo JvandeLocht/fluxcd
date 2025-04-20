@@ -39,6 +39,20 @@ spec:
         namespace: keycloak
       interval: 12h
   values:
+    ingress:
+      enabled: true
+      ingressClassName: traefik-external
+      hostname: keycloak.vandelocht.uk
+      tls: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+    adminIngress:
+      enabled: true
+      ingressClassName: traefik-external
+      hostname: keycloak.lan.vandelocht.uk
+      tls: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
   valuesFrom:
     - kind: Secret
       name: values-keycloak-secret
