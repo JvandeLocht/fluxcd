@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: keycloak
+  namespace: keycloak
+spec:
+  chart:
+    spec:
+      version: "24.5.4"
