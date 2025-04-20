@@ -6,4 +6,4 @@ metadata:
 spec:
   chart:
     spec:
-      version: "24.5.4"
+      version: "24.5.x"
