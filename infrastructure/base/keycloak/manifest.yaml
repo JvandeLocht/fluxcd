@@ -41,7 +41,7 @@ spec:
   values:
     ingress:
       enabled: true
-      ingressClassName: traefik-external
+      ingressClassName: traefik
       hostname: keycloak.vandelocht.uk
       tls: true
       annotations:
@@ -49,7 +49,7 @@ spec:
         kubernetes.io/ingress.class: traefik-external
     adminIngress:
       enabled: true
-      ingressClassName: traefik-external
+      ingressClassName: traefik
       hostname: keycloak.lan.vandelocht.uk
       tls: true
       annotations:
