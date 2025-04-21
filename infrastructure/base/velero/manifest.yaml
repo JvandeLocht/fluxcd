@@ -62,7 +62,7 @@ spec:
         additionalLabels:
           release: kube-prometheus-stack
     configuration:
-      features: EnableCSI
+      # features: EnableCSI
       backupStorageLocation:
         - name: minio
           provider: aws
