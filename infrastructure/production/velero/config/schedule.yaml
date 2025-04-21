@@ -5,7 +5,7 @@ metadata:
   namespace: velero
 spec:
   schedule: 0 */10 * * *
-  skipImmediately: false
+  skipImmediately: true # skips the firsf snapshot after creating of velero schedule.
   template:
     hooks: {}
     includedNamespaces:
