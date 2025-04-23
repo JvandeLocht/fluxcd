@@ -109,7 +109,7 @@ spec:
           secureJsonData:
             token: ${INFLUXDB_TOKEN}
 
-      envFromSecret: influxdb-grafana-secret
+      envFromSecret: grafana-env-secret
       # persistence:
       #   enabled: true
       #   # storageClassName: "longhorn-crypto-per-volume"
