@@ -8,6 +8,7 @@ resources:
   - grafana-secret.yaml
   - prometheus-claim-secret.yaml
   - alertmanager-claim-secret.yaml
+  - grafana-client-secret.yaml
   - grafana-claim-secret.yaml
   - influxdb-grafana-secret.yaml
 configMapGenerator:
