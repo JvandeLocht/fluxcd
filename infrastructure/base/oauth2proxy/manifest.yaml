@@ -41,11 +41,11 @@ spec:
     config:
       existingSecret: oauth2-secret
       configFile: |
-        provider = "oidc"
-        oidc_issuer_url = "http://keycloak.vandelocht.uk/realms/k8s"
+        provider = "keycloak-oidc"
+        oidc_issuer_url = "https://keycloak.vandelocht.uk/realms/k8s"
         email_domains = ["*"]
         upstreams = ["static://200"]
-        redirect_url = "http://oauth2proxy.vandelocht.uk/oauth2/callback"
+        redirect_url = "https://oauth2proxy.vandelocht.uk/oauth2/callback"
         scope = "openid email profile"
         pass_access_token = true
         pass_authorization_header = true
@@ -55,6 +55,7 @@ spec:
         cookie_name = "_oauth2_proxy"
         cookie_refresh = "2m"
         cookie_expire = "24h"
+        code-challenge-method=S256
     extraArgs:
       provider-display-name: Keycloak
       skip-provider-button: true
