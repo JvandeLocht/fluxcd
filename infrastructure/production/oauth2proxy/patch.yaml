@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: oauth2proxy
+  namespace: oauth2proxy
+spec:
+  chart:
+    spec:
+      version: "7.12.9"
