@@ -31,7 +31,7 @@ spec:
       retries: 3
   chart:
     spec:
-      chart: oauth2proxy
+      chart: oauth2-proxy
       sourceRef:
         kind: HelmRepository
         name: oauth2proxy
