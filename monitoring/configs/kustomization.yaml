@@ -17,7 +17,7 @@ configMapGenerator:
       - dashboards/proxmox.json
       - dashboards/metallb.json
       - dashboards/kube-overview.json
-      - dashboards/pvc-usage.json
+      - dashboards/pvc-stats.json
       - dashboards/cert-manager.json
       - dashboards/kube-cluster-default.json
     options:
