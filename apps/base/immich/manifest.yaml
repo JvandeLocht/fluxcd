@@ -77,6 +77,8 @@ spec:
 
   storage:
     size: 15Gi
+  monitoring:
+    enablePodMonitor: true
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
