@@ -55,7 +55,7 @@ spec:
         cookie_name = "_oauth2_proxy"
         cookie_refresh = "2m"
         cookie_expire = "24h"
-        code-challenge-method=S256
+        code_challenge_method = "S256"
     extraArgs:
       provider-display-name: Keycloak
       skip-provider-button: true
