@@ -44,7 +44,7 @@ spec:
         provider = "keycloak-oidc"
         oidc_issuer_url = "https://keycloak.vandelocht.uk/realms/k8s"
         email_domains = ["*"]
-        upstreams = ["static://200"]
+        upstreams = ["static://202"]
         redirect_url = "https://oauth2proxy.vandelocht.uk/oauth2/callback"
         scope = "openid email profile"
         pass_access_token = true
@@ -59,3 +59,5 @@ spec:
     extraArgs:
       provider-display-name: Keycloak
       skip-provider-button: true
+      oidc-extra-audience: "immich account"
+      reverse-proxy: true
