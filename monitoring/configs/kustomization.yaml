@@ -8,15 +8,16 @@ resources:
 configMapGenerator:
   - name: flux-grafana-dashboards
     files:
+      - ceph-cluster.json
       - dashboards/control-plane.json
       - dashboards/cluster.json
       - dashboards/logs.json
       - dashboards/traefik-official-standalone-dashboard-rev9.json
-      - dashboards/longhorn.json
+      # - dashboards/longhorn.json
       - dashboards/velero.json
-      - dashboards/unbound.json
+      # - dashboards/unbound.json
       - dashboards/proxmox.json
-      - dashboards/emqx.json
+      # - dashboards/emqx.json
       - dashboards/metallb.json
       - dashboards/kube-overview.json
       - dashboards/cert-manager.json
