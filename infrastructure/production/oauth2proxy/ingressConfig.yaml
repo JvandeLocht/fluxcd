@@ -12,7 +12,7 @@ spec:
     - match: Host(`oauth2proxy.vandelocht.uk`)
       kind: Rule
       services:
-        - name: oauth2proxy
+        - name: oauth2proxy-oauth2-proxy
           port: 80
       middlewares:
         - name: svc-oauth2proxy-headers
