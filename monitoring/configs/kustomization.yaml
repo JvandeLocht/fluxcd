@@ -8,7 +8,7 @@ resources:
 configMapGenerator:
   - name: flux-grafana-dashboards
     files:
-      - ceph-cluster.json
+      - dashboards/ceph-cluster.json
       - dashboards/control-plane.json
       - dashboards/cluster.json
       - dashboards/logs.json
