@@ -114,3 +114,5 @@ spec:
 
   storage:
     size: 8Gi
+  monitoring:
+    enablePodMonitor: true

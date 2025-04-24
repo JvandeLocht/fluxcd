@@ -113,3 +113,5 @@ spec:
   storage:
     # storageClass: "longhorn-crypto-per-volume"
     size: 10Gi
+  monitoring:
+    enablePodMonitor: true
