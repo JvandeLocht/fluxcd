@@ -40,4 +40,34 @@ spec:
               envFrom:
                 - secretRef:
                     name: immich-face-to-album-env
+            - name: immich-face-to-album-jacky
+              image: janvandelocht/immich-face-to-album:v1.0.5
+              args:
+                - "--key"
+                - "$(IMMICH_API_KEY)"
+                - "--server"
+                - "$(IMMICH_SERVER_URL)"
+                - "--face"
+                - "$(IMMICH_FACE_ID_JACKY)"
+                - "--album"
+                - "$(IMMICH_ALBUM_ID_JACKY)"
+
+              envFrom:
+                - secretRef:
+                    name: immich-face-to-album-env
+            - name: immich-face-to-album-jan
+              image: janvandelocht/immich-face-to-album:v1.0.5
+              args:
+                - "--key"
+                - "$(IMMICH_API_KEY)"
+                - "--server"
+                - "$(IMMICH_SERVER_URL)"
+                - "--face"
+                - "$(IMMICH_FACE_ID_JAN)"
+                - "--album"
+                - "$(IMMICH_ALBUM_ID_JAN)"
+
+              envFrom:
+                - secretRef:
+                    name: immich-face-to-album-env
           restartPolicy: Never
