@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: openwebui
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: openwebui
+  namespace: openwebui
+spec:
+  interval: 5m0s
+  url: https://helm.openwebui.com/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: openwebui
+  namespace: openwebui
+spec:
+  timeout: 15m
+  interval: 30m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: open-webui
+      sourceRef:
+        kind: HelmRepository
+        name: openwebui
+        namespace: openwebui
+      interval: 12h
+  values:
+    tika:
+      enabled: true
+    websocket:
+      enabled: true
+    openaiBaseApiUrl: "https://openrouter.ai/api/v1"
+  valuesFrom:
+    - kind: Secret
+      name: values-openwebui-secret
+      valuesKey: values.yaml

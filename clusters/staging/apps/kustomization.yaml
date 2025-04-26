@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - guacamole.yaml
   - immich.yaml
+  - openwebui.yaml
