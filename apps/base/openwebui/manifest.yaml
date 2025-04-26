@@ -43,13 +43,6 @@ spec:
     websocket:
       enabled: true
     openaiBaseApiUrl: "https://openrouter.ai/api/v1"
-    ingress:
-      enabled: true
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
-        kubernetes.io/ingress.class: traefik-external
-      host: ai.vandelocht.uk
-      tls: true
   valuesFrom:
     - kind: Secret
       name: values-openwebui-secret

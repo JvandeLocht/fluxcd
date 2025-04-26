@@ -1,0 +1,51 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: openwebui
+  namespace: openwebui
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`ai.vandelocht.uk`)
+      kind: Rule
+      services:
+        - name: open-webui
+          port: 80
+      middlewares:
+        - name: svc-openwebui-headers
+  tls:
+    secretName: ai-vandelocht-uk-production-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ai-vandelocht-uk
+  namespace: openwebui
+spec:
+  secretName: ai-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "ai.vandelocht.uk"
+  dnsNames:
+    - "ai.vandelocht.uk"
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: svc-openwebui-headers
+  namespace: openwebui
+spec:
+  headers:
+    browserXssFilter: true
+    contentTypeNosniff: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 15552000
+    customFrameOptionsValue: SAMEORIGIN
+    customRequestHeaders:
+      X-Forwarded-Proto: https
