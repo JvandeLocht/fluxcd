@@ -43,7 +43,3 @@ spec:
     websocket:
       enabled: true
     openaiBaseApiUrl: "https://openrouter.ai/api/v1"
-  valuesFrom:
-    - kind: Secret
-      name: values-openwebui-secret
-      valuesKey: values.yaml
