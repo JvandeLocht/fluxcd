@@ -1,20 +1,30 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "flux": {
-    "fileMatch": ["\\.yaml$"]
+    "fileMatch": [
+      "\\.yaml$"
+    ]
   },
   "kubernetes": {
-    "fileMatch": ["\\.yaml$"]
+    "fileMatch": [
+      "\\.yaml$"
+    ]
   },
   "helm-values": {
-    "fileMatch": ["\\.yaml$"]
+    "fileMatch": [
+      "\\.yaml$"
+    ]
   },
   "customManagers": [
     {
       "description": "Track the Immich image tag in FluxCD HelmRelease",
       "customType": "regex",
-      "fileMatch": ["\\.yaml$"],
+      "fileMatch": [
+        "\\.yaml$"
+      ],
       "matchStrings": [
         "image:\\s*\n(.*\n)*?\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
       ],
@@ -24,16 +34,31 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["renovate/renovate"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "renovate/renovate"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true,
-      "schedule": ["* 0-3 * * 1"]
+      "schedule": [
+        "* 0-3 * * 1"
+      ]
     },
     {
-      "managers": ["regex"],
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
-      "matchPaths": [".*immich.*\\.yaml$"],
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "ghcr.io/immich-app/immich-server"
+      ],
+      "matchFileNames": [
+        ".*immich.*\\.yaml$"
+      ],
       "automerge": false
     }
   ]
