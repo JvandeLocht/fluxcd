@@ -39,12 +39,8 @@ spec:
         namespace: immich
       interval: 12h
   values:
- 
-
-
-
+    image:
       tag: v1.132.3
-
     immich:
       persistence:
         library:
