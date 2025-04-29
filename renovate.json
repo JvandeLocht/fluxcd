@@ -10,6 +10,18 @@
   "helm-values": {
     "fileMatch": ["\\.yaml$"]
   },
+  "customManagers": [
+    {
+      "description": "Track the Immich image tag in FluxCD HelmRelease",
+      "customType": "regex",
+      "fileMatch": ["\\.yaml$"],
+      "matchStrings": [
+        "image:\\s*\n(.*\n)*?\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
+      ],
+      "depNameTemplate": "ghcr.io/immich-app/immich-server",
+      "datasourceTemplate": "docker"
+    }
+  ],
   "packageRules": [
     {
       "matchPackageNames": ["renovate/renovate"],
@@ -18,9 +30,9 @@
       "schedule": ["* 0-3 * * 1"]
     },
     {
-      "managers": ["helm-values"],
+      "managers": ["regex"],
       "matchDatasources": ["docker"],
-      "matchPackageNames": ["ghcr.io/immich-app/immich"],
+      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
       "matchPaths": [".*immich.*\\.yaml$"],
       "automerge": false
     }
