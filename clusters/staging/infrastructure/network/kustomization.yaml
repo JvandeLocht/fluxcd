@@ -6,4 +6,3 @@ resources:
   - cloudflared.yaml
   - metallb.yaml
   - traefik.yaml
-# - unbound.yaml
