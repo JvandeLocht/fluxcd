@@ -70,7 +70,7 @@ spec:
         # log:
         #   LEVEL: Debug
         server:
-          ROOT_URL: https://forgejo.vandelocht.uk
+          ROOT_URL: https://git.vandelocht.uk
         service:
           DISABLE_REGISTRATION: true
           SHOW_REGISTRATION_BUTTON: false
