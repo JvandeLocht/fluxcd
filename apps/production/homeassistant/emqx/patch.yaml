@@ -1,9 +1,0 @@
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: emqx
-  namespace: homeassistant
-spec:
-  chart:
-    spec:
-      version: "5.8.4"
