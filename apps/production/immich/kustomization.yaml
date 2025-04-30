@@ -4,8 +4,3 @@ resources:
   - ../../base/immich
   - ingressConfig.yaml
   - immich-postgresql.yaml
-
-patches:
-  - path: patch.yaml
-    target:
-      kind: HelmRelease
