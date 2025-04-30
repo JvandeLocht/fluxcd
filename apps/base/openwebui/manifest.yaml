@@ -46,3 +46,8 @@ spec:
     openaiBaseApiUrl: "https://openrouter.ai/api/v1"
     persistence:
       size: 10Gi
+    pipelines:
+      enabled: true
+      extraEnvVars:
+        - name: PIPELINES_URLS
+          value: "https://github.com/open-webui/pipelines/blob/main/examples/filters/detoxify_filter_pipeline.py"
