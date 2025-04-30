@@ -4,8 +4,3 @@ resources:
   - ../../base/keycloak
   # - ingressConfig.yaml
   - keycloak-postgresql.yaml
-
-patches:
-  - path: patch.yaml
-    target:
-      kind: HelmRelease
