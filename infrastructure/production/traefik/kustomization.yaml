@@ -3,7 +3,3 @@ kind: Kustomization
 resources:
   - ../../base/traefik
   - secret-traefik-dashboard.yaml
-patches:
-  - path: patch.yaml
-    target:
-      kind: HelmRelease
