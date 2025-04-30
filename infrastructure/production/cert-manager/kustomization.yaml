@@ -3,7 +3,3 @@ kind: Kustomization
 resources:
   - ../../base/cert-manager/
   - secret-cf-token-cert-manager.yaml
-patches:
-  - path: patch.yaml
-    target:
-      kind: HelmRelease
