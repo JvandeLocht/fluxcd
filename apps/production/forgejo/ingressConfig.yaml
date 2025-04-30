@@ -1,16 +1,15 @@
-
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: forgejo
   namespace: forgejo
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`forgejo.vandelocht.uk`)
+    - match: Host(`git.vandelocht.uk`)
       kind: Rule
       services:
         - name: forgejo-http
@@ -18,7 +17,7 @@ spec:
       middlewares:
         - name: svc-forgejo-headers
   tls:
-    secretName: forgejo-vandelocht-uk-production-tls
+    secretName: git-vandelocht-uk-production-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -26,13 +25,13 @@ metadata:
   name: forgejo-vandelocht-uk
   namespace: forgejo
 spec:
-  secretName: forgejo-vandelocht-uk-production-tls
+  secretName: git-vandelocht-uk-production-tls
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "forgejo.vandelocht.uk"
+  commonName: "git.vandelocht.uk"
   dnsNames:
-  - "forgejo.vandelocht.uk"
+    - "git.vandelocht.uk"
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
