@@ -3,7 +3,3 @@ kind: Kustomization
 resources:
   - ../../base/cloudflare-ddns
   - secret-cf-token-ddns.yaml
-patches:
-  - path: patch.yaml
-    target:
-      kind: Deployment

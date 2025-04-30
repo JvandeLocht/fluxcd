@@ -39,7 +39,7 @@ spec:
               value: vandelocht.uk
             - name: PROXIED
               value: "true"
-          # image: favonia/cloudflare-ddns:1.10.1
+          image: favonia/cloudflare-ddns:1.15.1
           name: cloudflare-ddns
           resources:
             requests:
@@ -57,5 +57,3 @@ spec:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
       restartPolicy: Always
-
-
