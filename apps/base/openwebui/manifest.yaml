@@ -44,3 +44,5 @@ spec:
     websocket:
       enabled: true
     openaiBaseApiUrl: "https://openrouter.ai/api/v1"
+    persistence:
+      size: 10Gi
