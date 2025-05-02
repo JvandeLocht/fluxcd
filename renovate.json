@@ -30,6 +30,11 @@
       "schedule": ["* 0-3 * * 1"]
     },
     {
+      "matchPackageNames": ["forgejo"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
