@@ -35,6 +35,11 @@
       "automerge": true
     },
     {
+      "matchPackageNames": ["bitnami/keycloak"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
