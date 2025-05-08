@@ -16,6 +16,7 @@ spec:
           port: 80
       middlewares:
         - name: svc-openwebui-headers
+        - name: openwebui-compress
   tls:
     secretName: ai-vandelocht-uk-production-tls
 ---
@@ -49,3 +50,11 @@ spec:
     customFrameOptionsValue: SAMEORIGIN
     customRequestHeaders:
       X-Forwarded-Proto: https
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: openwebui-compress
+  namespace: openwebui
+spec:
+  compress: {} # Enables default compression (e.g., gzip)
