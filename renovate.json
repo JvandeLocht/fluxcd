@@ -35,7 +35,9 @@
       "automerge": true
     },
     {
-      "matchPackageNames": ["bitnami/keycloak"],
+      "description": "Automerge minor and patch updates for the Bitnami Keycloak Helm chart",
+      "matchPackageNames": ["keycloak"],
+      "matchDatasources": ["helm"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     },
