@@ -1,20 +1,30 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "flux": {
-    "fileMatch": ["\\.yaml$"]
+    "managerFilePatterns": [
+      "/\\.yaml$/"
+    ]
   },
   "kubernetes": {
-    "fileMatch": ["\\.yaml$"]
+    "managerFilePatterns": [
+      "/\\.yaml$/"
+    ]
   },
   "helm-values": {
-    "fileMatch": ["\\.yaml$"]
+    "managerFilePatterns": [
+      "/\\.yaml$/"
+    ]
   },
   "customManagers": [
     {
       "description": "Track the Immich image tag in FluxCD HelmRelease",
       "customType": "regex",
-      "fileMatch": ["\\.yaml$"],
+      "managerFilePatterns": [
+        "/\\.yaml$/"
+      ],
       "matchStrings": [
         "image:\\s*\n(.*\n)*?\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
       ],
@@ -24,36 +34,74 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["renovate/renovate"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "renovate/renovate"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true,
-      "schedule": ["* 0-3 * * 1"]
+      "schedule": [
+        "* 0-3 * * 1"
+      ]
     },
     {
-      "matchPackageNames": ["forgejo"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "forgejo"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge minor and patch updates for the Bitnami Keycloak Helm chart",
-      "matchPackageNames": ["keycloak"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "keycloak"
+      ],
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
-      "matchManagers": ["custom.regex"],
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
-      "matchFileNames": [".*immich.*\\.yaml$"],
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "ghcr.io/immich-app/immich-server"
+      ],
+      "matchFileNames": [
+        ".*immich.*\\.yaml$"
+      ],
       "automerge": false
     },
     {
-      "matchManagers": ["custom.regex"],
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
-      "matchFileNames": [".*immich.*\\.yaml$"],
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "matchPackageNames": [
+        "ghcr.io/immich-app/immich-server"
+      ],
+      "matchFileNames": [
+        ".*immich.*\\.yaml$"
+      ],
       "automerge": true
     }
   ]
