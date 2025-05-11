@@ -48,6 +48,14 @@ spec:
           existingClaim: immich-pvc
     redis:
       enabled: true
+      master:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 512Mi
+          limits:
+            cpu: 150m
+            memory: 1024Mi
     env:
       DB_HOSTNAME: immich-postgres-cluster-rw
       DB_USERNAME: immich
