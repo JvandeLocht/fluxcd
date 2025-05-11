@@ -45,7 +45,7 @@ spec:
       enabled: true
     openaiBaseApiUrl: "https://openrouter.ai/api/v1"
     persistence:
-      size: 10Gi
+      size: 15Gi
     pipelines:
       enabled: true
       extraEnvVars:
