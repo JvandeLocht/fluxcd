@@ -4,4 +4,5 @@ resources:
   - immich.yaml
   - openwebui.yaml
   - searxng.yaml
+  - anything-llm.yaml
   # - forgejo.yaml
