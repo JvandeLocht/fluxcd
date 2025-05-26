@@ -65,13 +65,6 @@
     {
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["docker"],
-      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
-      "matchFileNames": [".*immich.*\\.yaml$"],
-      "automerge": false
-    },
-    {
-      "matchManagers": ["custom.regex"],
-      "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
       "matchFileNames": [".*immich.*\\.yaml$"],
