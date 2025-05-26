@@ -1,0 +1,51 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: anything-llm
+  namespace: anything-llm
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`chat.vandelocht.uk`)
+      kind: Rule
+      services:
+        - name: anything-llm
+          port: 3001
+      middlewares:
+        - name: svc-anything-llm-headers
+  tls:
+    secretName: chat-vandelocht-uk-production-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: chat-vandelocht-uk
+  namespace: anything-llm
+spec:
+  secretName: chat-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "chat.vandelocht.uk"
+  dnsNames:
+    - "chat.vandelocht.uk"
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: svc-anything-llm-headers
+  namespace: anything-llm
+spec:
+  headers:
+    browserXssFilter: true
+    contentTypeNosniff: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 15552000
+    customFrameOptionsValue: SAMEORIGIN
+    customRequestHeaders:
+      X-Forwarded-Proto: https
