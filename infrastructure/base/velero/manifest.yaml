@@ -68,11 +68,11 @@ spec:
         - name: minio
           provider: aws
           bucket: velero
-          default: "true"
+          default: true
           config:
             s3Url: http://192.168.178.58:9000
             region: minio
-            s3ForcePathStyle: "true"
+            s3ForcePathStyle: true
           credential:
             # name of the secret used by this backupStorageLocation.
             name: velero-secret
