@@ -12,7 +12,7 @@ spec:
         spec:
           containers:
             - name: immich-face-to-album-theo
-              image: janvandelocht/immich-face-to-album:v1.0.5
+              image: janvandelocht/immich-face-to-album:v1.0.6
               args:
                 - "--key"
                 - "$(IMMICH_API_KEY)"
@@ -26,7 +26,7 @@ spec:
                 - secretRef:
                     name: immich-face-to-album-env
             - name: immich-face-to-album-frida
-              image: janvandelocht/immich-face-to-album:v1.0.5
+              image: janvandelocht/immich-face-to-album:v1.0.6
               args:
                 - "--key"
                 - "$(IMMICH_API_KEY)"
@@ -41,7 +41,7 @@ spec:
                 - secretRef:
                     name: immich-face-to-album-env
             - name: immich-face-to-album-jacky
-              image: janvandelocht/immich-face-to-album:v1.0.5
+              image: janvandelocht/immich-face-to-album:v1.0.6
               args:
                 - "--key"
                 - "$(IMMICH_API_KEY)"
@@ -56,7 +56,7 @@ spec:
                 - secretRef:
                     name: immich-face-to-album-env
             - name: immich-face-to-album-jan
-              image: janvandelocht/immich-face-to-album:v1.0.5
+              image: janvandelocht/immich-face-to-album:v1.0.6
               args:
                 - "--key"
                 - "$(IMMICH_API_KEY)"
