@@ -25,11 +25,11 @@ spec:
       - name: filen-cli-webdav
         resources:
             requests:
-              memory: "480Mi"
-              cpu: "250m"
+              memory: "780Mi"
+              cpu: "550m"
             limits:
-              memory: "500Mi"
-              cpu: "500m"
+              memory: "1000Mi"
+              cpu: "1000m"
         env:
           - name: W_USER
             valueFrom:
