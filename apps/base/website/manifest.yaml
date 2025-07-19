@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: website
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resume-site
+  namespace: website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resume-site
+  template:
+    metadata:
+      labels:
+        app: resume-site
+    spec:
+      containers:
+        - name: resume
+          image: ghcr.io/jvandelocht/website:latest # Will be updated by Flux
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "10m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: resume-site
+  namespace: website
+spec:
+  selector:
+    app: resume-site
+  ports:
+    - port: 80
+      targetPort: 80
