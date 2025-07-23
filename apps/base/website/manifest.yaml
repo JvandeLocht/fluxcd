@@ -6,21 +6,87 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: resume-site
+  name: website-frontend
   namespace: website
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: resume-site
+      app: website-frontend
   template:
     metadata:
       labels:
-        app: resume-site
+        app: website-frontend
     spec:
       containers:
-        - name: resume
-          image: ghcr.io/jvandelocht/website:latest # Will be updated by Flux
+        - name: frontend
+          image: ghcr.io/jvandelocht/website-frontend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "10m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-backend
+  namespace: website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website-backend
+  template:
+    metadata:
+      labels:
+        app: website-backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/jvandelocht/website-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+            - name: JAVA_OPTS
+              value: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-nginx
+  namespace: website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website-nginx
+  template:
+    metadata:
+      labels:
+        app: website-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: ghcr.io/jvandelocht/website-nginx:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -35,11 +101,35 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: resume-site
+  name: website-frontend
   namespace: website
 spec:
   selector:
-    app: resume-site
+    app: website-frontend
+  ports:
+    - port: 3000
+      targetPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: website-backend
+  namespace: website
+spec:
+  selector:
+    app: website-backend
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: website-nginx
+  namespace: website
+spec:
+  selector:
+    app: website-nginx
   ports:
     - port: 80
       targetPort: 80

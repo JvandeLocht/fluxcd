@@ -9,10 +9,18 @@ spec:
   entryPoints:
     - websecure
   routes:
+    - match: Host(`vandelocht.uk`) && PathPrefix(`/calc`)
+      kind: Rule
+      services:
+        - name: website-frontend
+          port: 3000
+      middlewares:
+        - name: svc-website-headers
+        - name: website-calc-stripprefix
     - match: Host(`vandelocht.uk`)
       kind: Rule
       services:
-        - name: resume-site
+        - name: website-nginx
           port: 80
       middlewares:
         - name: svc-website-headers
@@ -49,3 +57,13 @@ spec:
     customFrameOptionsValue: SAMEORIGIN
     customRequestHeaders:
       X-Forwarded-Proto: https
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: website-calc-stripprefix
+  namespace: website
+spec:
+  stripPrefix:
+    prefixes:
+      - /calc
