@@ -14,8 +14,8 @@ spec:
       services:
         - name: website-frontend
           port: 3000
-      middlewares:
-        - name: svc-website-headers
+      # middlewares:
+        # - name: svc-website-headers
         # - name: website-calc-stripprefix
     - match: Host(`vandelocht.uk`)
       kind: Rule
