@@ -6,38 +6,6 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: website-frontend
-  namespace: website
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: website-frontend
-  template:
-    metadata:
-      labels:
-        app: website-frontend
-    spec:
-      containers:
-        - name: frontend
-          image: ghcr.io/jvandelocht/website-frontend:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 3000
-          env:
-            - name: NODE_ENV
-              value: "production"
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "10m"
-            limits:
-              memory: "256Mi"
-              cpu: "200m"
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: website-backend
   namespace: website
 spec:
@@ -97,18 +65,6 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "100m"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: website-frontend
-  namespace: website
-spec:
-  selector:
-    app: website-frontend
-  ports:
-    - port: 3000
-      targetPort: 3000
 ---
 apiVersion: v1
 kind: Service
