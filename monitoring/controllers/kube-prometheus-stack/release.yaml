@@ -118,7 +118,6 @@ spec:
           jsonData:
             version: Flux
             organization: HomeLab
-            defaultBucket: Proxmox
           secureJsonData:
             token: ${INFLUXDB_TOKEN}
 
