@@ -20,6 +20,7 @@ configMapGenerator:
       - dashboards/pvc-stats.json
       - dashboards/cert-manager.json
       - dashboards/kube-cluster-default.json
+      - dashboards/telegraf-system.json
     options:
       labels:
         grafana_dashboard: "1"
