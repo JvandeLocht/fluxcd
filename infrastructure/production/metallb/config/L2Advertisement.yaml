@@ -5,9 +5,6 @@ metadata:
   namespace: metallb-system
 spec:
   ipAddressPools:
-  - traefik
-  - unbound
-  - hibiscus-server-mysql
-  - filen-cli 
-  - prometheus-push
-
+    - traefik
+    - filen-cli
+    - prometheus-push
