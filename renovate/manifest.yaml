@@ -23,13 +23,13 @@ spec:
               args:
                 - JvandeLocht/fluxcd
               # Environment Variables
-              env:
-                - name: LOG_LEVEL
-                  value: debug
-                - name: RENOVATE_FORCE # Force reset
-                  value: '{"schedule": ["at any time"]}'
-                - name: RENOVATE_RECREATE_CLOSED # Recreate closed PRs
-                  value: "true"
+              # env:
+              #   - name: LOG_LEVEL
+              #     value: debug
+              #   - name: RENOVATE_FORCE # Force reset
+              #     value: '{"schedule": ["at any time"]}'
+              #   - name: RENOVATE_RECREATE_CLOSED # Recreate closed PRs
+              #     value: "true"
               envFrom:
                 - secretRef:
                     name: renovate-env
