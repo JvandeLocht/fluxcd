@@ -61,14 +61,6 @@
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
-    },
-    {
-      "matchManagers": ["custom.regex"],
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
-      "matchFileNames": [".*immich.*\\.yaml$"],
-      "automerge": true
     }
   ]
 }
