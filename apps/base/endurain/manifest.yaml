@@ -23,14 +23,8 @@ spec:
         io.kompose.service: endurain
     spec:
       containers:
-        - envFrom:
-            - configMapRef:
-                name: env
-        - envFrom:
-            - secretRef:
-                name: endurain-secrets
+        - name: endurain-app
           image: ghcr.io/joaovitoriasilva/endurain:v0.13.2
-          name: endurain-app
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -39,7 +33,11 @@ spec:
               name: endurain-data-claim
             - mountPath: /app/backend/logs
               name: endurain-logs-claim
-      restartPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: env
+            - secretRef:
+                name: endurain-secrets
       volumes:
         - name: endurain-data-claim
           persistentVolumeClaim:
