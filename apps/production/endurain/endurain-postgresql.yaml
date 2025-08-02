@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: endurain-cnpg
+    namespace: endurain
+stringData:
+    username: ENC[AES256_GCM,data:0KMjCNJtP1g=,iv:g/p/z6p/ZR2kBZQIqw3wuE9oBeejzQngILN9uJ5Utek=,tag:3n8pcziTy8/YBY7tvXSpmQ==,type:str]
+    password: ENC[AES256_GCM,data:qXWqk2HOtTFhxzBWXpsTeUnikpuK7ZOXROWPfp/tfMwbksICa2VnhMEu,iv:jZBVC1iWEfhNqDs1oLRWLzhA+d7kuKUV/fMgIo553Og=,tag:YlyfrqHWoQtiLg3JrmN5jQ==,type:str]
+sops:
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBScVNJYksrWmx2UUp6V0Qx
+            Y3p2WitOWXhqNkVGYXhUY3MvL25XdzZvbEZVClpLeFE3SFlMVERQd2FLcHlRYVlT
+            b3hwNHIxbjlZTlpqRTFKTHg1TVZFdVEKLS0tIEVjQ0k1TXN6RytHWmhZVWJHQ0do
+            ejlZeTdRU3I2WEhaMTB1SWo2RXhOazAKSs2hErLigQqJfmFrmlPARCfM+pKWhkNl
+            6Lm+vdYguEkaWAZ89adKvtioZBPJfqxWRtqvoUtNV5ZJsxOdWPeu6A==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-08-02T21:49:58Z"
+    mac: ENC[AES256_GCM,data:hJ9JO219TorqqhWuDA18hwNXMj4Rsia5RlvtBjeCTOEhO3X1Qrvpt1sMHcU217TYphm08j8aQIDex4AMWx370HX5B9SmzM7+flpwddkDFMML/kWpX4fsTWGkOoEFzfBW7K7NsUUOZcGwHGsj2zOmxRTOjTu1FANoZtM7AA092xY=,iv:SScaxuM/1asXhMOTIprv5cA2L6fYIT26H3a6efhMaDs=,tag:+BIp6bNHUbML8BbC3n9InQ==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
