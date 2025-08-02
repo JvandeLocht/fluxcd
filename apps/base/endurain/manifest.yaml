@@ -3,6 +3,15 @@ kind: Namespace
 metadata:
   name: endurain
 ---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: endurain-frontend-env
+  namespace: endurain
+data:
+  env.js: |
+    window.env = { ENDURAIN_HOST: "https://train.vandelocht.uk" };
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -36,6 +45,10 @@ spec:
               name: endurain-data-claim
             - mountPath: /app/backend/logs
               name: endurain-logs-claim
+            - mountPath: /app/frontend/dist/env.js
+              name: frontend-env
+              subPath: env.js
+              readOnly: true
           envFrom:
             - configMapRef:
                 name: env
@@ -48,6 +61,9 @@ spec:
         - name: endurain-logs-claim
           persistentVolumeClaim:
             claimName: endurain-logs-claim
+        - name: frontend-env
+          configMap:
+            name: endurain-frontend-env
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
