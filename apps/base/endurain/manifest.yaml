@@ -3,15 +3,6 @@ kind: Namespace
 metadata:
   name: endurain
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: endurain-frontend-env
-  namespace: endurain
-data:
-  env.js: |
-    window.env = { ENDURAIN_HOST: "https://train.vandelocht.uk" };
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
