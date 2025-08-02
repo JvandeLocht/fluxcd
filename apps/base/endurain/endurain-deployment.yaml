@@ -1,0 +1,67 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: endurain
+  namespace: endurain
+  labels:
+    app.kubernetes.io/name: endurain
+    app.kubernetes.io/part-of: endurain-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: endurain
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: endurain
+    spec:
+      containers:
+        - name: endurain
+          image: ghcr.io/joaovitoriasilva/endurain:v0.13.2
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: endurain-config
+            - secretRef:
+                name: endurain-secrets
+          volumeMounts:
+            - name: data
+              mountPath: /app/backend/data
+            - name: logs
+              mountPath: /app/backend/logs
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: endurain-data-pvc
+        - name: logs
+          persistentVolumeClaim:
+            claimName: endurain-logs-pvc
+      restartPolicy: Always

@@ -1,0 +1,42 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgresql
+  namespace: endurain
+  labels:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/part-of: endurain-platform
+spec:
+  instances: 3
+  primaryUpdateStrategy: unsupervised
+
+  postgresql:
+    parameters:
+      max_connections: "200"
+      shared_buffers: "256MB"
+      effective_cache_size: "1GB"
+      work_mem: "4MB"
+      maintenance_work_mem: "64MB"
+
+  bootstrap:
+    initdb:
+      database: endurain
+      owner: endurain
+      secret:
+        name: postgresql-credentials
+
+  storage:
+    size: 10Gi
+    storageClass: csi-rbd-sc
+
+  monitoring:
+    enablePodMonitor: true
+
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
