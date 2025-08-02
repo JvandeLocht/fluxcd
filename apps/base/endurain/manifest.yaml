@@ -27,7 +27,7 @@ spec:
             - configMapRef:
                 name: env
         - envFrom:
-            - secretKeyRef:
+            - secretRef:
                 name: endurain-secrets
           image: ghcr.io/joaovitoriasilva/endurain:v0.13.2
           name: endurain-app
