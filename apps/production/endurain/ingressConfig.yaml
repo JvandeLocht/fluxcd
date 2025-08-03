@@ -1,43 +1,43 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: website
-  namespace: website
+  name: endurain
+  namespace: endurain
   annotations:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`vandelocht.uk`)
+    - match: Host(`train.vandelocht.uk`)
       kind: Rule
       services:
-        - name: website-nginx
-          port: 80
+        - name: endurain
+          port: 8080
       middlewares:
-        - name: svc-website-headers
+        - name: svc-endurain-headers
   tls:
-    secretName: website-vandelocht-uk-production-tls
+    secretName: endurain-train-vandelocht-uk-production-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: website-vandelocht-uk
-  namespace: website
+  name: endurain-train-vandelocht-uk
+  namespace: endurain
 spec:
-  secretName: website-vandelocht-uk-production-tls
+  secretName: endurain-train-vandelocht-uk-production-tls
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "vandelocht.uk"
+  commonName: "train.vandelocht.uk"
   dnsNames:
-    - "vandelocht.uk"
+    - "train.vandelocht.uk"
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: svc-website-headers
-  namespace: website
+  name: svc-endurain-headers
+  namespace: endurain
 spec:
   headers:
     browserXssFilter: true

@@ -4,4 +4,4 @@ resources:
   - ../../base/endurain
   - endurain-app.yaml
   - endurain-postgresql.yaml
-  # - ingressConfig.yaml
+  - ingressConfig.yaml
