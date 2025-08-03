@@ -22,7 +22,32 @@ spec:
       labels:
         io.kompose.service: endurain
     spec:
-      # Let the container handle its own user management with gosu
+      # fsGroup ensures mounted volumes are writable by the group
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+      initContainers:
+        # Init container to ensure directories exist with correct permissions
+        - name: init-permissions
+          image: busybox
+          command: ['sh', '-c']
+          args:
+            - |
+              echo "Setting up directories..."
+              # Create subdirectories if needed
+              mkdir -p /app/backend/data
+              mkdir -p /app/backend/logs
+              # Set ownership to user/group 1000
+              chown -R 1000:1000 /app/backend/data
+              chown -R 1000:1000 /app/backend/logs
+              echo "Directory permissions set"
+          volumeMounts:
+            - mountPath: /app/backend/data
+              name: endurain-data-claim
+            - mountPath: /app/backend/logs
+              name: endurain-logs-claim
+          securityContext:
+            runAsUser: 0  # Run as root to set permissions
       containers:
         - name: endurain-app
           image: ghcr.io/joaovitoriasilva/endurain:v0.13.2
@@ -39,6 +64,12 @@ spec:
                 name: env
             - secretRef:
                 name: endurain-secrets
+          env:
+            # Explicitly set UID and GID to match what we're using
+            - name: UID
+              value: "1000"
+            - name: GID
+              value: "1000"
       volumes:
         - name: endurain-data-claim
           persistentVolumeClaim:
