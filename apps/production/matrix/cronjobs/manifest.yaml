@@ -1,0 +1,73 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: immich-face-to-album
+  namespace: immich
+spec:
+  schedule: "@hourly"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: immich-face-to-album-theo
+              image: janvandelocht/immich-face-to-album:v1.0.6
+              args:
+                - "--key"
+                - "$(IMMICH_API_KEY)"
+                - "--server"
+                - "$(IMMICH_SERVER_URL)"
+                - "--face"
+                - "$(IMMICH_FACE_ID_THEO)"
+                - "--album"
+                - "$(IMMICH_ALBUM_ID_THEO)"
+              envFrom:
+                - secretRef:
+                    name: immich-face-to-album-env
+            - name: immich-face-to-album-frida
+              image: janvandelocht/immich-face-to-album:v1.0.6
+              args:
+                - "--key"
+                - "$(IMMICH_API_KEY)"
+                - "--server"
+                - "$(IMMICH_SERVER_URL)"
+                - "--face"
+                - "$(IMMICH_FACE_ID_FRIDA)"
+                - "--album"
+                - "$(IMMICH_ALBUM_ID_FRIDA)"
+
+              envFrom:
+                - secretRef:
+                    name: immich-face-to-album-env
+            - name: immich-face-to-album-jacky
+              image: janvandelocht/immich-face-to-album:v1.0.6
+              args:
+                - "--key"
+                - "$(IMMICH_API_KEY)"
+                - "--server"
+                - "$(IMMICH_SERVER_URL)"
+                - "--face"
+                - "$(IMMICH_FACE_ID_JACKY)"
+                - "--album"
+                - "$(IMMICH_ALBUM_ID_JACKY)"
+
+              envFrom:
+                - secretRef:
+                    name: immich-face-to-album-env
+            - name: immich-face-to-album-jan
+              image: janvandelocht/immich-face-to-album:v1.0.6
+              args:
+                - "--key"
+                - "$(IMMICH_API_KEY)"
+                - "--server"
+                - "$(IMMICH_SERVER_URL)"
+                - "--face"
+                - "$(IMMICH_FACE_ID_JAN)"
+                - "--album"
+                - "$(IMMICH_ALBUM_ID_JAN)"
+
+              envFrom:
+                - secretRef:
+                    name: immich-face-to-album-env
+          restartPolicy: Never

@@ -1,0 +1,86 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: immich
+  namespace: immich
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`img.vandelocht.uk`)
+      kind: Rule
+      services:
+        - name: immich-server
+          port: 2283
+      middlewares:
+        - name: svc-immich-headers
+  tls:
+    secretName: img-vandelocht-uk-production-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: img-vandelocht-uk
+  namespace: immich
+spec:
+  secretName: img-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "img.vandelocht.uk"
+  dnsNames:
+    - "img.vandelocht.uk"
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: svc-immich-headers
+  namespace: immich
+spec:
+  headers:
+    browserXssFilter: true
+    contentTypeNosniff: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 15552000
+    customFrameOptionsValue: SAMEORIGIN
+    customRequestHeaders:
+      X-Forwarded-Proto: https
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: immich-local
+  namespace: immich
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`img.lan.vandelocht.uk`)
+      kind: Rule
+      services:
+        - name: immich-server
+          port: 2283
+      middlewares:
+        - name: svc-immich-headers
+  tls:
+    secretName: img-lan-vandelocht-uk-production-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: img-lan-vandelocht-uk
+  namespace: immich
+spec:
+  secretName: img-lan-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "img.lan.vandelocht.uk"
+  dnsNames:
+    - "img.lan.vandelocht.uk"
