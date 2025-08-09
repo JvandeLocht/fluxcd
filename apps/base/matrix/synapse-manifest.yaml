@@ -57,7 +57,7 @@ spec:
         enabled: true
         ## Or use existing secret with "redis-password" key
         ## instead of static password
-        existingSecret: redis-secret
+        existingSecret: matrix-redis
     ingress:
       traefikPaths: true
       tls:
