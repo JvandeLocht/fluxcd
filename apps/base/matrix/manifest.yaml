@@ -51,6 +51,13 @@ spec:
       username: matrix
       existingSecret: matrix-cnpg
       existingSecretPasswordKey: password
+    redis:
+      enabled: true
+      auth:
+        enabled: true
+        ## Or use existing secret with "redis-password" key
+        ## instead of static password
+        existingSecret: redis-secret
     ingress:
       traefikPaths: true
       tls:

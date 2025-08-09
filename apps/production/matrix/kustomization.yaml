@@ -5,4 +5,5 @@ resources:
   - ingressConfig.yaml
   - matrix-postgresql.yaml
   - matrix-minio.yaml
+  - matrix-redis.yaml
   - matrix-registration.yaml
