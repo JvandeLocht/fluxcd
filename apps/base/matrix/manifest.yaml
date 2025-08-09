@@ -60,10 +60,10 @@ spec:
       secretKeys:
         accessKey: "S3_ACCESS_KEY"
         secretKey: "S3_SECRET_KEY"
-      cronjob:
-        enabled: true
-        schedule: "0 0 * * *"
-        file_age: 2m
+      # cronjob:
+      #   enabled: true
+      #   schedule: "0 0 * * *"
+      #   file_age: 2m
 
     postgresql:
       enabled: false
