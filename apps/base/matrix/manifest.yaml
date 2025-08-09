@@ -104,7 +104,7 @@ spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:17
   bootstrap:
     initdb:
-      database: matrix
+      database: synapse
       owner: matrix
       secret:
         name: matrix-cnpg
