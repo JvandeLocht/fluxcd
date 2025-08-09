@@ -53,9 +53,11 @@ spec:
       existingSecretPasswordKey: password
     ingress:
       traefikPaths: true
-
-
-
+    tls:
+      - secretName: matrix-vandelocht-uk-production-tls
+        hosts:
+          - vandelocht.uk
+          - matrix.vandelocht.uk
 
     ####
     # matrix:
@@ -77,19 +79,19 @@ spec:
     #   secretKeys:
     #     accessKey: "S3_ACCESS_KEY"
     #     secretKey: "S3_SECRET_KEY"
-      # cronjob:
-      #   enabled: true
-      #   schedule: "0 0 * * *"
-      #   file_age: 2m
+    # cronjob:
+    #   enabled: true
+    #   schedule: "0 0 * * *"
+    #   file_age: 2m
 
     # postgresql:
     #   enabled: false
     # externalDatabase:
     #   enabled: true
     #   existingSecret: matrix-cnpg
-      # if externalDatabase.existingSecret is provided, the following are ignored
-      # password, username, hostname, database
-      # secretKeys to grab from existingSecret
+    # if externalDatabase.existingSecret is provided, the following are ignored
+    # password, username, hostname, database
+    # secretKeys to grab from existingSecret
 
     # element:
     #   enabled: false
