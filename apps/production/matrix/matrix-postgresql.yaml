@@ -1,23 +1,30 @@
 apiVersion: v1
 kind: Secret
 metadata:
-    name: immich-cnpg
-    namespace: immich
+    name: matrix-cnpg
+    namespace: matrix
 stringData:
-    username: ENC[AES256_GCM,data:p4XlMyaq,iv:YvEg2sjQKjsJrAyE/8iMtlR8ejiDhoIbqwUuvGQHNCk=,tag:3LZFb3uBn+vmRbaK3zQwKw==,type:str]
-    password: ENC[AES256_GCM,data:3UIirAD4Xb/nT/WJTnpvpVCJ1MubRdQsU8C55DF7pmrBlVnaMUEx,iv:rT8gkGbNRU21gI11tSBbzxXtxHiys1ITiM0ik6IBxLE=,tag:zOd05Rt3xIOILHZ+rHbAcQ==,type:str]
+    username: ENC[AES256_GCM,data:UypWQqwy,iv:qyxAOsLGbxkWPTEZ9udz0WcGhPjDsAym8/V75/p+Ww4=,tag:UgB6JUsI1K/hF7ZTqQaU3w==,type:str]
+    password: ENC[AES256_GCM,data:A6ItvWHKl51v+uYmZQIPOXH6dOBvu2FYtg3sPr7aVcf8Lg==,iv:5h1+0jTBAy3oIqAWoJTnPFQV4dpECfyo3S8BzWc/Qao=,tag:BpiPbFteK/967898998vDQ==,type:str]
+    hostname: ENC[AES256_GCM,data:fTCXMtUXy9jPTq5UG5kmgr/ItwPMuz0kwjI=,iv:JUnseZjFUGDQq4+JZ0HrlOpUGFLGLPZyYSDO4E40s4w=,tag:8IqOk7h94LEHAlmsmQNgow==,type:str]
+    database: ENC[AES256_GCM,data:EiV3uypt,iv:AUvWf3I7NWMzLK/o5o7PHP+8hbYj+W63AvYbEVhwflo=,tag:fAsDxmoHAqnAxv9WCmTimw==,type:str]
 sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
     age:
         - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBeFlCY2VRdm1pQnN3K0pU
-            VnVFY3QyQjc1WkJSbitBSWlWZU5vSlFBVlNRCm5NbzZWSWRmbWZIa1ZoU3V5YU9w
-            cURmcDdkTkk3RW5pb1ZqV0p1ejZXR3MKLS0tIDhtRzkwMG5QdlVQN1h3eVRzWXU2
-            aHpodlpmNzRHaUt2V0MwSlRBb09KWVkK1vAELszZw+N4x4hv1tFLi4kBs6jSBjO1
-            2cHZbLhaAhEJrQLmp55f/c3qhErkikQGbCTY4yzqoicFx3vdDLO8yw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB2R25pZU1PazBDMVZwMzRK
+            TGFyejgzUkpnOFRobDN4ejJkbWZoWk9kMUZzClZ4MnBZUXRlZStTWTc4c1hzU1ps
+            Ymx5VzBFRy9RNjQ0V0hvMnA4NGRzZFkKLS0tIHJjbERGZVlXd2lxZGVIa0NyRlhN
+            bnY3M0F2WFJjajhSNWM5WHYycE9vRFkKvpvZX5kg4l9btI9U8TXb9+MvvzUez7Tb
+            BtaK+C6IvuE/Cv5ftsAIMHCPYhXkJKGfA3/xpe3EHoAG+6wa4eG9cg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-04-09T09:10:35Z"
-    mac: ENC[AES256_GCM,data:p85pGQ3WxPSRLM1Kp89t5S7zMQaj9Bb5gbdqNCsbjiNzZwalmF7e5OkizvBnegcwrTghGu3XOz6CXOSFC/9PIDtuuL+LLkuovV5wo1YfR2zbtwX6bDd4gfLmdRE8QgXnQbxoCJCOth+IHTYaRnhtHwcj/yQBqiw3ddU22hqxA1Y=,iv:/cRCvrlB6zoBw0lq4d6blBNuplGP8LWVqIKdVTFMtBw=,tag:7ujIONl00k41VP/v5rw8fg==,type:str]
+    lastmodified: "2025-08-09T03:01:56Z"
+    mac: ENC[AES256_GCM,data:0BcN18LmWkH73YxRZZ40db/RMiwp7Lvsp/CzitMCpxqPZEONq/KuS8j/kd8m6JQv1BMwGQEeUm4Bo8vNUunq9nCt/3o6833MBwM6L7V8U+kqIxcTwf+3ORpJF0jTRyvbC9uRrFFSinH1xjWuYZOI2yMWy4YkA5zf3hhEHS1Hgzg=,iv:EV9irXkvvP9njZRlvoOzRvgnX6iScOlCSXfCW1koz0s=,tag:mm44178oMCLAmamx6tEzwQ==,type:str]
+    pgp: []
     encrypted_regex: ^(data|stringData)$
-    version: 3.10.1
+    version: 3.9.4

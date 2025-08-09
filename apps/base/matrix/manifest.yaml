@@ -47,10 +47,8 @@ spec:
         enabled: true
       registration:
         enabled: false
-        # -- if set, pull sharedSecret from an existing k8s secret
-          existingSecret: ""
-          # -- key in existing k8s secret for registration shared secret
-          secretKey: "registrationSharedSecret"
+        existingSecret: "matrix-sharedSecret"
+        secretKey: "registrationSharedSecret"
       serve_server_wellknown: true
 
     s3:
@@ -58,7 +56,7 @@ spec:
       enabled: true
       endpoint: "http://192.168.178.58:9000"
       bucket: "matrix-media"
-      existingSecret: "minio-credentials"
+      existingSecret: "matrix-minio"
       secretKeys:
         accessKey: "S3_ACCESS_KEY"
         secretKey: "S3_SECRET_KEY"
@@ -69,7 +67,7 @@ spec:
       enabled: false
     externalDatabase:
       enabled: true
-      existingSecret: ""
+      existingSecret: matrix-cnpg
       # if externalDatabase.existingSecret is provided, the following are ignored
       # password, username, hostname, database
       # secretKeys to grab from existingSecret
