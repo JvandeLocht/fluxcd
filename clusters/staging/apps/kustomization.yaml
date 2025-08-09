@@ -4,6 +4,6 @@ resources:
   - immich.yaml
   - matrix.yaml
   - endurain.yaml
-  - openwebui.yaml
-  - searxng.yaml
+  # - openwebui.yaml
+  # - searxng.yaml
   - website.yaml
