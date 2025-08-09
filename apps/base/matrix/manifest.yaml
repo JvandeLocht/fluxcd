@@ -53,11 +53,11 @@ spec:
       existingSecretPasswordKey: password
     ingress:
       traefikPaths: true
-    tls:
-      - secretName: matrix-vandelocht-uk-production-tls
-        hosts:
-          - vandelocht.uk
-          - matrix.vandelocht.uk
+      tls:
+        - secretName: matrix-vandelocht-uk-production-tls
+          hosts:
+            - vandelocht.uk
+            - matrix.vandelocht.uk
 
     ####
     # matrix:
