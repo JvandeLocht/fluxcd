@@ -24,14 +24,14 @@ spec:
         namespace: matrix
       interval: 12h
   values:
+    defaultServer:
+      url: "https://matrix.vandelocht.uk"
+      name: MyServer
+      identity_url: 'https://vector.im'
     ingress:
       enabled: true
       hosts:
         - chat.vandelocht.uk
-      defaultServer:
-        url: "https://matrix.vandelocht.uk"
-        name: MyServer
-        identity_url: 'https://vector.im'
       tls:
         - secretName: chat-vandelocht-uk-production-tls
           hosts:
