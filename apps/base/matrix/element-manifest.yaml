@@ -1,0 +1,37 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: element-web
+  namespace: matrix
+spec:
+  timeout: 15m
+  interval: 30m
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      chart: element-web
+      version: "1.4.16"
+      sourceRef:
+        kind: HelmRepository
+        name: synapse
+        namespace: matrix
+      interval: 12h
+  values:
+    ingress:
+      enabled: true
+      hosts:
+        - chat.vandelocht.uk
+      tls:
+        - secretName: chat-vandelocht-uk-production-tls
+          hosts:
+            - chat.vandelocht.uk
+      annotations:
+        kubernetes.io/ingress.class: traefik-external
+        cert-manager.io/cluster-issuer: letsencrypt-production

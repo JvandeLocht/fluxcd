@@ -46,3 +46,17 @@ spec:
   commonName: "admin.vandelocht.uk"
   dnsNames:
     - "admin.vandelocht.uk"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: chat-vandelocht-uk
+  namespace: matrix
+spec:
+  secretName: chat-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "chat.vandelocht.uk"
+  dnsNames:
+    - "chat.vandelocht.uk"
