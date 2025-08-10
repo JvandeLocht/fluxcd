@@ -28,6 +28,10 @@ spec:
       enabled: true
       hosts:
         - chat.vandelocht.uk
+      defaultServer:
+        url: "https://matrix.vandelocht.uk"
+        name: MyServer
+        identity_url: 'https://vector.im'
       tls:
         - secretName: chat-vandelocht-uk-production-tls
           hosts:
