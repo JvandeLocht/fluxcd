@@ -92,6 +92,7 @@ spec:
         type: persistentVolumeClaim
         storageClass: ceph-csi-rbd
         size: 1Gi
+        accessMode: ReadWriteOnce
         globalMounts:
           - path: /data
             subPath: bridge-data
