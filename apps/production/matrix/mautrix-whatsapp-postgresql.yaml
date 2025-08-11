@@ -1,0 +1,19 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: mautrix-whatsapp-postgres-cluster
+  namespace: matrix
+spec:
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:17
+  bootstrap:
+    initdb:
+      database: mautrix_whatsapp
+      owner: mautrix_whatsapp
+      secret:
+        name: mautrix-whatsapp-cnpg
+
+  storage:
+    size: 10Gi
+  monitoring:
+    enablePodMonitor: true

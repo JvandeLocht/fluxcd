@@ -1,0 +1,231 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: mautrix-whatsapp
+  namespace: matrix
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: "4.2.0"
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: matrix
+      interval: 12h
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    controllers:
+      mautrix-whatsapp:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/mautrix/whatsapp
+              tag: v0.12.3
+            env:
+              MAUTRIX_WHATSAPP_CONFIG_PATH: /data/config.yaml
+              MAUTRIX_WHATSAPP_REGISTRATION_PATH: /data/registration.yaml
+              MAUTRIX_DB_HOST:
+                valueFrom:
+                  secretKeyRef:
+                    name: mautrix-whatsapp-cnpg
+                    key: hostname
+              MAUTRIX_DB_USER:
+                valueFrom:
+                  secretKeyRef:
+                    name: mautrix-whatsapp-cnpg
+                    key: username
+              MAUTRIX_DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: mautrix-whatsapp-cnpg
+                    key: password
+              MAUTRIX_DB_DATABASE:
+                valueFrom:
+                  secretKeyRef:
+                    name: mautrix-whatsapp-cnpg
+                    key: database
+            resources:
+              requests:
+                cpu: 100m
+                memory: 128Mi
+              limits:
+                cpu: 500m
+                memory: 512Mi
+
+    service:
+      app:
+        controller: mautrix-whatsapp
+        ports:
+          http:
+            port: 29318
+
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: mautrix-whatsapp-config
+        globalMounts:
+          - path: /data/config.yaml
+            subPath: config.yaml
+            readOnly: true
+      registration:
+        enabled: true
+        type: secret
+        name: mautrix-whatsapp-registration
+        globalMounts:
+          - path: /data/registration.yaml
+            subPath: registration.yaml
+            readOnly: true
+      data:
+        enabled: true
+        type: persistentVolumeClaim
+        storageClass: ceph-csi-rbd
+        size: 1Gi
+        globalMounts:
+          - path: /data
+            subPath: bridge-data
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mautrix-whatsapp-config
+  namespace: matrix
+data:
+  config.yaml: |
+    # Homeserver details
+    homeserver:
+        address: https://matrix.vandelocht.uk
+        domain: vandelocht.uk
+        software: synapse
+        status_endpoint: null
+        message_send_checkpoint_endpoint: null
+        async_media: false
+
+    # Application service details
+    appservice:
+        address: http://mautrix-whatsapp:29318
+        hostname: 0.0.0.0
+        port: 29318
+        database:
+            type: postgres
+            uri: postgresql://$(MAUTRIX_DB_USER):$(MAUTRIX_DB_PASSWORD)@$(MAUTRIX_DB_HOST):5432/$(MAUTRIX_DB_DATABASE)
+        id: whatsapp
+        bot:
+            username: whatsappbot
+            displayname: WhatsApp Bridge Bot
+            avatar: mxc://maunium.net/NeXNQarUbrlYBiPCpprYsRqr
+        ephemeral_events: true
+        async_transactions: false
+
+    # WhatsApp connection settings
+    whatsapp:
+        os_name: Mautrix-WhatsApp bridge
+        browser_name: unknown
+
+    # Bridge configuration
+    bridge:
+        username_template: whatsapp_{{.}}
+        displayname_template: "{{if .BusinessName}}{{.BusinessName}}{{else if .PushName}}{{.PushName}}{{else}}{{.JID}}{{end}} (WA)"
+        personal_filtering_spaces: false
+        delivery_receipts: false
+        message_status_events: false
+        message_error_notices: true
+        portal_message_buffer: 128
+        call_start_notices: true
+        identity_change_notices: false
+        history_sync:
+            create_portals: true
+            max_initial_conversations: 10
+            immediate:
+                worker_count: 1
+                max_events: 10
+            backfill:
+                inbox: 10
+                group: 5
+                unread: 10
+        private_chat_portal_meta: false
+        parallel_member_sync: false
+        bridge_matrix_leave: true
+        sync_with_custom_puppets: false
+        sync_direct_chat_list: false
+        default_bridge_receipts: true
+        default_bridge_presence: true
+        send_presence_on_typing: false
+        use_double_puppeting: false
+        login_shared_secret_map: {}
+        double_puppet_server_map: {}
+        double_puppet_allow_discovery: false
+        update_avatar_initial_sync: false
+        encryption:
+            allow: false
+            default: false
+            require: false
+            appservice: false
+            allow_key_sharing: false
+            delete_keys:
+                delete_outbound_on_ack: false
+                dont_store_outbound: false
+                ratchet_on_decrypt: false
+                delete_fully_used_on_decrypt: false
+                delete_prev_on_new_session: false
+                delete_on_device_delete: false
+                periodically_delete_expired: false
+                delete_outdated_inbound: false
+            verification:
+                require: false
+                allow_unverified: true
+            rotation:
+                enable_custom: false
+                milliseconds: 604800000
+                messages: 100
+
+        provisioning:
+            enabled: true
+            prefix: /_matrix/provision/v1
+            shared_secret: generate
+
+        permissions:
+            "vandelocht.uk": user
+            "@jan:vandelocht.uk": admin
+
+    # Logging configuration  
+    logging:
+        version: 1
+        formatters:
+            colored:
+                (): mautrix.util.ColorFormatter
+                format: "[%(asctime)s] [%(levelname)s@%(name)s] %(message)s"
+            normal:
+                format: "[%(asctime)s] [%(levelname)s@%(name)s] %(message)s"
+        handlers:
+            file:
+                class: logging.handlers.RotatingFileHandler
+                formatter: normal
+                filename: ./logs/mautrix-whatsapp.log
+                maxBytes: 10485760
+                backupCount: 10
+            console:
+                class: logging.StreamHandler
+                formatter: colored
+        loggers:
+            mau:
+                level: DEBUG
+            telethon:
+                level: INFO
+            aiohttp:
+                level: INFO
+        root:
+            level: DEBUG
+            handlers: [file, console]

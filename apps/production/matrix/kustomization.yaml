@@ -7,3 +7,6 @@ resources:
   - matrix-minio.yaml
   - matrix-redis.yaml
   - matrix-registration.yaml
+  - mautrix-whatsapp-db-secret.yaml
+  - mautrix-whatsapp-registration-secret.yaml
+  - mautrix-whatsapp-postgresql.yaml

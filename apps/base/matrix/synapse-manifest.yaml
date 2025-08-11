@@ -66,6 +66,20 @@ spec:
             - vandelocht.uk
             - matrix.vandelocht.uk
 
+    synapse:
+      extraVolumes:
+        - name: mautrix-whatsapp-registration
+          secret:
+            secretName: mautrix-whatsapp-registration
+      extraVolumeMounts:
+        - name: mautrix-whatsapp-registration
+          mountPath: /synapse/config/conf.d/mautrix-whatsapp.yaml
+          subPath: registration.yaml
+          readOnly: true
+      extraConfig: |
+        app_service_config_files:
+          - /synapse/config/conf.d/mautrix-whatsapp.yaml
+
     ####
     # matrix:
     #   adminEmail: "jan@vandelocht.uk"

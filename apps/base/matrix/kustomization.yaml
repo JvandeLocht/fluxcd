@@ -4,3 +4,4 @@ resources:
   - synapse-manifest.yaml
   - element-manifest.yaml
   - synapse-admin-manifest.yaml
+  - mautrix-whatsapp-manifest.yaml
