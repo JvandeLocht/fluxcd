@@ -27,6 +27,23 @@ spec:
             mautrix-whatsapp:
                 annotations:
                     reloader.stakater.com/auto: "true"
+                initContainers:
+                    config-setup:
+                        image:
+                            repository: dock.mau.dev/mautrix/whatsapp
+                            tag: v0.12.3
+                        command:
+                            - /bin/sh
+                            - -c
+                            - |
+                                cp /tmp/config-template/config.yaml /data/config.yaml
+                                chmod 644 /data/config.yaml
+                        volumeMounts:
+                            - name: config-template
+                              mountPath: /tmp/config-template
+                              readOnly: true
+                            - name: data
+                              mountPath: /data
                 containers:
                     app:
                         image:
@@ -71,14 +88,15 @@ spec:
                         port: 29318
 
         persistence:
-            config:
+            config-template:
                 enabled: true
                 type: configMap
                 name: mautrix-whatsapp-config
-                globalMounts:
-                    - path: /data/config.yaml
-                      subPath: config.yaml
-                      readOnly: true
+                advancedMounts:
+                    mautrix-whatsapp:
+                        config-setup:
+                            - path: /tmp/config-template
+                              readOnly: true
             registration:
                 enabled: true
                 type: secret
@@ -109,7 +127,7 @@ data:
         homeserver:
             address: https://matrix.vandelocht.uk
             domain: vandelocht.uk
-            software: synapse
+            software: standard
             status_endpoint: null
             message_send_checkpoint_endpoint: null
             async_media: false
