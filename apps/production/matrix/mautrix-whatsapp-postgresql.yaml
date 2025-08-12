@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: mautrix-whatsapp-cnpg
+    namespace: matrix
+stringData:
+    username: ENC[AES256_GCM,data:7AB07DxPhOk=,iv:kFK6iZbqyIA8NrRVSwLlh/pvzCiiy6GE+2pNXM/Mxms=,tag:Tp8Rmi2aId+FSfiPmlRhdg==,type:str]
+    password: ENC[AES256_GCM,data:D9B/MNT5/PRlx5icBGPMuPKgdjmb+9T/RmdiundUwrJVIfMWQU+G/PzXtccJ,iv:KWRi52tgnNw+NFS/pDJrKdpM77p1/ciYB/qVuDVQWUc=,tag:jbDYk33cHaDowQNyMlVJ5w==,type:str]
+sops:
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQSWR5b2tCTWRsNnhQMjZP
+            VithU24xazA2eW9aNXJGcTlONmFudFJ1dmg0CmdvZnJraUY4eHlQWEFkWFdXRm1z
+            ZThpdTJPMzI1QlI4aE9SY01rU3V1SUEKLS0tIEdoZGltNHl1b3prT25MdTR6bm03
+            aVNzU1Q0QnZRQXZzb2VnNXAwWXRUM3MK1zpZrkEqyG9lpBr+UIPOkXCaGiigWdv0
+            WZm5NO4kjZU9pm2csJ/Oil8oOVgLoVS9Fov96HZM5nG7p3pIjzkOSA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-08-12T19:18:30Z"
+    mac: ENC[AES256_GCM,data:JglUky+B85RJHhcTTxV4q4rK1ae1jCzU30oGkAJ+pd9CT7ySe93PB1Wxzq0iGfQ4Rp6qK7PEQi3FCUaoPFq9Oox+ANfmm4V75pzgC8ao8f/iXdCl2n8f5pUWFoK1Ybgur7X9HCrTENk3PvzDeGBkHlqFgW1x8HNyrRT0gGg30CU=,iv:9YNc0zsLzVSU54EkP8NnmlpUIO27CK2QhioyHkmSnGM=,tag:tMC7z3S3nI2ob35w/VqRfw==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
