@@ -39,6 +39,9 @@ spec:
         namespace: matrix
       interval: 12h
   values:
+    image:
+      repository: ghcr.io/dotwee/matrix-synapse-s3
+      tag: v1.136.0
     serverName: vandelocht.uk
     publicServerName: matrix.vandelocht.uk
     wellknown:
@@ -68,9 +71,30 @@ spec:
     extraConfig:
       app_service_config_files:
         - /synapse/config/conf.d/registration.yaml
+      media_storage_providers:
+        - module: s3_storage_provider.S3StorageProviderBackend
+          store_local: true
+          store_remote: true
+          store_synchronous: true
+          config:
+            bucket: matrix-media
+            endpoint_url: http://192.168.178.58:9000
+            access_key_id: "${S3_ACCESS_KEY}"
+            secret_access_key: "${S3_SECRET_KEY}"
     synapse:
       strategy:
         type: Recreate
+      extraEnv:
+        - name: S3_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: matrix-minio
+              key: S3_ACCESS_KEY
+        - name: S3_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: matrix-minio
+              key: S3_SECRET_KEY
       extraVolumes:
         - name: mautrix-whatsapp-registration
           secret:
