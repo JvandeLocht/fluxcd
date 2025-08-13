@@ -71,30 +71,9 @@ spec:
     extraConfig:
       app_service_config_files:
         - /synapse/config/conf.d/registration.yaml
-      media_storage_providers:
-        - module: s3_storage_provider.S3StorageProviderBackend
-          store_local: true
-          store_remote: true
-          store_synchronous: true
-          config:
-            bucket: matrix-media
-            endpoint_url: http://192.168.178.58:9000
-            access_key_id: "${S3_ACCESS_KEY}"
-            secret_access_key: "${S3_SECRET_KEY}"
     synapse:
       strategy:
         type: Recreate
-      extraEnv:
-        - name: S3_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name: matrix-minio
-              key: S3_ACCESS_KEY
-        - name: S3_SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: matrix-minio
-              key: S3_SECRET_KEY
       extraVolumes:
         - name: mautrix-whatsapp-registration
           secret:
@@ -104,6 +83,10 @@ spec:
           mountPath: /synapse/config/conf.d/registration.yaml
           subPath: registration.yaml
           readOnly: true
+  valuesFrom:
+    - kind: Secret
+      name: values-matrix-secret
+      valuesKey: values.yaml
 ---
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster

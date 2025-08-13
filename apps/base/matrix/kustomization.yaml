@@ -7,3 +7,10 @@ resources:
   - mautrix-registration-secret.yaml
   - element-manifest.yaml
   - synapse-admin-manifest.yaml
+secretGenerator:
+  - name: values-matrix-secret
+    namespace: matrix
+    files:
+      - values.yaml=values.enc.yaml
+configurations:
+  - kustomizeconfig.yaml
