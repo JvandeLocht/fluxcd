@@ -65,7 +65,7 @@ spec:
           hosts:
             - vandelocht.uk
             - matrix.vandelocht.uk
-    config:
+    extraConfig:
       app_service_config_files:
         - /synapse/config/conf.d/registration.yaml
     synapse:
