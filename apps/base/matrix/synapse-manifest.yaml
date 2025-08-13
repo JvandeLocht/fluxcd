@@ -67,16 +67,17 @@ spec:
             - matrix.vandelocht.uk
     config:
       app_service_config_files:
-        - /data/registration.yaml
-    extraVolumes:
-      - name: mautrix-whatsapp-registration
-        secret:
-          secretName: mautrix-whatsapp-registration
-    extraVolumeMounts:
-      - name: mautrix-whatsapp-registration
-        mountPath: /data/registration.yaml
-        subPath: registration.yaml
-        readOnly: true
+        - /synapse/config/conf.d/registration.yaml
+    synapse:
+      extraVolumes:
+        - name: mautrix-whatsapp-registration
+          secret:
+            secretName: mautrix-whatsapp-registration
+      extraVolumeMounts:
+        - name: mautrix-whatsapp-registration
+          mountPath: /synapse/config/conf.d/registration.yaml
+          subPath: registration.yaml
+          readOnly: true
 ---
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
