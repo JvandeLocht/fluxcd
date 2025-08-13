@@ -61,11 +61,11 @@ spec:
                   secretKeyRef:
                     name: mautrix-whatsapp
                     key: pickle_key
-              DB_PASSWORD:
+              DB_URI:
                 valueFrom:
                   secretKeyRef:
-                    name: mautrix-whatsapp-cnpg
-                    key: password
+                    name: mautrix-whatsapp
+                    key: uri
             probes:
               liveness:
                 enabled: true
