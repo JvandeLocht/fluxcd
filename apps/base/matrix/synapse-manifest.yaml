@@ -19,7 +19,7 @@ metadata:
   name: matrix
   namespace: matrix
 spec:
-  timeout: 15m
+  timeout: 20m
   interval: 30m
   install:
     crds: Create
