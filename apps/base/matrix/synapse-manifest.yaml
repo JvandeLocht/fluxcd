@@ -39,6 +39,9 @@ spec:
         namespace: matrix
       interval: 12h
   values:
+    image:
+      repository: ghcr.io/dotwee/matrix-synapse-s3
+      tag: v1.136.0
     serverName: vandelocht.uk
     publicServerName: matrix.vandelocht.uk
     wellknown:
@@ -65,18 +68,25 @@ spec:
           hosts:
             - vandelocht.uk
             - matrix.vandelocht.uk
-    # config:
-    #   app_service_config_files:
-    #     - /data/registration.yaml
-    # extraVolumes:
-    #   - name: mautrix-whatsapp-registration
-    #     secret:
-    #       secretName: mautrix-whatsapp-registration
-    # extraVolumeMounts:
-    #   - name: mautrix-whatsapp-registration
-    #     mountPath: /data/registration.yaml
-    #     subPath: registration.yaml
-    #     readOnly: true
+    extraConfig:
+      app_service_config_files:
+        - /synapse/config/conf.d/registration.yaml
+    synapse:
+      strategy:
+        type: Recreate
+      extraVolumes:
+        - name: mautrix-whatsapp-registration
+          secret:
+            secretName: mautrix-whatsapp-registration
+      extraVolumeMounts:
+        - name: mautrix-whatsapp-registration
+          mountPath: /synapse/config/conf.d/registration.yaml
+          subPath: registration.yaml
+          readOnly: true
+  valuesFrom:
+    - kind: Secret
+      name: values-matrix-secret
+      valuesKey: values.yaml
 ---
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster

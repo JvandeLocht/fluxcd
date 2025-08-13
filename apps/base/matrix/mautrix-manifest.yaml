@@ -31,44 +31,6 @@ spec:
             image:
               repository: dock.mau.dev/mautrix/whatsapp
               tag: v0.12.3
-            args:
-              - --no-update
-            env:
-              AS_TOKEN:
-                valueFrom:
-                  secretKeyRef:
-                    name: mautrix-whatsapp
-                    key: as_token
-              HS_TOKEN:
-                valueFrom:
-                  secretKeyRef:
-                    name: mautrix-whatsapp
-                    key: hs_token
-              SERVER_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: mautrix-whatsapp
-                    key: server_key
-              SHARED_SECRET:
-                valueFrom:
-                  secretKeyRef:
-                    name: mautrix-whatsapp
-                    key: shared_secret
-              SIGNING_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: mautrix-whatsapp
-                    key: signing_key
-              PICKLE_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: mautrix-whatsapp
-                    key: pickle_key
-              DB_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: mautrix-whatsapp-cnpg
-                    key: password
             probes:
               liveness:
                 enabled: true
@@ -93,7 +55,7 @@ spec:
             port: 29318
     persistence:
       config:
-        type: configMap
+        type: secret
         name: mautrix-whatsapp-config
         globalMounts:
           - path: /data/config.yaml
