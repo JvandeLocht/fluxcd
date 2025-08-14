@@ -68,6 +68,9 @@ spec:
           hosts:
             - vandelocht.uk
             - matrix.vandelocht.uk
+    persistence:
+      enabled: true
+      existingClaim: synapse-media-storage
     extraConfig:
       app_service_config_files:
         - /synapse/config/conf.d/registration.yaml
@@ -85,6 +88,19 @@ spec:
     - kind: Secret
       name: values-matrix-secret
       valuesKey: values.yaml
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: synapse-media-storage
+  namespace: matrix
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: csi-rbd-sc
+  resources:
+    requests:
+      storage: 1Gi
 ---
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
