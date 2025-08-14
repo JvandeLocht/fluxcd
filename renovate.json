@@ -14,7 +14,7 @@
     {
       "description": "Track the Immich image tag in FluxCD HelmRelease",
       "customType": "regex",
-      "managerFilePatterns": ["/\\.yaml$/"],
+      "managerFilePatterns": ["/apps/.*immich.*\\.yaml$/"],
       "matchStrings": [
         "image:\\s*\n(.*\n)*?\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
       ],
