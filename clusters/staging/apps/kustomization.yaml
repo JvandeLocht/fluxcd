@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - immich.yaml
   - matrix.yaml
+  - ntfy.yaml
   - endurain.yaml
   # - openwebui.yaml
   # - searxng.yaml
