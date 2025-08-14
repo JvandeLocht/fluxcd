@@ -7,5 +7,6 @@ resources:
   - matrix-minio.yaml
   - matrix-redis.yaml
   # - matrix-registration.yaml
+  - matrix-signingkey.yaml
   - mautrix-whatsapp-postgresql.yaml
   # - mautrix-whatsapp.yaml

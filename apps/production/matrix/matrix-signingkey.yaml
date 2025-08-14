@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: matrix-signingkey
+    namespace: matrix
+type: Opaque
+data:
+    signing.key: ENC[AES256_GCM,data:ypTS/wgYo0h3zoWif2qacZdmdSzq/b9kqo+FWLfC6nPdI11pjue1DvMijpEGV7Fck3MwV1KlQCGUqGpGzrm8Xco8EtRVDzeVMj684xm3Hos=,iv:Ar2g7UbNWpo05620kbL9U0nzu9C0s2XTY8HAWSGjfzw=,tag:6k9nhzfTX9av2Mu4/UAT0w==,type:str]
+sops:
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSArZjZLQlppaHdKQXJDUE9G
+            NExTcSt6SGw0VlYwRTdCM0NFcTBlYU9wNlQ4CjN1cDg3SjhJRm1XUFVWcWk0ZElE
+            RnI3bmlVMWN3TjVwc255MGt4WUk1YTAKLS0tIHBCMEMrQ0ZmRFJFdit5anpHSkIr
+            eTFTTU10dVNLalBsSHhib0dsWVpnTkUKH0lmjmEbQGBemPNEvJ6Qi5Yz5z9++HIv
+            XRfBRACH5sNank/0Yvv/ylzer5jwWngyTiX6NSbKobm+k9zdkxBSFw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-08-14T21:41:10Z"
+    mac: ENC[AES256_GCM,data:NnRQe3vZ3XLFk/rvgMVYsMR4gPVaMrty/Ud84VNuOwSRaGnrZE8n1vs2nXtMGkIafx6Ed5+91Y+wLQu7TyO9mdGyByXkQPJVNA8CqJiGhppJsyy2dyCFSKJ2SRodeh0ifvSgmbXLTcqZ4GZ/pXsX5PKNEqwzWqkTjknpH28UhoY=,iv:9p+4k+2a0z6XlfIYMFzEq//44Hp5B0XNtf2monRy/io=,tag:410FFcU4qbTccqu5h3JnRg==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
