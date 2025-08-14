@@ -72,8 +72,6 @@ spec:
       app_service_config_files:
         - /synapse/config/conf.d/registration.yaml
     synapse:
-      strategy:
-        type: Recreate
       extraVolumes:
         - name: mautrix-whatsapp-registration
           secret:
