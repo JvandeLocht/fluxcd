@@ -74,15 +74,23 @@ spec:
     extraConfig:
       app_service_config_files:
         - /synapse/config/conf.d/registration.yaml
+        - /synapse/config/conf.d/registration-signal.yaml
     synapse:
       extraVolumes:
         - name: mautrix-whatsapp-registration
           secret:
             secretName: mautrix-whatsapp-registration
+        - name: mautrix-signal-registration
+          secret:
+            secretName: mautrix-signal-registration
       extraVolumeMounts:
         - name: mautrix-whatsapp-registration
           mountPath: /synapse/config/conf.d/registration.yaml
           subPath: registration.yaml
+          readOnly: true
+        - name: mautrix-signal-registration
+          mountPath: /synapse/config/conf.d/registration-signal.yaml
+          subPath: registration-signal.yaml
           readOnly: true
   valuesFrom:
     - kind: Secret

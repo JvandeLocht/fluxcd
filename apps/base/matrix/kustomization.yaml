@@ -3,8 +3,11 @@ kind: Kustomization
 resources:
   - synapse-manifest.yaml
   - mautrix-manifest.yaml
+  - mautrix-signal-manifest.yaml
   - mautrix-config.yaml
+  - mautrix-signal-config.yaml
   - mautrix-registration-secret.yaml
+  - mautrix-signal-registration-secret.yaml
   - element-manifest.yaml
   - synapse-admin-manifest.yaml
 secretGenerator:

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: mautrix-signal-cnpg
+    namespace: matrix
+stringData:
+    username: ENC[AES256_GCM,data:oedFUcBW,iv:Ob3eLMKMEbzklhdo2zThXp6LwVxJiGW3o0Rldpfg3X8=,tag:6fpq1NtDf8RKyb4WZGDcFA==,type:str]
+    password: ENC[AES256_GCM,data:gEoaH/ehJ5SjjlxFg7y1xav8hzpWvl+6d/AuMLG4qcwsz4sG4a1LYeG67w==,iv:U5MSZFR7tghHmujeDcNvpgYxnMa1CgFY14hX7FAet9I=,tag:1YEK9nQEU6PKvsiLMRrJjA==,type:str]
+sops:
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDcGxXQmVYMlFGZXV2cDdy
+            NUplTXpUZFd3TC9CUkR3T1h2NVlXeUFORkRNCjFRRlI4Ynd4elM4NWp3QkxaeWd0
+            Q29pRUdBbWRiLzFUVnF5eVdDZGViWlUKLS0tIHBEZ3JmTC91SlVKY3NhL3kzS1RT
+            MVRJeHV5Z1RUeFptV3BHYTRNS05DWGcKnhlmUM/KdyzIo4BpWsOWi/ic/XjL9eIY
+            QpmHbJ048U3Hd2C52CJYIhW0YF8SI7kPEkc5Vim6Or/QSILkodOQpg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-08-14T19:47:59Z"
+    mac: ENC[AES256_GCM,data:J3qoh+wp5DaRrdawtjQQALXBpebrr6OwPlNvVVg/cwI9WeWrqJckoYy9eTSUHtkVl/qOU0cLFlS+uKkZA1kQYPK/jUYudIxCijEPBfO2Khmx94sco7Ff8/ROCLjoZs7NIPnpw031eE9a5P8XPWAcE0xUNAPtKHE/PI7TFKsKM4E=,iv:80KP9xpo3dlvSfbJLDcu84b9upBToqqR/8YnmmSfLw4=,tag:tiPuAi+OMcDK5SYSlGad/w==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
