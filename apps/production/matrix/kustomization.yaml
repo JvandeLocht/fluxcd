@@ -9,4 +9,5 @@ resources:
   # - matrix-registration.yaml
   - matrix-signingkey.yaml
   - mautrix-whatsapp-postgresql.yaml
+  - mautrix-signal-postgresql.yaml
   # - mautrix-whatsapp.yaml
