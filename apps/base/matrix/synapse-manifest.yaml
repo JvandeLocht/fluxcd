@@ -44,11 +44,12 @@ spec:
       tag: v1.136.0
     serverName: vandelocht.uk
     publicServerName: matrix.vandelocht.uk
-    job:
-      enabled: false
-    ## Specify an existing signing key secret, will need to be created in advance.
-    existingSecret: matrix-signingkey
-    existingSecretKey: signing.key
+    signingkey:
+      job:
+        enabled: false
+      ## Specify an existing signing key secret, will need to be created in advance.
+      existingSecret: matrix-signingkey
+      existingSecretKey: signing.key
     wellknown:
       enabled: true
     postgresql:
