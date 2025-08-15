@@ -20,6 +20,46 @@
       ],
       "depNameTemplate": "ghcr.io/immich-app/immich-server",
       "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Track the Synapse image tag in FluxCD HelmRelease",
+      "customType": "regex",
+      "managerFilePatterns": ["/apps/base/matrix/synapse-manifest\\.yaml$/"],
+      "matchStrings": [
+        "repository:\\s*ghcr\\.io/dotwee/matrix-synapse-s3\\s*\n\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
+      ],
+      "depNameTemplate": "ghcr.io/dotwee/matrix-synapse-s3",
+      "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Track the Synapse Admin image tag in FluxCD HelmRelease",
+      "customType": "regex",
+      "managerFilePatterns": ["/apps/base/matrix/synapse-admin-manifest\\.yaml$/"],
+      "matchStrings": [
+        "repository:\\s*ghcr\\.io/etkecc/synapse-admin\\s*\n\\s*tag:\\s*['\"]?(?<currentValue>v?[\\d\\.\\-\\w]+)['\"]?"
+      ],
+      "depNameTemplate": "ghcr.io/etkecc/synapse-admin",
+      "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Track the Mautrix WhatsApp image tag in FluxCD HelmRelease",
+      "customType": "regex",
+      "managerFilePatterns": ["/apps/base/matrix/mautrix-manifest\\.yaml$/"],
+      "matchStrings": [
+        "repository:\\s*dock\\.mau\\.dev/mautrix/whatsapp\\s*\n\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
+      ],
+      "depNameTemplate": "dock.mau.dev/mautrix/whatsapp",
+      "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Track the Mautrix Signal image tag in FluxCD HelmRelease",
+      "customType": "regex",
+      "managerFilePatterns": ["/apps/base/matrix/mautrix-signal-manifest\\.yaml$/"],
+      "matchStrings": [
+        "repository:\\s*dock\\.mau\\.dev/mautrix/signal\\s*\n\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
+      ],
+      "depNameTemplate": "dock.mau.dev/mautrix/signal",
+      "datasourceTemplate": "docker"
     }
   ],
   "packageRules": [
