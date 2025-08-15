@@ -8,6 +8,7 @@ resources:
   - mautrix-signal-config.yaml
   - mautrix-registration-secret.yaml
   - mautrix-signal-registration-secret.yaml
+  - mautrix-signal-registration-secret-2.yaml
   - element-manifest.yaml
   - synapse-admin-manifest.yaml
 secretGenerator:
