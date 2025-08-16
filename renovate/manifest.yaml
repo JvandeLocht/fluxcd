@@ -22,6 +22,7 @@ spec:
               image: renovate/renovate:41.61.1
               args:
                 - JvandeLocht/fluxcd
+                - JvandeLocht/nixos
               # Environment Variables
               # env:
               #   - name: LOG_LEVEL
