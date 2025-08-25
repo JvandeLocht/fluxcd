@@ -4,6 +4,5 @@ resources:
   - ceph-csi-rbd.yaml
   - smb-csi.yaml
   - cloudnative-pg.yaml
-  - filen-cli.yaml
+  # - filen-cli.yaml
   - velero.yaml
-
