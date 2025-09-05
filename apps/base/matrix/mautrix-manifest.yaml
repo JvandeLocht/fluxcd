@@ -85,6 +85,6 @@ spec:
         name: mautrix-whatsapp-cnpg
 
   storage:
-    size: 10Gi
+    size: 15Gi
   monitoring:
     enablePodMonitor: true
