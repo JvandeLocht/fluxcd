@@ -40,6 +40,45 @@ spec:
         namespace: keycloak
       interval: 12h
   values:
+    # Resource configuration to prevent OOM kills
+    resources:
+      limits:
+        memory: "2Gi"
+        cpu: "1000m"
+      requests:
+        memory: "1.5Gi" 
+        cpu: "500m"
+    
+    # JVM configuration for better memory management
+    extraEnvVars:
+      - name: JAVA_OPTS_APPEND
+        value: "-Xms1024m -Xmx1536m -XX:+UseG1GC -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
+    
+    # Enable startup probe and adjust other probes
+    startupProbe:
+      enabled: true
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      timeoutSeconds: 5
+      failureThreshold: 30
+      successThreshold: 1
+    
+    # Adjust liveness probe to work with startup probe
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 0
+      timeoutSeconds: 5
+      periodSeconds: 30
+      failureThreshold: 3
+    
+    # Adjust readiness probe to work with startup probe  
+    readinessProbe:
+      enabled: true
+      initialDelaySeconds: 0
+      timeoutSeconds: 1
+      periodSeconds: 10
+      failureThreshold: 3
+    
     ingress:
       enabled: true
       ingressClassName: traefik
