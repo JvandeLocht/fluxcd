@@ -48,14 +48,14 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
         kubernetes.io/ingress.class: traefik-external
-    # adminIngress:
-    #   enabled: true
-    #   ingressClassName: traefik
-    #   hostname: keycloak.lan.vandelocht.uk
-    #   tls: true
-    #   annotations:
-    #     kubernetes.io/ingress.class: traefik-external
-    #     cert-manager.io/cluster-issuer: letsencrypt-production
+    adminIngress:
+      enabled: true
+      ingressClassName: traefik
+      hostname: keycloak.lan.vandelocht.uk
+      tls: true
+      annotations:
+        kubernetes.io/ingress.class: traefik-external
+        cert-manager.io/cluster-issuer: letsencrypt-production
   valuesFrom:
     - kind: Secret
       name: values-keycloak-secret
