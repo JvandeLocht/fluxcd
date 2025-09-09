@@ -132,6 +132,6 @@ spec:
         name: matrix-cnpg
 
   storage:
-    size: 20Gi
+    size: 25Gi
   monitoring:
     enablePodMonitor: true
