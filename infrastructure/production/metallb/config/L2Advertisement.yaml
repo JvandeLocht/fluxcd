@@ -6,5 +6,4 @@ metadata:
 spec:
   ipAddressPools:
     - traefik
-    - filen-cli
     - prometheus-push
