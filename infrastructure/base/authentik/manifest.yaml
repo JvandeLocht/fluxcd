@@ -50,15 +50,15 @@ spec:
         user: authentik
         port: 5432
 
-    server:
-      ingress:
-        ingressClassName: traefik
-        enabled: true
-        hosts:
-          - authentik.vandelocht.uk
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          kubernetes.io/ingress.class: traefik-external
+    # server:
+    #   ingress:
+    #     ingressClassName: traefik
+    #     enabled: true
+    #     hosts:
+    #       - authentik.vandelocht.uk
+    #     annotations:
+    #       cert-manager.io/cluster-issuer: letsencrypt-production
+    #       kubernetes.io/ingress.class: traefik-external
 
     postgresql:
       enabled: false
