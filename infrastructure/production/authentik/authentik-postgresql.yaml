@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: authentik-cnpg
+    namespace: authentik
+stringData:
+    username: ENC[AES256_GCM,data:tMVEOaZFk/v5,iv:URW0zZT73jmu2bNiuKDBwBDpVKniLsQtqzDzh+fyzuo=,tag:ut9xgaBPqHJdmvfrBUJ+oA==,type:str]
+    password: ENC[AES256_GCM,data:XFPW3yX0GDfawYfsn6670Fz5kFnGvsmxB/la1YC5QAyexqn9PrJ5VKF3,iv:SnVmX1ce54uUt2juK+ArVmAaEgPBWC/D5Kt2NCXMR5k=,tag:oUL4/CotL9dRYnGdx0wRwg==,type:str]
+sops:
+    age:
+        - recipient: age1epjlv060j8z57f7vm8jvwfl0zqz9wjtw0cga5vpgw0upwa0nsdrshdn3ku
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3WUMxTXc1VGNBcy8wTFRU
+            MjRoWk9GaFlKSVgvQjdKUEVXa2xyT2dleWlJCklCUm1HampmVlU2ZlJzUVVsMDAr
+            WVVOOHlQaVU3ajVqUFovV1lKMmZSVXcKLS0tIEMrbDB4d29oV3JaK3oxWEtDLy83
+            UHExNlNyRml1ckczaHBPYlRoZlJzMGcKJ9JjEA9dV1fTp9wCDClDSjbORmjLmZy/
+            PsSWIjVIHN0yvDnMqTA3KclzNp1Y/uNKHnuHbBC+wCQQeqfqKkjgrA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-09-17T06:06:28Z"
+    mac: ENC[AES256_GCM,data:2q06ShS4tw5dBcTUMqzCkrrDET0+1DDKLRiWvDMzKCWBRDToAHp1AuWBV0vhzLPk90yyUsOcdcZ3eFuI7+Snu1hxVSOYoU7NqlWu/Da8CRedIV8fHsV9Or1MxOGGUZXZ368kXB4uvkc6X6iF/TDk64O7xssISGJviviWax9buYM=,iv:vFQXyNNNcxrWQic78nRfL2Q+yu63e2vc78Dd9v1O4o8=,tag:hULO6sPqarXlup/j1kFctw==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2

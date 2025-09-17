@@ -1,0 +1,51 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: authentic
+  namespace: authentic
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`authentic.vandelocht.uk`)
+      kind: Rule
+      services:
+        - name: authentic
+          port: 80
+      middlewares:
+        - name: svc-authentic-headers
+  tls:
+    secretName: authentic-vandelocht-uk-production-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: authentic-vandelocht-uk
+  namespace: authentic
+spec:
+  secretName: authentic-vandelocht-uk-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "authentic.vandelocht.uk"
+  dnsNames:
+    - "authentic.vandelocht.uk"
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: svc-authentic-headers
+  namespace: authentic
+spec:
+  headers:
+    browserXssFilter: true
+    contentTypeNosniff: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 15552000
+    customFrameOptionsValue: SAMEORIGIN
+    customRequestHeaders:
+      X-Forwarded-Proto: https
