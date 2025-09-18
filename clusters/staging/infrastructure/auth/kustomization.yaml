@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   # - keycloak.yaml
   - authentik.yaml
-  - oauth2proxy.yaml
+  # - oauth2proxy.yaml
