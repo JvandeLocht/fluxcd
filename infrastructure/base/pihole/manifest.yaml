@@ -48,3 +48,5 @@ spec:
 
     persistentVolumeClaim:
       enabled: true
+    admin:
+      enabled: false
