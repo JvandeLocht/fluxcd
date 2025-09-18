@@ -16,6 +16,8 @@ spec:
           port: 80
       middlewares:
         - name: svc-pihole-headers
+        - name: authentik
+          namespace: traefik
   tls:
     secretName: pihole-lan-vandelocht-uk-production-tls
 ---
