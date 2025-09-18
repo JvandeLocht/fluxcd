@@ -5,3 +5,4 @@ resources:
   - cloudflared.yaml
   - metallb.yaml
   - traefik.yaml
+  - pihole.yaml
