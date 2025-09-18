@@ -48,15 +48,3 @@ spec:
 
     persistentVolumeClaim:
       enabled: true
-
-    serviceWeb:
-      loadBalancerIP: 192.168.178.152
-      annotations:
-        metallb.universe.tf/allow-shared-ip: pihole-svc
-      type: LoadBalancer
-
-    serviceDns:
-      loadBalancerIP: 192.168.178.152
-      annotations:
-        metallb.universe.tf/allow-shared-ip: pihole-svc
-      type: LoadBalancer
