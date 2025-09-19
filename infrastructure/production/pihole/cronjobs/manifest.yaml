@@ -14,16 +14,18 @@ spec:
             - name: pihole-nebula-sync
               image: ghcr.io/lovelaze/nebula-sync:v0.11.1
               args:
-                - "--env"
-                - "PRIMARY=https://192.168.178.2|$(PIHOLE_PASSWORD_LXC)"
-                - "--env"
-                - "REPLICAS=http://pihole-web"
-                - "--env"
-                - "FULL_SYNC=true"
-                - "--env"
-                - "RUN_GRAVITY=true"
-                - "--env"
-                - "WEBHOOK_CLIENT_SKIP_TLS_VERIFICATION=true"
+                - "run"
+                - "--help"
+                # - "--env"
+                # - "PRIMARY=https://192.168.178.2|$(PIHOLE_PASSWORD_LXC)"
+                # - "--env"
+                # - "REPLICAS=http://pihole-web"
+                # - "--env"
+                # - "FULL_SYNC=true"
+                # - "--env"
+                # - "RUN_GRAVITY=true"
+                # - "--env"
+                # - "WEBHOOK_CLIENT_SKIP_TLS_VERIFICATION=true"
               envFrom:
                 - secretRef:
                     name: pihole-nebula-sync-env
