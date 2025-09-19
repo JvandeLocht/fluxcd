@@ -19,11 +19,17 @@ spec:
                 - name: REPLICAS
                   value: "http://pihole-web|"
                 - name: FULL_SYNC
-                  value: "true"
+                  value: "false"
                 - name: RUN_GRAVITY
                   value: "true"
                 - name: CLIENT_SKIP_TLS_VERIFICATION
                   value: "true"
+                - name: TZ
+                  value: "Europe/Berlin"
+                - name: SYNC_CONFIG_DNS
+                  value: "true"
+                - name: SYNC_CONFIG_DNS_EXCLUDE
+                  value: "listeningMode"
               args:
                 - "run"
               envFrom:
