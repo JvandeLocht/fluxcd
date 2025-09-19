@@ -17,7 +17,7 @@ spec:
                 - name: PRIMARY
                   value: "https://192.168.178.2|$(PIHOLE_PASSWORD_LXC)"
                 - name: REPLICAS
-                  value: "http://pihole-web"
+                  value: "http://pihole-web|"
                 - name: FULL_SYNC
                   value: "true"
                 - name: RUN_GRAVITY
