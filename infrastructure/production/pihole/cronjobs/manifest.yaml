@@ -22,7 +22,7 @@ spec:
                   value: "true"
                 - name: RUN_GRAVITY
                   value: "true"
-                - name: WEBHOOK_CLIENT_SKIP_TLS_VERIFICATION
+                - name: CLIENT_SKIP_TLS_VERIFICATION
                   value: "true"
               args:
                 - "run"
