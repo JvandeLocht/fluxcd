@@ -39,13 +39,6 @@ spec:
         namespace: pihole
       interval: 12h
   values:
-    dnsmasq:
-      customDnsEntries:
-        - address=/nas/192.168.178.10
-
-      customCnameEntries:
-        - cname=foo.nas,nas
-
     persistentVolumeClaim:
       enabled: true
     admin:
