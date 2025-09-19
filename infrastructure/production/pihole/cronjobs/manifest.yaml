@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: pihole-nebula-sync
+  namespace: pihole
+spec:
+  schedule: "@hourly"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: pihole-nebula-sync
+              image: ghcr.io/lovelaze/nebula-sync:v0.11.1
+              args:
+                - "-e"
+                - "PRIMARY=https://192.168.178.2|$(PIHOLE_PASSWORD_LXC)"
+                - "-e"
+                - "REPLICAS=http://pihole-web"
+                - "-e"
+                - "FULL_SYNC=true"
+                - "-e"
+                - "RUN_GRAVITY=true"
+                - "-e"
+                - "WEBHOOK_CLIENT_SKIP_TLS_VERIFICATION=true"
+              envFrom:
+                - secretRef:
+                    name: pihole-nebula-sync-env
+          restartPolicy: Never
