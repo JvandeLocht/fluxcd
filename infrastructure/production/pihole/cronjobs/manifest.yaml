@@ -18,7 +18,7 @@ spec:
                   # value: "https://192.168.178.2|$(PIHOLE_PASSWORD_LXC)"
                   value: "http://pihole-web|"
                 - name: REPLICAS
-                  value: "http://pihole-web-1|,http://pihole-web-2|"
+                  value: "http://pihole-1-web|,http://pihole-2-web|"
                   # value: "http://pihole-web|"
                 - name: FULL_SYNC
                   value: "true"
