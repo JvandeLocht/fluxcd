@@ -20,6 +20,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./apps/production/foregjo
+  path: ./apps/production/forgejo
   prune: true
   wait: true
