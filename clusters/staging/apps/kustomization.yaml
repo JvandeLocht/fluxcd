@@ -8,3 +8,4 @@ resources:
   # - openwebui.yaml
   # - searxng.yaml
   - website.yaml
+  - forgejo.yaml
