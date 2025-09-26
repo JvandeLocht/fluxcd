@@ -43,7 +43,7 @@ spec:
     gitea:
       additionalConfigSources:
         - secret:
-            secretName: database-forgejo
+            secretName: database
       admin:
         existingSecret: forgejo-admin-secret
     persistence:
