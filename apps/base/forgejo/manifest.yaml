@@ -47,6 +47,10 @@ spec:
         existingSecret: forgejo-admin-secret
     persistence:
       enabled: true
+    service:
+      ssh:
+        annotations:
+          metallb.io/allow-shared-ip: 192.168.178.155
     ingress:
       enabled: true
       className: traefik
