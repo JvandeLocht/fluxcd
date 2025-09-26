@@ -49,6 +49,7 @@ spec:
       enabled: true
     service:
       ssh:
+        type: LoadBalancer
         annotations:
           metallb.io/allow-shared-ip: "share 192.168.178.155"
           metallb.io/loadBalancerIPs: 192.168.178.155
