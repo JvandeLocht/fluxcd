@@ -6,4 +6,5 @@ metadata:
 spec:
   ipAddressPools:
     - traefik
+    - forgejo
     - prometheus-push
