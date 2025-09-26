@@ -50,7 +50,8 @@ spec:
     service:
       ssh:
         annotations:
-          metallb.io/allow-shared-ip: 192.168.178.155
+          metallb.io/allow-shared-ip: "share 192.168.178.155"
+          metallb.io/loadBalancerIPs: 192.168.178.155
     ingress:
       enabled: true
       className: traefik
