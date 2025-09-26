@@ -40,6 +40,8 @@ spec:
         namespace: forgejo
       interval: 12h
   values:
+    strategy:
+      type: Recreate
     gitea:
       admin:
         existingSecret: forgejo-admin-secret
