@@ -53,7 +53,7 @@ spec:
       className: traefik
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
-        kubernetes.io/ingress.class: traefik-external
+        kubernetes.io/ingress.class: traefik
         kubernetes.io/tls-acme: "true"
       hosts:
         - host: forgejo.lan.vandelocht.uk
