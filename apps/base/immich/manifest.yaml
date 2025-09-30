@@ -41,7 +41,7 @@ spec:
       interval: 12h
   values:
     image:
-      tag: v1.143.1
+      tag: v1.144.1
     immich:
       persistence:
         library:
