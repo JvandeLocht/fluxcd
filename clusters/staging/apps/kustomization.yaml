@@ -4,6 +4,5 @@ resources:
   - immich.yaml
   - matrix.yaml
   - ntfy.yaml
-  # - searxng.yaml
   - website.yaml
   - forgejo.yaml
