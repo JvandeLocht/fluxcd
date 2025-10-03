@@ -4,7 +4,6 @@ resources:
   - immich.yaml
   - matrix.yaml
   - ntfy.yaml
-  # - openwebui.yaml
   # - searxng.yaml
   - website.yaml
   - forgejo.yaml
