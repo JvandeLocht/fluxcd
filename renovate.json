@@ -108,6 +108,13 @@
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
+    },
+    {
+      "description": "Automerge patch updates for Traefik",
+      "matchPackageNames": ["traefik"],
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
     }
   ]
 }
