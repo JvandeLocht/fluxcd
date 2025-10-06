@@ -61,15 +61,15 @@ spec:
         kubernetes.io/ingress.class: traefik
         kubernetes.io/tls-acme: "true"
       hosts:
-        - host: forgejo.lan.vandelocht.uk
+        - host: git.vandelocht.uk
           paths:
             - path: /
               pathType: Prefix
               port: http
       tls:
-        - secretName: forgejo-lan-vandelocht-uk-production-tls
+        - secretName: git-vandelocht-uk-production-tls
           hosts:
-            - forgejo.lan.vandelocht.uk
+            - git.vandelocht.uk
   valuesFrom:
     - kind: Secret
       name: values-forgejo-secret
