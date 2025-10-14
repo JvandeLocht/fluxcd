@@ -71,6 +71,7 @@
     },
     {
       "matchPackageNames": ["forgejo"],
+      "matchDatasources": ["helm"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     },
