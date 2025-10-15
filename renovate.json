@@ -116,6 +116,12 @@
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["patch"],
       "automerge": true
+    },
+    {
+      "description": "Automerge minor and patch updates for all Flux components",
+      "matchPackagePatterns": ["^flux", "fluxcd"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
     }
   ]
 }
