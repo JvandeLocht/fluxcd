@@ -20,7 +20,7 @@ metadata:
   name: immich
   namespace: immich
 spec:
-  timeout: 15m
+  timeout: 55m
   interval: 30m
   install:
     crds: Create
