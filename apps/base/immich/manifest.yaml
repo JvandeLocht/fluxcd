@@ -48,11 +48,16 @@ spec:
           existingClaim: immich-pvc
     valkey:
       enabled: true
-    env:
-      DB_HOSTNAME: immich-postgres-cluster-rw
-      DB_USERNAME: immich
-      DB_DATABASE_NAME: immich
-      DB_VECTOR_EXTENSION: pgvector
+    server:
+      controllers:
+        main:
+          containers:
+            main:
+              env:
+                DB_HOSTNAME: immich-postgres-cluster-rw
+                DB_USERNAME: immich
+                DB_DATABASE_NAME: immich
+                DB_VECTOR_EXTENSION: pgvector
   valuesFrom:
     - kind: Secret
       name: values-immich-secret
