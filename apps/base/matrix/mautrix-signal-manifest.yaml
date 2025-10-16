@@ -30,7 +30,7 @@ spec:
           app:
             image:
               repository: dock.mau.dev/mautrix/signal
-              tag: v0.8.7
+              tag: v0.2510.0
             probes:
               liveness:
                 enabled: true
