@@ -40,8 +40,12 @@ spec:
         namespace: immich
       interval: 12h
   values:
-    image:
-      tag: v2.1.0
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              tag: v2.1.0
     immich:
       persistence:
         library:
