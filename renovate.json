@@ -1,20 +1,30 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "flux": {
-    "managerFilePatterns": ["/\\.yaml$/"]
+    "managerFilePatterns": [
+      "/\\.yaml$/"
+    ]
   },
   "kubernetes": {
-    "managerFilePatterns": ["/\\.yaml$/"]
+    "managerFilePatterns": [
+      "/\\.yaml$/"
+    ]
   },
   "helm-values": {
-    "managerFilePatterns": ["/\\.yaml$/"]
+    "managerFilePatterns": [
+      "/\\.yaml$/"
+    ]
   },
   "customManagers": [
     {
       "description": "Track the Immich image tag in FluxCD HelmRelease",
       "customType": "regex",
-      "managerFilePatterns": ["/apps/.*immich.*\\.yaml$/"],
+      "managerFilePatterns": [
+        "/apps/.*immich.*\\.yaml$/"
+      ],
       "matchStrings": [
         "image:\\s*\n(.*\n)*?\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
       ],
@@ -24,7 +34,9 @@
     {
       "description": "Track the Synapse image tag in FluxCD HelmRelease",
       "customType": "regex",
-      "managerFilePatterns": ["/apps/base/matrix/synapse-manifest\\.yaml$/"],
+      "managerFilePatterns": [
+        "/apps/base/matrix/synapse-manifest\\.yaml$/"
+      ],
       "matchStrings": [
         "repository:\\s*ghcr\\.io/dotwee/matrix-synapse-s3\\s*\n\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
       ],
@@ -34,7 +46,9 @@
     {
       "description": "Track the Synapse Admin image tag in FluxCD HelmRelease",
       "customType": "regex",
-      "managerFilePatterns": ["/apps/base/matrix/synapse-admin-manifest\\.yaml$/"],
+      "managerFilePatterns": [
+        "/apps/base/matrix/synapse-admin-manifest\\.yaml$/"
+      ],
       "matchStrings": [
         "repository:\\s*ghcr\\.io/etkecc/synapse-admin\\s*\n\\s*tag:\\s*['\"]?(?<currentValue>v?[\\d\\.\\-\\w]+)['\"]?"
       ],
@@ -44,7 +58,9 @@
     {
       "description": "Track the Mautrix WhatsApp image tag in FluxCD HelmRelease",
       "customType": "regex",
-      "managerFilePatterns": ["/apps/base/matrix/mautrix-manifest\\.yaml$/"],
+      "managerFilePatterns": [
+        "/apps/base/matrix/mautrix-manifest\\.yaml$/"
+      ],
       "matchStrings": [
         "repository:\\s*dock\\.mau\\.dev/mautrix/whatsapp\\s*\n\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
       ],
@@ -54,7 +70,9 @@
     {
       "description": "Track the Mautrix Signal image tag in FluxCD HelmRelease",
       "customType": "regex",
-      "managerFilePatterns": ["/apps/base/matrix/mautrix-signal-manifest\\.yaml$/"],
+      "managerFilePatterns": [
+        "/apps/base/matrix/mautrix-signal-manifest\\.yaml$/"
+      ],
       "matchStrings": [
         "repository:\\s*dock\\.mau\\.dev/mautrix/signal\\s*\n\\s*tag:\\s*['\"]?(?<currentValue>v?\\d+\\.\\d+\\.\\d+)['\"]?"
       ],
@@ -64,85 +82,167 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["renovate/renovate"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "renovate/renovate"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true,
-      "schedule": ["* 0-3 * * 1"]
+      "schedule": [
+        "* 0-3 * * 1"
+      ]
     },
     {
-      "matchPackageNames": ["forgejo"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "forgejo"
+      ],
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge minor and patch updates for the Bitnami Keycloak Helm chart",
-      "matchPackageNames": ["keycloak"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "keycloak"
+      ],
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge minor and patch updates for the open-webui Helm chart",
-      "matchPackageNames": ["open-webui"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "open-webui"
+      ],
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge minor and patch updates for the kube-prometheus-stack Helm chart",
-      "matchPackageNames": ["kube-prometheus-stack"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "kube-prometheus-stack"
+      ],
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge minor and patch updates for the velero Helm chart",
-      "matchPackageNames": ["velero"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "velero"
+      ],
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge minor and patch updates for Immich",
-      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "ghcr.io/immich-app/immich-server"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge patch updates for Traefik",
-      "matchPackageNames": ["traefik"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["patch"],
+      "matchPackageNames": [
+        "traefik"
+      ],
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge minor and patch updates for matrix-synapse Helm chart",
-      "matchPackageNames": ["matrix-synapse"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "matrix-synapse"
+      ],
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge minor and patch updates for cert-manager Helm chart",
-      "matchPackageNames": ["cert-manager"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "cert-manager"
+      ],
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge minor and patch updates for matrix-synapse-s3 Docker image",
-      "matchPackageNames": ["ghcr.io/dotwee/matrix-synapse-s3"],
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": [
+        "ghcr.io/dotwee/matrix-synapse-s3"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Automerge minor and patch updates for all Flux components",
-      "matchPackagePatterns": ["^flux", "fluxcd"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": true,
+      "matchPackageNames": [
+        "/^flux/",
+        "/fluxcd/"
+      ]
     }
   ]
 }
