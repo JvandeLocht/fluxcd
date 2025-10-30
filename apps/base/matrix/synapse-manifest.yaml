@@ -41,7 +41,7 @@ spec:
   values:
     image:
       repository: ghcr.io/dotwee/matrix-synapse-s3
-      tag: v1.140.0
+      tag: v1.141.0
     serverName: vandelocht.uk
     publicServerName: matrix.vandelocht.uk
     signingkey:
