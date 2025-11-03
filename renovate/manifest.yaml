@@ -19,7 +19,7 @@ spec:
             - name: renovate
               # Update this to the latest available and then enable Renovate on
               # the manifest
-              image: renovate/renovate:41.159.4
+              image: renovate/renovate:41.169.1
               args:
                 - JvandeLocht/fluxcd
                 - JvandeLocht/nixos
