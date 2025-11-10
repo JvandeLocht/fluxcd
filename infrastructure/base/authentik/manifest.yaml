@@ -84,6 +84,6 @@ spec:
       secret:
         name: authentik-cnpg
   storage:
-    size: 15Gi
+    size: 25Gi
   monitoring:
     enablePodMonitor: true
